@@ -407,7 +407,7 @@
                                 </div>
                                 <div>
                                     <h4 contenteditable="true" class="font-semibold text-secondary">6.2 Desk Study</h4>
-                                    <textarea class="eiar-textarea mt-2" rows="4">A comprehensive desk study was undertaken to identify ecological features within a 10km radius of the site. This involved consulting: National Parks and Wildlife Service (NPWS) for records of protected species and designated sites (Special Areas of Conservation, Special Protection Areas), National Biodiversity Data Centre, and planning authority databases for other developments to assess cumulative impacts.</textarea>
+                                    <textarea class="eiar-textarea mt-2" rows="4">A comprehensive desk study was undertaken to identify ecological features within a 10km radius of the site. This involved consulting: National Parks and Wildlife Service (NPWS) for records of protected species and designated sites (Special Areas ofConservation, Special Protection Areas), National Biodiversity Data Centre, and planning authority databases for other developments to assess cumulative impacts.</textarea>
                                 </div>
                                 <div>
                                     <h4 contenteditable="true" class="font-semibold text-secondary">6.3 Field Surveys</h4>
@@ -1485,7 +1485,7 @@
             const { siteCode } = params;
             // Find the assessment data - combining CSV and potentially other sources
             const assessments = parseCsv(sacConditionsCsv).concat(parseCsv(spaConditionsCsv)).concat(parseCsv(nhaConditionsCsv));
-            const siteData = assessments.find(site => site.Sitecode == siteCode) || { SiteName: 'Rossbehy', SITECODE: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' }; // Use Rossbehy as default/fallback
+            const siteData = assessments.find(site => site.Sitecode == siteCode) || { SiteName: 'Rossbehy', Sitecode: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' }; // Use Rossbehy as default/fallback
 
             document.getElementById('assessment-site-name').textContent = siteData.SiteName;
             document.getElementById('assessment-site-code').textContent = `Site Code: ${siteData.Sitecode}`;
@@ -1829,7 +1829,9 @@
             destroyCharts(); // Clear old charts before rendering new ones
             renderStatusChart('actions-chart', 'Action Status', [5, 3, 8, 12]); // Example data
             renderStatusChart('surveys-chart', 'Assessment Status', [3, 1, 2, 8]); // Updated data
-            renderCsvData();
+            renderSiteStatusTabs();
+            renderSiteStatusTabContent();
+            updateDashboardStats();
         }
 
         function destroyCharts() {
@@ -1854,6 +1856,7 @@
                 },
                  options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: { position: 'bottom', labels: { boxWidth: 12 } },
                         tooltip: {
@@ -1887,6 +1890,81 @@
             });
         }
         
+        // --- CSV DATA ---
+        const sacConditionsCsv = `Site Name ,Site code,Last Upate ,Habitats Health ,Species Health 
+River Barrow and River Nore SAC,2162,June 2025
+Hook Head SAC,764,January 2025
+Belgica Mound Province SAC,2327,January 2025
+West Connacht Coast SAC,2998,January 2025
+Codling Fault Zone SAC,3015,January 2025
+Lambay Island SAC,204,December 2024
+Inishmore Island SAC,213,December 2024
+Slyne Head Islands SAC,328,December 2024
+Duvillaun Islands SAC,495,December 2024
+Carnsore Point SAC,2269,December 2024
+South-west Porcupine Bank SAC,2329,December 2024
+Blackwater Bank SAC,2953,December 2024
+Porcupine Bank Canyon SAC,3001,December 2024
+Clooneen Bog SAC,2348,October 2024
+Horn Head and Rinclevan SAC,147,September 2024
+Coole-Garryland Complex SAC,252,July 2024
+Cummeen Strand/Drumcliff Bay (Sligo Bay) SAC,627,July 2024
+Lough Ennell SAC,685,July 2024
+Barley Cove to Ballyrisode Point SAC,1040,June 2024
+Ardrahan Grassland SAC,2244,June 2024
+Ballyogan Lough SAC,19,February 2024
+Derrinlough (Cloonkeenleananode) Bog SAC,2197,July 2023
+Derragh Bog SAC,2201,July 2023
+Girley (Drewstown) Bog SAC,2203,July 2023
+Wooddown Bog SAC,2205,July 2023
+Scohaboy (Sopwell) Bog SAC,2206,July 2023
+Ballygar (Aghrane) Bog SAC,2199,June 2023
+Aughrim (Aghrane) Bog SAC,2200,June 2023
+Mount Jessop Bog SAC,2202,June 2023`;
+
+        const spaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health 
+Lady's Island Lake SPA,4009,July 2025
+Termoncarragh Lake and Annagh Machair SPA,4093,June 2025
+Inishmore SPA,4152,June 2025
+Dingle Peninsula SPA,4153,June 2025
+Horn Head to Fanad Head SPA,4194,June 2025
+Cliffs of Moher SPA,4005,June 2025
+West Donegal Coast SPA,4150,June 2025
+The Bull and The Cow Rocks SPA,4066,May 2025
+Inishmurray SPA,4068,May 2025
+Tory Island SPA,4073,May 2025
+"Inishbofin, Inishdooey and Inishbeg SPA",4083,May 2025
+Skelligs SPA,4007,May 2025
+Blasket Islands SPA,4008,May 2025
+Keeragh Islands SPA,4118,May 2025
+Clare Island SPA,4136,May 2025
+Mullet Peninsula SPA,4227,May 2025
+Owenduff/Nephin Complex SPA,4098,April 2025
+The Gearagh SPA,4109,April 2025
+Lough Nillan Bog SPA,4110,April 2025
+Deenish Island and Scariff Island SPA,4175,April 2025
+Lough Conn and Lough Cullin SPA,4228,April 2025
+Mongan Bog SPA,4017,April 2025
+Pettigo Plateau Nature Reserve SPA,4099,April 2025
+Inishtrahull SPA,4100,April 2025
+Ballykenny-Fisherstown Bog SPA,4101,April 2025
+Garriskil Bog SPA,4102,April 2025
+All Saints Bog SPA,4103,April 2025
+Bellanagare Bog SPA,4105,April 2025
+Eirk Bog SPA,4108,April 2025
+Inishkea Islands SPA,4004,April 2025
+Illanmaster SPA,4074,April 2025
+Aughris Head SPA,4133,April 2025
+Bills Rocks SPA,4177,April 2025
+Lough Ree SPA,4064,April 2025
+Stags of Broad Haven SPA,4022,April 2025`;
+        
+        const nhaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health 
+9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7
+151,Inishduff NHA,Pending,Donegal,46.5
+184,Roaninish NHA,In Progress,Donegal,145.8
+220,Lough Namucka Bog NHA,Completed,Galway,221.0`;
+
         const assessmentsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,HA,Link to Survey 
 9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7,https://www.npws.ie/protected-sites/nha/000009
 151,Inishduff NHA,Pending,Donegal,46.5,https://www.npws.ie/protected-sites/nha/000151
@@ -1907,13 +1985,11 @@
         
         function parseCsv(csvString) {
             const rows = csvString.trim().split('\n');
-            const headers = rows.shift().split(',').map(h => h.trim());
+            const headers = rows.shift().split(',').map(h => h.trim().replace(/\s+/g, ''));
             return rows.map(row => {
                 const values = row.split(',');
                 return headers.reduce((obj, header, index) => {
-                    // Standardize header names slightly for easier access
-                    const cleanHeader = header.replace(/\s+/g, '').replace('LinktoSurvey', 'Link');
-                    obj[cleanHeader] = values[index] ? values[index].trim() : '';
+                    obj[header] = values[index] ? values[index].trim() : '';
                     return obj;
                 }, {});
             });
@@ -1928,47 +2004,208 @@
             if (lowerStatus === 'not assigned') return 'bg-gray-100 text-gray-800';
             return 'bg-gray-100 text-gray-800';
         }
-
-
-        function renderCsvData() {
-            let assessmentsData = parseCsv(assessmentsCsvData);
-            let actionsData = parseCsv(actionsCsvData);
-            
-            // Add Rossbehy data manually
-            const rossbehyAssessment = {
-                SITECODE: '13',
-                SITE_NAME: 'Rossbehy',
-                Status: 'Completed',
-                COUNTY: 'Kerry',
-                HA: '91.71', // From docx
-                Link: '#' // Placeholder link
+        
+        function getStatusDot(status) {
+            if (!status) return '<span class="w-3 h-3 rounded-full bg-gray-400"></span>';
+            const lowerStatus = status.toLowerCase();
+            if (lowerStatus.includes('favourable')) return '<span class="w-3 h-3 rounded-full bg-status-favourable"></span>';
+            if (lowerStatus.includes('inadequate')) return '<span class="w-3 h-3 rounded-full bg-status-inadequate"></span>';
+            if (lowerStatus.includes('bad')) return '<span class="w-3 h-3 rounded-full bg-status-bad"></span>';
+            return '<span class="w-3 h-3 rounded-full bg-gray-400"></span>';
+        }
+        
+        function generateRandomConservationString() {
+            const statuses = ['Favourable', 'Inadequate', 'Bad'];
+            const randStatus = () => statuses[Math.floor(Math.random() * 3)];
+            const statusColor = (status) => {
+                if (status === 'Favourable') return 'text-status-favourable';
+                if (status === 'Inadequate') return 'text-status-inadequate';
+                return 'text-status-bad';
             };
-            // Check if Rossbehy already exists to avoid duplicates on re-render
-            if (!assessmentsData.some(item => item.SITECODE === '13')) {
-                assessmentsData.push(rossbehyAssessment);
-            }
             
-            const assessmentsTable = document.getElementById('assessments-table');
-            assessmentsTable.innerHTML = assessmentsData.map(row => `
-                <tr class="${row.SITECODE == '13' ? 'cursor-pointer hover:bg-gray-50' : ''}" ${row.SITECODE == '13' ? `onclick="showView('assessment-detail-view', { siteCode: 13 })"` : ''}>
-                    <td class="p-2">${row.SITECODE}</td>
-                    <td class="p-2">${row.SITE_NAME}</td>
-                    <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td>
-                    <td class="p-2">${row.COUNTY}</td>
-                    <td class="p-2 text-right">${row.HA}</td>
-                </tr>`).join('');
-            
-            const actionsTable = document.getElementById('actions-table');
-            actionsTable.innerHTML = actionsData.map(row => `
-                <tr>
-                     <td class"p-2">${row.SITECODE}</td>
-                    <td class="p-2">${row.SITE_NAME}</td>
-                    <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td>
-                    <td class="p-2">${row['ActionType']}</td>
-                    <td class="p-2">${row.COUNTY}</td>
-                </tr>`).join('');
+            let s1 = randStatus();
+            let s2 = randStatus();
+            let s3 = randStatus();
+            let s4 = randStatus();
+
+            return `
+                <div class="text-xs space-y-1">
+                    <div>Range: <span class="font-medium ${statusColor(s1)}">${s1}</span></div>
+                    <div>Area: <span class="font-medium ${statusColor(s2)}">${s2}</span></div>
+                    <div>Structure & Functions: <span class="font-medium ${statusColor(s3)}">${s3}</span></div>
+                    <div>Future Prospects: <span class="font-medium ${statusColor(s4)}">${s4}</span></div>
+                </div>
+            `;
         }
 
+        // --- DASHBOARD: SITE STATUS ---
+        function renderSiteStatusTabs() {
+            const tabs = [
+                { id: 'sac', name: 'SAC' },
+                { id: 'spa', name: 'SPA' },
+                { id: 'nha', name: 'NHA' }
+            ];
+            const tabsContainer = document.getElementById('site-status-tabs');
+            tabsContainer.innerHTML = tabs.map(tab => `
+                <button onclick="setSiteStatusTab('${tab.id}')" class="${currentSiteStatusTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    ${tab.name}
+                </button>
+            `).join('');
+        }
+
+        function setSiteStatusTab(tabId) {
+            currentSiteStatusTab = tabId;
+            renderSiteStatusTabs();
+            renderSiteStatusTabContent();
+        }
+
+        function renderSiteStatusTabContent() {
+            const content = document.getElementById('site-status-content');
+            let csvData;
+            if (currentSiteStatusTab === 'sac') {
+                csvData = parseCsv(sacConditionsCsv);
+            } else if (currentSiteStatusTab === 'spa') {
+                csvData = parseCsv(spaConditionsCsv);
+            } else {
+                csvData = parseCsv(nhaConditionsCsv);
+            }
+            
+            let stats = { favourable: 0, unfavourable: 0, speciesFavourable: 0, total: csvData.length };
+            csvData.forEach(row => {
+                if (row.HabitatsHealth?.toLowerCase().includes('favourable')) stats.favourable++;
+                if (row.HabitatsHealth?.toLowerCase().includes('inadequate') || row.HabitatsHealth?.toLowerCase().includes('bad')) stats.unfavourable++;
+                if (row.SpeciesHealth?.toLowerCase().includes('favourable')) stats.speciesFavourable++;
+            });
+            
+            document.getElementById('total-assessments-stat').textContent = stats.total;
+            document.getElementById('habitats-favourable-stat').textContent = stats.favourable;
+            document.getElementById('habitats-unfavourable-stat').textContent = stats.unfavourable;
+            document.getElementById('species-favourable-stat').textContent = stats.speciesFavourable;
+
+            content.innerHTML = `
+                <div class="h-96 overflow-y-auto pr-2">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 sticky top-0">
+                            <tr>
+                                <th class="p-2 font-semibold">Site Code</th>
+                                <th class="p-2 font-semibold">Site Name</th>
+                                <th class="p-2 font-semibold">Habitats Health</th>
+                                <th class="p-2 font-semibold">Species Health</th>
+                                <th class="p-2 font-semibold">Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            ${csvData.map(row => {
+                                const habitatStatus = row.HabitatsHealth || 'N/A';
+                                const speciesStatus = row.SpeciesHealth || 'N/A';
+                                return `
+                                <tr class="hover:bg-gray-50">
+                                    <td class="p-2">${row.Sitecode}</td>
+                                    <td class="p-2">${row.SiteName}</td>
+                                    <td class="p-2">${generateRandomConservationString()}</td>
+                                    <td class="p-2">${generateRandomConservationString()}</td>
+                                    <td class="p-2">${row.LastUpate || row.LastUpdated || 'N/A'}</td>
+                                </tr>
+                            `}).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // --- TASKS PAGE ---
+        function renderTasksView() {
+            currentTasksTab = 'assessments'; // Default to first tab
+            renderTasksTabs();
+            renderTasksTabContent();
+        }
+        
+        function renderTasksTabs() {
+             const tabs = [
+                { id: 'assessments', name: 'Conservation Assessments' },
+                { id: 'actions', name: 'Conservation Actions' }
+            ];
+            const tabsContainer = document.getElementById('tasks-tabs');
+            tabsContainer.innerHTML = tabs.map(tab => `
+                <button onclick="setTasksTab('${tab.id}')" class="${currentTasksTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                    ${tab.name}
+                </button>
+            `).join('');
+        }
+        
+        function setTasksTab(tabId) {
+            currentTasksTab = tabId;
+            renderTasksTabs();
+            renderTasksTabContent();
+        }
+
+        function renderTasksTabContent() {
+            const content = document.getElementById('tasks-content');
+            if (currentTasksTab === 'assessments') {
+                let assessmentsData = parseCsv(assessmentsCsvData);
+                const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' };
+                if (!assessmentsData.some(item => item.SITECODE === '13')) {
+                    assessmentsData.push(rossbehyAssessment);
+                }
+                
+                content.innerHTML = `
+                    <div class="bg-surface p-6 rounded-lg shadow-md">
+                        <div class="h-96 overflow-y-auto pr-2">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-gray-50 sticky top-0">
+                                    <tr>
+                                        <th class="p-2 font-semibold">Site Code</th>
+                                        <th class="p-2 font-semibold">Site Name</th>
+                                        <th class="p-2 font-semibold">Status</th>
+                                        <th class="p-2 font-semibold">County</th>
+                                        <th class="p-2 font-semibold text-right">Area (ha)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                ${assessmentsData.map(row => `
+                                    <tr class="${row.SITECODE == '13' ? 'cursor-pointer hover:bg-gray-50' : ''}" ${row.SITECODE == '13' ? `onclick="showView('assessment-detail-view', { siteCode: 13 })"` : ''}>
+                                        <td class="p-2">${row.SITECODE}</td>
+                                        <td class="p-2">${row.SITE_NAME}</td>
+                                        <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td>
+                                        <td class="p-2">${row.COUNTY}</td>
+                                        <td class="p-2 text-right">${row.HA}</td>
+                                    </tr>`).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            } else if (currentTasksTab === 'actions') {
+                 let actionsData = parseCsv(actionsCsvData);
+                 content.innerHTML = `
+                    <div class="bg-surface p-6 rounded-lg shadow-md">
+                         <div class="h-96 overflow-y-auto pr-2">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-gray-50 sticky top-0">
+                                    <tr>
+                                        <th class="p-2 font-semibold">Site Code</th>
+                                        <th class="p-2 font-semibold">Site Name</th>
+                                        <th class="p-2 font-semibold">Status</th>
+                                        <th class="p-2 font-semibold">Action Type</th>
+                                        <th class="p-2 font-semibold">County</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                 ${actionsData.map(row => `
+                                    <tr>
+                                         <td class="p-2">${row.SITECODE}</td>
+                                        <td class="p-2">${row.SITE_NAME}</td>
+                                        <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td>
+                                        <td class="p-2">${row.ActionType}</td>
+                                        <td class="p-2">${row.COUNTY}</td>
+                                    </tr>`).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+        }
 
         // --- VISUALISATION VIEW ---
         const visTabs = [
@@ -2309,4 +2546,5 @@
     </script>
 </body>
 </html>
+
 
