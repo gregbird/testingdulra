@@ -227,9 +227,15 @@
                                     <span class="text-gray-600">Habitats Unfavourable</span>
                                     <span class="font-bold text-status-bad text-lg" id="habitats-unfavourable-stat">0</span>
                                 </div>
+                                  </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-gray-600">Species Favourable</span>
-                                    <span class="font-bold text-status-favourable text-lg" id="species-favourable-stat">0</span>
+                                    <span class="text-gray-600">Habitats Inadequate</span>
+                                    <span class="font-bold text-status-bad text-lg" id="habitats-unfavourable-stat">0</span>
+                                </div>
+                             </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Habitats Bad</span>
+                                    <span class="font-bold text-status-bad text-lg" id="habitats-unfavourable-stat">0</span>
                                 </div>
                              </div>
                         </div>
@@ -999,7 +1005,7 @@
                                             <label for="audience-tone" class="block text-xs font-medium text-gray-600 mb-1">Audience Tone</label>
                                             <select id="audience-tone" class="w-full text-sm px-3 py-2 border border-gray-300 rounded-md">
                                                 <option>Technical (Internal)</option>
-                                                <option>Public / Funding</option>
+                                                <option>Public</option>
                                                 <option>Investor</option>
                                             </select>
                                         </div>
@@ -1198,7 +1204,7 @@
                     <input type="text" id="new-project-name" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md" required>
                 </div>
                 <div class="mb-4">
-                    <label for="new-client-name" class="block text-sm font-medium text-gray-700">Client Name</label>
+                    <label for="new-client-name" class="block text-sm font-medium text-gray-700">Site Code & Name</label>
                     <input type="text" id="new-client-name" value="Default Client" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md" required>
                 </div>
                 <div class="flex justify-end space-x-3 mt-6">
@@ -1278,7 +1284,7 @@
         let db;
         const defaultDb = {
             projects: [
-                { id: 1, name: "N59 Road Realignment", client: "Galway County Council", code: "GCC-001-25" },
+                { id: 1, name: "West Connacht Coast SAC", client: "NPWS", code: "NPWS-001-25" },
             ],
             surveys: [
                 { id: 101, projectId: 1, siteName: "Site A - Woodland", template: "PEA", status: "Completed", data: { habitat: "WD1 - Oak-birch-holly woodland", notes: "Mature oak canopy, limited undergrowth.", species: "Sciurus vulgaris (Red Squirrel)", photo: "https://placehold.co/600x400/a3e635/ffffff?text=Woodland+Canopy" } },
