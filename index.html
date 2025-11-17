@@ -6,7 +6,7 @@
     <title>Dulra - Ecological Management Platform</title>
     
     <style>
-        [cite_start]/* CSS from original file [cite: 1-14] */
+        /* CSS from original file [cite: 1-14] */
         .view { display: none; }
         .active-view { display: block; }
         body { background-color: #F3F7F9; font-family: 'Inter', sans-serif; margin: 0; }
@@ -620,7 +620,7 @@
     </main>
 
     <script>
-    [cite_start]// --- DATA STORE (Mock Database & Local Storage) --- [cite: 67-74]
+    // --- DATA STORE (Mock Database & Local Storage) --- [cite: 67-74]
     let db;
     const defaultDb = { 
         projects: [ 
@@ -662,7 +662,7 @@
     let currentTasksTab = 'assessments'; 
     let currentSiteStatusTab = 'sac';
     
-    [cite_start]// --- UPDATED VIEW MANAGEMENT [cite: 74-79] --- 
+    // --- UPDATED VIEW MANAGEMENT [cite: 74-79] --- 
     function showView(viewId, param = null) {
         // Hide all views
         const allViews = document.querySelectorAll('.view');
@@ -709,7 +709,7 @@
         if (viewId === 'assessment-detail-view') renderAssessmentDetailView(param);
     } 
     
-    [cite_start]// --- ROUTING (based on URL) --- [cite: 79-82]
+    // --- ROUTING (based on URL) --- [cite: 79-82]
     function handleRouting() { 
         const params = new URLSearchParams(window.location.search); 
         const surveyId = params.get('survey');
@@ -728,7 +728,7 @@
     } 
     
     // --- RENDERING FUNCTIONS --- 
-    [cite_start]function renderSurveyTemplates() { // [cite: 82-84]
+    function renderSurveyTemplates() { // [cite: 82-84]
         const container = document.querySelector('#survey-template-grid');
         if (!container) return;
         container.innerHTML = surveyTemplates.map(template => ` 
@@ -744,7 +744,7 @@
         lucide.createIcons(); 
     } 
     
-    [cite_start]function renderProjects() { // [cite: 84-86]
+    function renderProjects() { // [cite: 84-86]
         const list = document.getElementById('project-list'); 
         if (!list) return;
         if (db.projects.length === 0) { 
@@ -784,9 +784,9 @@
         const tableBody = document.getElementById('projects-table-body');
         if (!tableBody) return; // Exit if element isn't on the page
 
-        [cite_start]let assessmentsData = parseCsv(assessmentsCsvData); // [cite: 174-176]
-        const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' }; [cite_start]// [cite: 202]
-        [cite_start]if (!assessmentsData.some(item => item.SITECODE === '13')) { // [cite: 203]
+        let assessmentsData = parseCsv(assessmentsCsvData); // [cite: 174-176]
+        const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' }; //
+        if (!assessmentsData.some(item => item.SITECODE === '13')) { //
             assessmentsData.push(rossbehyAssessment);
         }
 
@@ -827,7 +827,8 @@
         tableBody.innerHTML = html;
     }
     
-    [cite_start]function renderProjectDetails(projectId) { // [cite: 86-87]
+    // --- FIX: RENDER PROJECT DETAILS --- [cite: 86-87]
+    function renderProjectDetails(projectId) { 
         const project = db.projects.find(p => p.id === projectId); 
         if (!project) {
             showView('my-surveys-view');
@@ -841,7 +842,7 @@
         renderProjectTabContent(projectId); 
     } 
     
-    [cite_start]function renderEiarEditor(params) { // [cite: 87-89]
+    function renderEiarEditor(params) { // [cite: 87-89]
         if (!params) {
             showToast("No project selected", "error");
             showView('my-surveys-view');
@@ -854,7 +855,7 @@
         document.getElementById('eiar-editor-project-name').textContent = `Project: ${project.name}`;
     } 
     
-    [cite_start]function renderEcowEditor(params) { // [cite: 89-91]
+    function renderEcowEditor(params) { // [cite: 89-91]
          if (!params) {
             showToast("No project selected", "error");
             showView('my-surveys-view');
@@ -867,7 +868,7 @@
         document.getElementById('ecow-editor-project-name').textContent = `Project: ${project.name}`; 
     } 
     
-    [cite_start]function renderTeamView() { // [cite: 91-92]
+    function renderTeamView() { // [cite: 91-92]
         const list = document.getElementById('team-list');
         if (!list) return;
         list.innerHTML = db.team.map(member => ` 
@@ -881,24 +882,24 @@
         lucide.createIcons(); 
     } 
     
-    [cite_start]function renderProjectTabs(projectId) { // [cite: 92-94]
+    function renderProjectTabs(projectId) { // [cite: 92-94]
         const tabs = [ { id: 'surveys', name: 'Surveys' } ]; 
         const tabsContainer = document.getElementById('project-tabs');
         if (!tabsContainer) return;
         tabsContainer.innerHTML = tabs.map(tab => ` 
-            <button onclick="setProjectTab('${tab.id}')" style="border-bottom: 2px solid ${currentProjectTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem;"> 
+            <button onclick="setProjectTab('${tab.id}')" style="border-bottom: 2px solid ${currentProjectTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem; background: none; border: none; cursor: pointer; font-size: 1rem;"> 
                 ${tab.name} 
             </button> 
         `).join('');
     } 
     
-    [cite_start]function setProjectTab(tabId) { // [cite: 94-95]
+    function setProjectTab(tabId) { // [cite: 94-95]
         currentProjectTab = tabId; 
         renderProjectTabs(currentProjectId); 
         renderProjectTabContent(currentProjectId); 
     } 
     
-    [cite_start]function renderProjectTabContent(projectId) { // [cite: 95-98]
+    function renderProjectTabContent(projectId) { // [cite: 95-98]
         const contentContainer = document.getElementById('project-tab-content');
         if (!contentContainer) return;
         if (currentProjectTab === 'surveys') { 
@@ -912,7 +913,7 @@
                         <div style="border: 1px solid #eee; padding: 1rem; border-radius: 4px; background: #fff; display: flex; justify-content: space-between; align-items: center;"> 
                             <div> 
                                 <p style="font-weight: 600;">${s.siteName} <span style="font-weight: 400; font-size: 0.8rem;">(${s.template})</span></p> 
-                                <span class="status-badge ${statusColor}">${s.status}</span> 
+                                <span class="status-badge" style="${statusColor}">${s.status}</span> 
                             </div> 
                             <div> 
                                 ${s.status === 'Ready' ? `<button onclick="assignSurvey(${s.id})">Assign</button>` : ''} 
@@ -926,7 +927,7 @@
         lucide.createIcons(); 
     } 
     
-    [cite_start]function renderSurveyForm(surveyId) { // [cite: 98-100]
+    function renderSurveyForm(surveyId) { // [cite: 98-100]
         const survey = db.surveys.find(s => s.id == surveyId);
         if (!survey) return showView('dashboard-view');
         const project = db.projects.find(p => p.id === survey.projectId); 
@@ -937,12 +938,12 @@
         document.getElementById('survey-form-site-name').textContent = survey.siteName; 
     } 
     
-    [cite_start]// --- Assessment Detail View --- [cite: 100-122]
+    // --- Assessment Detail View --- [cite: 100-122]
     function renderAssessmentDetailView(params) { 
         if (!params) return showView('tasks-view');
         const { siteCode } = params;
-        const assessments = parseCsv(sacConditionsCsv).concat(parseCsv(spaConditionsCsv)).concat(parseCsv(nhaConditionsCsv));
-        const siteData = assessments.find(site => (site.Site_code || site.Site_Code) == siteCode) || { SiteName: 'Rossbehy', Sitecode: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' };
+        const assessments = parseCsv(assessmentsCsvData);
+        const siteData = assessments.find(site => site.SITECODE == siteCode) || { SiteName: 'Rossbehy', SITECODE: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' };
         
         document.getElementById('assessment-site-name').textContent = siteData.SiteName || siteData.SITE_NAME; 
         document.getElementById('assessment-site-code').textContent = `Site Code: ${siteData.Sitecode || siteData.Site_Code || siteData.SITECODE}`; 
@@ -950,14 +951,15 @@
         document.getElementById('assessment-area').textContent = siteData.HA || 'N/A'; 
         const statusBadge = document.getElementById('assessment-status-badge'); 
         statusBadge.textContent = siteData.Status || 'Unknown'; 
-        statusBadge.className = `status-badge ${getStatusColorClass(siteData.Status)}`;
+        statusBadge.className = `status-badge`;
+        statusBadge.style = getStatusColorClass(siteData.Status);
         const habitatsList = document.getElementById('assessment-habitats'); 
         const speciesList = document.getElementById('assessment-species');
         const table1 = document.getElementById('rossbehy-table-1'); 
         const table2 = document.getElementById('rossbehy-table-2'); 
         const table3 = document.getElementById('rossbehy-table-3'); 
         
-        [cite_start]if (siteCode == 13) { // [cite: 107-119]
+        if (siteCode == 13) { // [cite: 107-119]
             habitatsList.innerHTML = ` 
                 <li>Fixed coastal dunes... (2130)</li> 
                 <li>Embryonic shifting dunes (2110)</li> 
@@ -990,7 +992,7 @@
                     <tr><td>2110</td><td>Maintain favourable...</td><td>Maintain</td></tr> 
                 </tbody> 
             `;
-        [cite_start]} else { // [cite: 119-122]
+        } else { // [cite: 119-122]
             habitatsList.innerHTML = `<li>Placeholder Habitat 1</li>`; 
             speciesList.innerHTML = `<li>Placeholder Species A</li>`;
             table1.innerHTML = `<tbody><tr><td>No data available for this site.</td></tr></tbody>`; 
@@ -999,7 +1001,7 @@
         } 
     } 
     
-    [cite_start]function showMapDetail(event) { // [cite: 122-125]
+    function showMapDetail(event) { // [cite: 122-125]
         const mapInfo = document.getElementById('map-detail-info'); 
         if (!mapInfo) return;
         const targetElement = event.target.closest('\[data-info\]');
@@ -1013,7 +1015,7 @@
         }, 2500);
     } 
     
-    [cite_start]// --- MODAL CONTROLS --- [cite: 125-128]
+    // --- MODAL CONTROLS --- [cite: 125-128]
     function showNewSurveyProjectModal() { 
         newSurveyProjectModal.classList.remove('hidden'); 
     } 
@@ -1035,7 +1037,7 @@
         assignThirdPartyModal.classList.add('hidden');
     } 
     
-    [cite_start]// --- TOAST NOTIFICATION --- [cite: 128-132]
+    // --- TOAST NOTIFICATION --- [cite: 128-132]
     function showToast(message, type = 'success') { 
         const toast = document.getElementById('toast'); 
         const toastMessage = document.getElementById('toast-message');
@@ -1058,7 +1060,7 @@
         }, 3000);
     } 
     
-    [cite_start]// --- GIS VIEW CONTROLS --- [cite: 132-145]
+    // --- GIS VIEW CONTROLS --- [cite: 132-145]
     const gisFields = [ 
         { id: 'foss_qualifi', name: 'FOSS_QUALIFI', description: 'Qualifier code for Guide to Habitats classification subtypes.' },
         { id: 'add_hab', name: 'ADD_HAB', description: 'Field for secondary habitat classification schemes.' },
@@ -1087,7 +1089,7 @@
         document.getElementById('gis-initial-choice').classList.remove('hidden'); 
     } 
     
-    [cite_start]// --- DATA MINE CONTROLS --- [cite: 145-148]
+    // --- DATA MINE CONTROLS --- [cite: 145-148]
     function performDataMineSearch() { 
         const resultsContainer = document.getElementById('datamine-results-container');
         const loading = document.getElementById('datamine-loading'); 
@@ -1103,7 +1105,7 @@
         }, 1500);
     } 
     
-    [cite_start]// --- DYNAMIC FIELD SURVEY ENTRY --- [cite: 148-156]
+    // --- DYNAMIC FIELD SURVEY ENTRY --- [cite: 148-156]
     function addHabitatEntry() { 
         const container = document.getElementById('habitat-entries'); 
         if (!container) return; // FIX
@@ -1177,7 +1179,7 @@
         lucide.createIcons();
     } 
     
-    [cite_start]// --- TEMPLATE EDITOR --- [cite: 156-161]
+    // --- TEMPLATE EDITOR --- [cite: 156-161]
     function addTemplateElement(type) { 
         const editor = document.getElementById('custom-template-editor');
         if (!editor) return;
@@ -1197,7 +1199,7 @@
         showView('survey-template-view');
     } 
     
-    // --- UPDATED IMPACT CALCULATION ---
+    // --- UPDATED IMPACT CALCULATION --- [cite: 161-165]
     function updateImpactCalculation() {
         // Ensure all elements exist before running
         if (!document.getElementById('crm-flights-height')) return;
@@ -1228,19 +1230,19 @@
         document.getElementById('crm-passages-result').textContent = passages.toFixed(2);
         document.getElementById('crm-probability-result').textContent = (probability * 100).toFixed(1) + '%';
         
-        [cite_start]// --- Final Calculation (from original) [cite: 164-165] ---
+        // --- Final Calculation (from original) [cite: 164-165] ---
         const adjustedProbability = probability * opTime;
         const finalCollisions = passages * adjustedProbability * (1 - avoidance);
         document.getElementById('crm-final-result').textContent = finalCollisions.toFixed(2);
     }
     
-    [cite_start]// --- DASHBOARD --- [cite: 165-171]
+    // --- DASHBOARD --- [cite: 165-171]
     function renderDashboard() { 
         if (typeof Chart === 'undefined' || typeof ChartDataLabels === 'undefined') {
             console.error('Chart.js or ChartDataLabels is not loaded.');
             return;
         }
-        Chart.register(ChartDataLabels); // Register plugin
+        // Chart.register(ChartDataLabels); // Register plugin - may be auto-registered
         destroyCharts(); // Clear old charts
         renderStatusChart('actions-chart', 'Action Status', [5, 3, 8, 12]);
         renderStatusChart('surveys-chart', 'Assessment Status', [3, 1, 2, 8]); 
@@ -1296,10 +1298,11 @@
                     } 
                 } 
             },
+            plugins: [ChartDataLabels] // Register plugin for this chart
         });
     } 
     
-    [cite_start]// --- CSV DATA --- [cite: 171-179]
+    // --- CSV DATA --- [cite: 171-179]
     // (Keeping data minimal for example)
     const sacConditionsCsv = `Site Name ,Site code,Last Upate ,Habitats Health ,Species Health 
 River Barrow and River Nore SAC,2162,June 2025,Inadequate,Bad 
@@ -1346,7 +1349,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
 245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,https://...
 247,Slieve Bog NHA,Completed,Galway,Species protection,https://...`;
     
-    [cite_start]// --- HELPER FUNCTIONS --- [cite: 179-191]
+    // --- HELPER FUNCTIONS --- [cite: 179-191]
     function parseCsv(csvString) { 
         const rows = csvString.trim().split('\n'); 
         const headers = rows.shift().split(',').map(h => h.trim().replace(/ /g, '_')); // Replace spaces for easier access
@@ -1359,8 +1362,8 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         });
     } 
     
-    [cite_start]function getStatusColorClass(status) { // [cite: 181-184]
-        if (!status) return 'bg-gray-100 text-gray-800'; 
+    function getStatusColorClass(status) { // [cite: 181-184]
+        if (!status) return 'background: #f3f4f6; color: #374151;'; 
         const lowerStatus = status.toLowerCase(); 
         if (lowerStatus === 'completed') return 'background: #dcfce7; color: #166534;'; // Green
         if (lowerStatus === 'in progress') return 'background: #dbeafe; color: #1e40af;'; // Blue
@@ -1369,16 +1372,16 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         return 'background: #f3f4f6; color: #374151;';
     } 
     
-    [cite_start]function getStatusDot(status) { /* ... */ } // [cite: 184-187]
-    [cite_start]function generateRandomConservationString() { /* ... */ } // [cite: 187-191]
+    function getStatusDot(status) { /* ... */ } // [cite: 184-187]
+    function generateRandomConservationString() { /* ... */ } // [cite: 187-191]
     
-    [cite_start]// --- DASHBOARD: SITE STATUS --- [cite: 191-198]
+    // --- DASHBOARD: SITE STATUS --- [cite: 191-198]
     function renderSiteStatusTabs() { 
         const tabs = [ { id: 'sac', name: 'SAC' }, { id: 'spa', name: 'SPA' }, { id: 'nha', name: 'NHA' } ];
         const tabsContainer = document.getElementById('site-status-tabs'); 
         if (!tabsContainer) return;
         tabsContainer.innerHTML = tabs.map(tab => ` 
-            <button onclick="setSiteStatusTab('${tab.id}')" style="border-bottom: 2px solid ${currentSiteStatusTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem;"> 
+            <button onclick="setSiteStatusTab('${tab.id}')" style="border-bottom: 2px solid ${currentSiteStatusTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem; background: none; border: none; cursor: pointer; font-size: 1rem;"> 
                 ${tab.name} 
             </button> 
         `).join('');
@@ -1430,7 +1433,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         `;
     } 
     
-    [cite_start]// --- TASKS PAGE --- [cite: 198-206]
+    // --- TASKS PAGE --- [cite: 198-206]
     function renderTasksView() { 
         currentTasksTab = 'assessments'; 
         renderTasksTabs(); 
@@ -1442,7 +1445,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         const tabsContainer = document.getElementById('tasks-tabs'); 
         if (!tabsContainer) return;
         tabsContainer.innerHTML = tabs.map(tab => ` 
-            <button onclick="setTasksTab('${tab.id}')" style="border-bottom: 2px solid ${currentTasksTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem;"> 
+            <button onclick="setTasksTab('${tab.id}')" style="border-bottom: 2px solid ${currentTasksTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem; background: none; border: none; cursor: pointer; font-size: 1rem;"> 
                 ${tab.name} 
             </button> 
         `).join('');
@@ -1507,7 +1510,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         } 
     } 
     
-    [cite_start]// --- VISUALISATION VIEW --- [cite: 206-218]
+    // --- VISUALISATION VIEW --- [cite: 206-218]
     const visTabs = [ 
         { id: 'basic', name: 'Basic Information', icon: 'file-text' }, 
         { id: 'impacts', name: 'Impacts', icon: 'alert-triangle' }, 
@@ -1559,7 +1562,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         content.innerHTML = html;
     } 
     
-    [cite_start]// --- AI REPORTING --- [cite: 218-227]
+    // --- AI REPORTING --- [cite: 218-227]
     function addAiChatMessage(content, isUser = false) { 
         const history = document.getElementById('ai-chat-history');
         if (!history) return;
@@ -1597,7 +1600,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         addAiChatMessage("Okay. Enriching report with third-party datasets...");
     } 
     
-    [cite_start]// --- CORE ACTIONS --- [cite: 227-249]
+    // --- CORE ACTIONS --- [cite: 227-249]
     function startSurveyFromTemplate(templateId) { 
         const template = surveyTemplates.find(t => t.id === templateId); 
         document.getElementById('new-survey-template-id-input').value = templateId;
@@ -1718,7 +1721,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         window.location.href = window.location.pathname;
     } 
     
-    [cite_start]// --- REPORT GENERATION --- [cite: 249-255]
+    // --- REPORT GENERATION --- [cite: 249-255]
     function generateReport(surveyId) { 
         if (typeof docx === 'undefined' || typeof saveAs === 'undefined') {
             showToast('Report libraries not loaded.', 'error');
