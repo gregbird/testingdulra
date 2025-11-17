@@ -6,7 +6,7 @@
     <title>Dulra - Ecological Management Platform</title>
     
     <style>
-        /* CSS from original file [cite: 1-14] */
+        [cite_start]/* CSS from original file [cite: 1-14] */
         .view { display: none; }
         .active-view { display: block; }
         body { background-color: #F3F7F9; font-family: 'Inter', sans-serif; margin: 0; }
@@ -268,7 +268,6 @@
         <section id="team-view" class="view">
             <h2>Team Management</h2>
             <p>Manage internal team members and assign tasks to third parties.</p>
-            <button onclick="showAssignToThirdPartyModal()">Assign to 3rd Party</button>
             <table>
                 <thead>
                     <tr>
@@ -590,29 +589,6 @@
             </div>
         </div>
 
-        <div id="assign-third-party-modal" class="modal-overlay hidden">
-            <div class="modal-content">
-                <div id="assign-third-party-form">
-                    <h3>Assign Task to a Third Party</h3>
-                    <label>3rd Party Email Address</label> <input type="email" id="third-party-email">
-                    <label>Assign Task</label>
-                    <select id="third-party-task">
-                        <option value="survey">Assign Full Survey</option>
-                        <option value="upload">Request Field Data Upload</option>
-                    </select>
-                    <button onclick="hideAssignToThirdPartyModal()">Cancel</button>
-                    <button onclick="generateThirdPartyLink()">Generate Link</button>
-                </div>
-                <div id="assign-third-party-link" style="display:none;">
-                    <h3>Secure Link Generated</h3>
-                    <p>Share this link with the third party to grant access.</p>
-                    <input type="text" id="third-party-link-input" readonly>
-                    <button onclick="copyThirdPartyLink()">Copy Link</button>
-                    <button onclick="hideAssignToThirdPartyModal()">Done</button>
-                </div>
-            </div>
-        </div>
-
         <div id="toast" class="toast">
             <span id="toast-icon" style="margin-right: 0.5rem;"></span>
             <span id="toast-message"></span>
@@ -620,14 +596,14 @@
     </main>
 
     <script>
-    // --- DATA STORE (Mock Database & Local Storage) --- [cite: 67-74]
+    [cite_start]// --- DATA STORE (Mock Database & Local Storage) --- [cite: 67-74]
     let db;
     const defaultDb = { 
         projects: [ 
             { id: 1, name: "Lough Ennell SAC", client: "NPWS", code: "NPWS-001-25" }, 
         ], 
         surveys: [ 
-            { id: 101, projectId: 1, siteName: "Site A - Woodland", template: "PEA", status: "Completed", data: { habitat: "WD1 - Oak-birch-holly woodland", notes: "Mature oak canopy, limited undergrowth.", species: "Sciurus vulgaris (Red Squirrel)", photo: "https://placehold.co/600x400/a3e635/ffffff?text=Woodland+Canopy" } }, 
+            { id: 101, projectId: 1, siteName: "Site A - Woodland", template: "PEA", status: "Completed", data: { habitat: "WD1 - Oak-birch-holly woodland", notes: "Mature oak canopy, limited undergrowth.", species: "Sciurus vulgaris (Red Squirrel)", photo: "https_//placehold.co/600x400/a3e635/ffffff?text=Woodland+Canopy" } }, 
             { id: 102, projectId: 1, siteName: "Site B - River Crossing", template: "EcIA", status: "In Progress", data: {} }, 
         ], 
         team: [ 
@@ -662,7 +638,7 @@
     let currentTasksTab = 'assessments'; 
     let currentSiteStatusTab = 'sac';
     
-    // --- UPDATED VIEW MANAGEMENT [cite: 74-79] --- 
+    [cite_start]// --- UPDATED VIEW MANAGEMENT [cite: 74-79] --- 
     function showView(viewId, param = null) {
         // Hide all views
         const allViews = document.querySelectorAll('.view');
@@ -705,11 +681,11 @@
         
         if (viewId === 'team-view') renderTeamView();
         if (viewId === 'impact-view') updateImpactCalculation();
-        if (viewId ===_ === 'visualisation-view') renderVisualisationView();
+        if (viewId === 'visualisation-view') renderVisualisationView();
         if (viewId === 'assessment-detail-view') renderAssessmentDetailView(param);
     } 
     
-    // --- ROUTING (based on URL) --- [cite: 79-82]
+    [cite_start]// --- ROUTING (based on URL) --- [cite: 79-82]
     function handleRouting() { 
         const params = new URLSearchParams(window.location.search); 
         const surveyId = params.get('survey');
@@ -728,7 +704,7 @@
     } 
     
     // --- RENDERING FUNCTIONS --- 
-    function renderSurveyTemplates() { // [cite: 82-84]
+    [cite_start]function renderSurveyTemplates() { // [cite: 82-84]
         const container = document.querySelector('#survey-template-grid');
         if (!container) return;
         container.innerHTML = surveyTemplates.map(template => ` 
@@ -744,7 +720,7 @@
         lucide.createIcons(); 
     } 
     
-    function renderProjects() { // [cite: 84-86]
+    [cite_start]function renderProjects() { // [cite: 84-86]
         const list = document.getElementById('project-list'); 
         if (!list) return;
         if (db.projects.length === 0) { 
@@ -784,7 +760,7 @@
         const tableBody = document.getElementById('projects-table-body');
         if (!tableBody) return; // Exit if element isn't on the page
 
-        let assessmentsData = parseCsv(assessmentsCsvData); // [cite: 174-176]
+        [cite_start]let assessmentsData = parseCsv(assessmentsCsvData); // [cite: 174-176]
         const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' }; //
         if (!assessmentsData.some(item => item.SITECODE === '13')) { //
             assessmentsData.push(rossbehyAssessment);
@@ -827,7 +803,7 @@
         tableBody.innerHTML = html;
     }
     
-    // --- FIX: RENDER PROJECT DETAILS --- [cite: 86-87]
+    [cite_start]// --- FIX: RENDER PROJECT DETAILS --- [cite: 86-87]
     function renderProjectDetails(projectId) { 
         const project = db.projects.find(p => p.id === projectId); 
         if (!project) {
@@ -842,7 +818,7 @@
         renderProjectTabContent(projectId); 
     } 
     
-    function renderEiarEditor(params) { // [cite: 87-89]
+    [cite_start]function renderEiarEditor(params) { // [cite: 87-89]
         if (!params) {
             showToast("No project selected", "error");
             showView('my-surveys-view');
@@ -855,7 +831,7 @@
         document.getElementById('eiar-editor-project-name').textContent = `Project: ${project.name}`;
     } 
     
-    function renderEcowEditor(params) { // [cite: 89-91]
+    [cite_start]function renderEcowEditor(params) { // [cite: 89-91]
          if (!params) {
             showToast("No project selected", "error");
             showView('my-surveys-view');
@@ -868,7 +844,7 @@
         document.getElementById('ecow-editor-project-name').textContent = `Project: ${project.name}`; 
     } 
     
-    function renderTeamView() { // [cite: 91-92]
+    [cite_start]function renderTeamView() { // [cite: 91-92]
         const list = document.getElementById('team-list');
         if (!list) return;
         list.innerHTML = db.team.map(member => ` 
@@ -882,7 +858,7 @@
         lucide.createIcons(); 
     } 
     
-    function renderProjectTabs(projectId) { // [cite: 92-94]
+    [cite_start]function renderProjectTabs(projectId) { // [cite: 92-94]
         const tabs = [ { id: 'surveys', name: 'Surveys' } ]; 
         const tabsContainer = document.getElementById('project-tabs');
         if (!tabsContainer) return;
@@ -893,13 +869,13 @@
         `).join('');
     } 
     
-    function setProjectTab(tabId) { // [cite: 94-95]
+    [cite_start]function setProjectTab(tabId) { // [cite: 94-95]
         currentProjectTab = tabId; 
         renderProjectTabs(currentProjectId); 
         renderProjectTabContent(currentProjectId); 
     } 
     
-    function renderProjectTabContent(projectId) { // [cite: 95-98]
+    [cite_start]function renderProjectTabContent(projectId) { // [cite: 95-98]
         const contentContainer = document.getElementById('project-tab-content');
         if (!contentContainer) return;
         if (currentProjectTab === 'surveys') { 
@@ -927,7 +903,7 @@
         lucide.createIcons(); 
     } 
     
-    function renderSurveyForm(surveyId) { // [cite: 98-100]
+    [cite_start]function renderSurveyForm(surveyId) { // [cite: 98-100]
         const survey = db.surveys.find(s => s.id == surveyId);
         if (!survey) return showView('dashboard-view');
         const project = db.projects.find(p => p.id === survey.projectId); 
@@ -938,7 +914,7 @@
         document.getElementById('survey-form-site-name').textContent = survey.siteName; 
     } 
     
-    // --- Assessment Detail View --- [cite: 100-122]
+    [cite_start]// --- Assessment Detail View --- [cite: 100-122]
     function renderAssessmentDetailView(params) { 
         if (!params) return showView('tasks-view');
         const { siteCode } = params;
@@ -959,7 +935,7 @@
         const table2 = document.getElementById('rossbehy-table-2'); 
         const table3 = document.getElementById('rossbehy-table-3'); 
         
-        if (siteCode == 13) { // [cite: 107-119]
+        [cite_start]if (siteCode == 13) { // [cite: 107-119]
             habitatsList.innerHTML = ` 
                 <li>Fixed coastal dunes... (2130)</li> 
                 <li>Embryonic shifting dunes (2110)</li> 
@@ -992,7 +968,7 @@
                     <tr><td>2110</td><td>Maintain favourable...</td><td>Maintain</td></tr> 
                 </tbody> 
             `;
-        } else { // [cite: 119-122]
+        [cite_start]} else { // [cite: 119-122]
             habitatsList.innerHTML = `<li>Placeholder Habitat 1</li>`; 
             speciesList.innerHTML = `<li>Placeholder Species A</li>`;
             table1.innerHTML = `<tbody><tr><td>No data available for this site.</td></tr></tbody>`; 
@@ -1001,7 +977,7 @@
         } 
     } 
     
-    function showMapDetail(event) { // [cite: 122-125]
+    [cite_start]function showMapDetail(event) { // [cite: 122-125]
         const mapInfo = document.getElementById('map-detail-info'); 
         if (!mapInfo) return;
         const targetElement = event.target.closest('\[data-info\]');
@@ -1015,7 +991,11 @@
         }, 2500);
     } 
     
-    // --- MODAL CONTROLS --- [cite: 125-128]
+    [cite_start]// --- MODAL CONTROLS --- [cite: 125-128]
+    const newSurveyProjectModal = document.getElementById('new-survey-project-modal'); 
+    const assignSurveyModal = document.getElementById('assign-survey-modal'); 
+    // REMOVED: const assignThirdPartyModal 
+    
     function showNewSurveyProjectModal() { 
         newSurveyProjectModal.classList.remove('hidden'); 
     } 
@@ -1028,16 +1008,10 @@
     function hideAssignSurveyModal() { 
         assignSurveyModal.classList.add('hidden');
     } 
-    function showAssignToThirdPartyModal() { 
-        document.getElementById('assign-third-party-form').style.display = 'block'; 
-        document.getElementById('assign-third-party-link').style.display = 'none'; 
-        assignThirdPartyModal.classList.remove('hidden'); 
-    } 
-    function hideAssignToThirdPartyModal() { 
-        assignThirdPartyModal.classList.add('hidden');
-    } 
+    // REMOVED: showAssignToThirdPartyModal()
+    // REMOVED: hideAssignToThirdPartyModal()
     
-    // --- TOAST NOTIFICATION --- [cite: 128-132]
+    [cite_start]// --- TOAST NOTIFICATION --- [cite: 128-132]
     function showToast(message, type = 'success') { 
         const toast = document.getElementById('toast'); 
         const toastMessage = document.getElementById('toast-message');
@@ -1060,7 +1034,7 @@
         }, 3000);
     } 
     
-    // --- GIS VIEW CONTROLS --- [cite: 132-145]
+    [cite_start]// --- GIS VIEW CONTROLS --- [cite: 132-145]
     const gisFields = [ 
         { id: 'foss_qualifi', name: 'FOSS_QUALIFI', description: 'Qualifier code for Guide to Habitats classification subtypes.' },
         { id: 'add_hab', name: 'ADD_HAB', description: 'Field for secondary habitat classification schemes.' },
@@ -1089,7 +1063,7 @@
         document.getElementById('gis-initial-choice').classList.remove('hidden'); 
     } 
     
-    // --- DATA MINE CONTROLS --- [cite: 145-148]
+    [cite_start]// --- DATA MINE CONTROLS --- [cite: 145-148]
     function performDataMineSearch() { 
         const resultsContainer = document.getElementById('datamine-results-container');
         const loading = document.getElementById('datamine-loading'); 
@@ -1105,7 +1079,7 @@
         }, 1500);
     } 
     
-    // --- DYNAMIC FIELD SURVEY ENTRY --- [cite: 148-156]
+    [cite_start]// --- DYNAMIC FIELD SURVEY ENTRY --- [cite: 148-156]
     function addHabitatEntry() { 
         const container = document.getElementById('habitat-entries'); 
         if (!container) return; // FIX
@@ -1179,7 +1153,7 @@
         lucide.createIcons();
     } 
     
-    // --- TEMPLATE EDITOR --- [cite: 156-161]
+    [cite_start]// --- TEMPLATE EDITOR --- [cite: 156-161]
     function addTemplateElement(type) { 
         const editor = document.getElementById('custom-template-editor');
         if (!editor) return;
@@ -1199,7 +1173,7 @@
         showView('survey-template-view');
     } 
     
-    // --- UPDATED IMPACT CALCULATION --- [cite: 161-165]
+    [cite_start]// --- UPDATED IMPACT CALCULATION --- [cite: 161-165]
     function updateImpactCalculation() {
         // Ensure all elements exist before running
         if (!document.getElementById('crm-flights-height')) return;
@@ -1230,13 +1204,13 @@
         document.getElementById('crm-passages-result').textContent = passages.toFixed(2);
         document.getElementById('crm-probability-result').textContent = (probability * 100).toFixed(1) + '%';
         
-        // --- Final Calculation (from original) [cite: 164-165] ---
+        [cite_start]// --- Final Calculation (from original) [cite: 164-165] ---
         const adjustedProbability = probability * opTime;
         const finalCollisions = passages * adjustedProbability * (1 - avoidance);
         document.getElementById('crm-final-result').textContent = finalCollisions.toFixed(2);
     }
     
-    // --- DASHBOARD --- [cite: 165-171]
+    [cite_start]// --- DASHBOARD --- [cite: 165-171]
     function renderDashboard() { 
         if (typeof Chart === 'undefined' || typeof ChartDataLabels === 'undefined') {
             console.error('Chart.js or ChartDataLabels is not loaded.');
@@ -1302,7 +1276,7 @@
         });
     } 
     
-    // --- CSV DATA --- [cite: 171-179]
+    [cite_start]// --- CSV DATA --- [cite: 171-179]
     // (Keeping data minimal for example)
     const sacConditionsCsv = `Site Name ,Site code,Last Upate ,Habitats Health ,Species Health 
 River Barrow and River Nore SAC,2162,June 2025,Inadequate,Bad 
@@ -1319,10 +1293,10 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7
 Inishduff NHA,151,Pending,Donegal,46.5`;
     
     const assessmentsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,HA,Link to Survey 
-9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7,https://...
-151,Inishduff NHA,Pending,Donegal,46.5,https://...
-184,Roaninish NHA,In Progress,Donegal,145.8,https://...
-220,Lough Namucka Bog NHA,Completed,Galway,221.0,https://...
+9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7,https_//...
+151,Inishduff NHA,Pending,Donegal,46.5,https_//...
+184,Roaninish NHA,In Progress,Donegal,145.8,https_//...
+220,Lough Namucka Bog NHA,Completed,Galway,221.0,https_//...
 6, Killyconny Bog (Cloghbally) SAC,Pending, Cavan, 284, 
 7, Lough Oughter and Associated Loughs SAC, Completed, Galway, 898, 
 4, Ballyallia Lake SAC, Completed, Galway, 897, 
@@ -1346,10 +1320,10 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
 111, Aran Island (Donegal) Cliffs SAC, Completed, Donegal, 613,`;
     
     const actionsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,Action Type,Link to Survey 
-245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,https://...
-247,Slieve Bog NHA,Completed,Galway,Species protection,https://...`;
+245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,https_//...
+247,Slieve Bog NHA,Completed,Galway,Species protection,https_//...`;
     
-    // --- HELPER FUNCTIONS --- [cite: 179-191]
+    [cite_start]// --- HELPER FUNCTIONS --- [cite: 179-191]
     function parseCsv(csvString) { 
         const rows = csvString.trim().split('\n'); 
         const headers = rows.shift().split(',').map(h => h.trim().replace(/ /g, '_')); // Replace spaces for easier access
@@ -1362,7 +1336,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         });
     } 
     
-    function getStatusColorClass(status) { // [cite: 181-184]
+    [cite_start]function getStatusColorClass(status) { // [cite: 181-184]
         if (!status) return 'background: #f3f4f6; color: #374151;'; 
         const lowerStatus = status.toLowerCase(); 
         if (lowerStatus === 'completed') return 'background: #dcfce7; color: #166534;'; // Green
@@ -1372,10 +1346,10 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         return 'background: #f3f4f6; color: #374151;';
     } 
     
-    function getStatusDot(status) { /* ... */ } // [cite: 184-187]
-    function generateRandomConservationString() { /* ... */ } // [cite: 187-191]
+    [cite_start]function getStatusDot(status) { /* ... */ } // [cite: 184-187]
+    [cite_start]function generateRandomConservationString() { /* ... */ } // [cite: 187-191]
     
-    // --- DASHBOARD: SITE STATUS --- [cite: 191-198]
+    [cite_start]// --- DASHBOARD: SITE STATUS --- [cite: 191-198]
     function renderSiteStatusTabs() { 
         const tabs = [ { id: 'sac', name: 'SAC' }, { id: 'spa', name: 'SPA' }, { id: 'nha', name: 'NHA' } ];
         const tabsContainer = document.getElementById('site-status-tabs'); 
@@ -1433,7 +1407,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         `;
     } 
     
-    // --- TASKS PAGE --- [cite: 198-206]
+    [cite_start]// --- TASKS PAGE --- [cite: 198-206]
     function renderTasksView() { 
         currentTasksTab = 'assessments'; 
         renderTasksTabs(); 
@@ -1510,7 +1484,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         } 
     } 
     
-    // --- VISUALISATION VIEW --- [cite: 206-218]
+    [cite_start]// --- VISUALISATION VIEW --- [cite: 206-218]
     const visTabs = [ 
         { id: 'basic', name: 'Basic Information', icon: 'file-text' }, 
         { id: 'impacts', name: 'Impacts', icon: 'alert-triangle' }, 
@@ -1562,7 +1536,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         content.innerHTML = html;
     } 
     
-    // --- AI REPORTING --- [cite: 218-227]
+    [cite_start]// --- AI REPORTING --- [cite: 218-227]
     function addAiChatMessage(content, isUser = false) { 
         const history = document.getElementById('ai-chat-history');
         if (!history) return;
@@ -1600,7 +1574,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         addAiChatMessage("Okay. Enriching report with third-party datasets...");
     } 
     
-    // --- CORE ACTIONS --- [cite: 227-249]
+    [cite_start]// --- CORE ACTIONS --- [cite: 227-249]
     function startSurveyFromTemplate(templateId) { 
         const template = surveyTemplates.find(t => t.id === templateId); 
         document.getElementById('new-survey-template-id-input').value = templateId;
@@ -1661,22 +1635,8 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         showToast('Link copied to clipboard!'); 
     } 
     
-    function generateThirdPartyLink() { 
-        const email = document.getElementById('third-party-email').value;
-        const task = document.getElementById('third-party-task').value; 
-        const randomToken = Math.random().toString(36).substring(2, 12); 
-        const link = `${window.location.origin}${window.location.pathname}?task=${task}&token=${randomToken}`; 
-        document.getElementById('third-party-link-input').value = link; 
-        document.getElementById('assign-third-party-form').style.display = 'none';
-        document.getElementById('assign-third-party-link').style.display = 'block'; 
-    } 
-    
-    function copyThirdPartyLink() { 
-        const input = document.getElementById('third-party-link-input'); 
-        input.select(); 
-        document.execCommand('copy'); 
-        showToast('Link copied to clipboard!');
-    } 
+    // REMOVED: generateThirdPartyLink()
+    // REMOVED: copyThirdPartyLink()
     
     function displayPhotoPreview(event) { 
         const container = document.getElementById('photo-preview-container'); 
@@ -1721,7 +1681,7 @@ Inishduff NHA,151,Pending,Donegal,46.5`;
         window.location.href = window.location.pathname;
     } 
     
-    // --- REPORT GENERATION --- [cite: 249-255]
+    [cite_start]// --- REPORT GENERATION --- [cite: 249-255]
     function generateReport(surveyId) { 
         if (typeof docx === 'undefined' || typeof saveAs === 'undefined') {
             showToast('Report libraries not loaded.', 'error');
