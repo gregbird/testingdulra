@@ -553,7 +553,7 @@
             <button onclick="showView('tasks-view')">Back to Tasks</button>
             <h2 id="assessment-site-name">...</h2>
             <p id="assessment-site-code">...</p>
-            <span id="assessment-status-badge"></span>
+            <span id="assessment-status-badge" class="status-badge"></span>
             <p>County: <span id="assessment-county"></span></p>
             <p>Area: <span id="assessment-area"></span> ha</p>
             
@@ -705,7 +705,7 @@
         
         if (viewId === 'team-view') renderTeamView();
         if (viewId === 'impact-view') updateImpactCalculation();
-        if (viewId === 'visualisation-view') renderVisualisationView();
+        if (viewId ===_ === 'visualisation-view') renderVisualisationView();
         if (viewId === 'assessment-detail-view') renderAssessmentDetailView(param);
     } 
     
