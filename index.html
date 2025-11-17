@@ -1,232 +1,1935 @@
-<p> Dulra - Ecological Management Platform  tailwind.config = { theme: { extend: { fontFamily: { sans: [&#39;Inter&#39;, &#39;sans-serif&#39;], }, colors: { primary: &#39;#A4C8FD&#39;, // Primary Blue secondary: &#39;#122529&#39;, // Background Dark accent: &#39;#FB923C&#39;, // Orange for actions background: &#39;#F3F7F9&#39;, // Background Light surface: &#39;#FFFFFF&#39;, status: { favourable: &#39;#10B981&#39;, // Green inadequate: &#39;#FBBF24&#39;, // Yellow bad: &#39;#EF4444&#39;, // Red } }, } } } .view { display: none; } .active-view { display: block; } body { background-color: #F3F7F9; font-family: &#39;Inter&#39;, sans-serif; } .eiar-textarea { width: 100%; padding: 0.75rem; border-radius: 0.375rem; border: 1px solid #d1d5db; transition: all 0.2s ease-in-out; font-size: 1rem; line-height: 1.5; resize: vertical; } .eiar-textarea:focus { outline: 2px solid #FB923C; border-color: #FB923C; box-shadow: 0 0 0 1px #FB923C; } .toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transform: translateX(calc(100% + 2rem)); transition: transform 0.3s ease-in-out; z-index: 100; } .toast.show { transform: translateX(0); } .loading-spinner { border: 4px solid #f3f3f3; border-top: 4px solid #122529; border-radius: 50%; width: 32px; height: 32px; animation: spin 1s linear infinite; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } .status-badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 500; white-space: nowrap; } /* Style for Assessment Detail Tables */ #assessment-detail-view table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.875rem; } #assessment-detail-view th, #assessment-detail-view td { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; text-align: left; } #assessment-detail-view th { background-color: #f9fafb; font-weight: 600; } #assessment-detail-view tbody tr:nth-child(even) { background-color: #f9fafb; } [contenteditable=&quot;true&quot;]:focus { outline: 2px solid #FB923C; box-shadow: 0 0 0 2px #FB923C30; }</p>
-<h1>Dulra</h1>
-<p>Create a Site Task</p>
-<h3>Workspace</h3>
-<p>Dashboard Tasks Surveys</p>
-<h3>Tools for Surveys</h3>
-<p>GIS Integration Data Mine Field Survey Team Members Impact Calculation Intelligent Reporting Visualisation</p>
-<h2>Dashboard</h2>
-<p>Create Task</p>
-<h3>Action Status</h3>
-<h3>Assessment Status</h3>
-<h3>Key Stats</h3>
-<p>Total Assessments 160</p>
-<p>Habitats Favourable 130</p>
-<p>Habitats Unfavourable 20</p>
-<p>Habitats Inadequate 10</p>
-<h3>Conservation Site Status</h3>
-<h2>Tasks</h2>
-<p>Detailed Search</p>
-<h2>Start a New Survey</h2>
-<p>Select a compliant template to begin your report.</p>
-<p>Edit Custom Template</p>
-<p>Back to Templates</p>
-<h2>Custom Template Editor</h2>
-<p>Add your own headings and paragraphs to build a custom survey.</p>
-<p>Save Template</p>
-<p>Add Heading Add Paragraph</p>
-<h3>Custom Heading 1</h3>
-<p>This is an editable paragraph. You can add your own content here.</p>
-<h2>Surveys</h2>
-<p>An overview of all your active and completed surveys.</p>
-<p>Create New Survey</p>
-<p>Back to Surveys</p>
-<h2>Ecological Impact Assessment Report (EIAR) Editor</h2>
-<p>Save and Continue</p>
-<h3>Chapter 1: Introduction</h3>
-<h3>Chapter 2: Background &amp; Need for the Project</h3>
-<h3>Chapter 3: Consideration of Reasonable Alternatives</h3>
-<h3>Chapter 4: Description of the Proposed Development</h3>
-<h3>Chapter 5: Population &amp; Human Health</h3>
-<h3>Chapter 6: Biodiversity (Ecology)</h3>
-<h4>6.1 Introduction &amp; Methodology</h4>
-<p>This chapter presents the Ecological Impact Assessment (EcIA). The assessment identifies, quantifies, and evaluates the potential effects of the project on habitats, species, and ecosystems, referred to as Key Ecological Receptors (KERs). The methodology follows the Guidelines for Ecological Impact Assessment in the UK and Ireland from the Chartered Institute of Ecology and Environmental Management (CIEEM) and guidance from the Environmental Protection Agency (EPA).</p>
-<h4>6.2 Desk Study</h4>
-<p>A comprehensive desk study was undertaken to identify ecological features within a 10km radius of the site. This involved consulting: National Parks and Wildlife Service (NPWS) for records of protected species and designated sites (Special Areas of Conservation, Special Protection Areas), National Biodiversity Data Centre, and planning authority databases for other developments to assess cumulative impacts.</p>
-<h4>6.3 Field Surveys</h4>
-<p>Field surveys were conducted to establish the baseline ecological conditions. Habitat Surveys: Habitats across the site were mapped to identify their ecological value and potential for loss or degradation. Surveys included detailed peatland assessments to inform site design and avoid sensitive areas. Protected Mammal Surveys: Targeted surveys were conducted for legally protected species potentially present, including otter and badger. Bat Surveys: Surveys followed Bat Conservation Ireland guidelines. Methodologies included Roost Surveys (all structures and mature trees within 200m inspected) and Activity Surveys (static detectors and transects across spring, summer, and autumn).</p>
-<h4>6.4 Impact Assessment &amp; Mitigation</h4>
-<p>Potential Impacts: The assessment identified potential impacts, including direct habitat loss from turbine foundations and access tracks, and collision risk for bats. Mitigation: To mitigate collision risk for high-risk bat species (e.g., Leisler&#39;s bat, pipistrelles), a turbine curtailment strategy is proposed. This involves feathering the blades (stopping rotation) during high-risk periods, such as summer and autumn nights with low wind speeds and temperatures above 10°C.</p>
-<h3>Chapter 7: Ornithology</h3>
-<h4>7.1 Introduction &amp; Methodology</h4>
-<p>This chapter assesses the potential impacts on bird populations. While there is no specific national guidance in Ireland, the methodologies used follow the standards developed by NatureScot (formerly SNH), which are widely accepted as best practice by Irish competent authorities.</p>
-<h4>7.2 Field Surveys</h4>
-<p>A multi-season survey programme was undertaken over two years to establish a robust baseline. Vantage Point (VP) Surveys: Timed watches were conducted from fixed VPs to record the flight activity of target species (e.g., Hen Harrier, Kestrel, Golden Plover). A minimum of 36 hours of observation per VP per season was completed. Breeding &amp; Wintering Bird Surveys: Walkover surveys were conducted to map territories and estimate populations. Specialist Surveys: Targeted surveys for species of high conservation concern, such as Hen Harrier, were undertaken.</p>
-<h4>7.3 Impact Assessment &amp; Mitigation</h4>
-<p>Potential Impacts: The primary potential impacts assessed were displacement (disturbance) and collision mortality. Collision risk was quantified using the NatureScot Collision Risk Model (CRM). Mitigation: The wind farm layout was designed iteratively to avoid known sensitive areas, such as Hen Harrier nesting sites. Habitat management plans are proposed to enhance foraging habitat for key species away from the turbines.</p>
-<h4>7.4 Post-Construction Monitoring</h4>
-<p>A Bird Monitoring Programme is proposed for the operational phase, often for years 1, 2, 3, 5, 10, and 15. This will include repeating breeding and wintering bird surveys and systematic carcass searches to validate the predictions of the collision risk model.</p>
-<h3>Chapter 8: Land, Soils &amp; Geology</h3>
-<h3>Chapter 9: Water (Hydrology &amp; Hydrogeology)</h3>
-<h3>Chapter 10: Air &amp; Climate</h3>
-<h3>Chapter 11: Noise &amp; Vibration</h3>
-<h3>Chapter 12: Landscape &amp; Visual Impact</h3>
-<h3>Chapter 13: Cultural Heritage &amp; Archaeology</h3>
-<h3>Chapter 14: Material Assets</h3>
-<h3>Chapter 15: Interactions &amp; Cumulative Effects</h3>
-<h3>Volume 3: Appendices</h3>
-<h2>Ecological Clerk of Works (ECoW) Report</h2>
-<p>Save and Continue</p>
-<h3>1. Project Details</h3>
-<h3>2. Monitoring Activities</h3>
-<h4>2.1 Pre-Works Check</h4>
-<h4>2.2 Site Supervision Log</h4>
-<h4>2.3 ECoW Intervention Log</h4>
-<h3>3. Compliance &amp; Incidents</h3>
-<h4>3.1 Compliance Status</h4>
-<h4>3.2 Environmental Incidents</h4>
-<h4>3.3 Biosecurity</h4>
-<h3>4. Recommendations</h3>
-<h4>4.1 Look Ahead</h4>
-<h4>4.2 Further Actions</h4>
-<h2>GIS Integration</h2>
-<p>Connect to your preferred GIS tool to import site boundaries.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/ArcGIS_logo.png/220px-ArcGIS_logo.png" alt="ArcGIS Logo"></p>
-<h3>ArcGIS</h3>
-<p>Connect to the Esri Geospatial Cloud.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/QGIS_Logo_new.svg/200px-QGIS_Logo_new.svg.png" alt="QGIS Logo"></p>
-<h3>QGIS</h3>
-<p>Connect using the open-source GIS leader.</p>
-<h3>Another GIS</h3>
-<p>Import from a shapefile or other common formats.</p>
-<p>Back to GIS Options</p>
-<h4>Connection Details</h4>
-<p>API Key </p>
-<p>User / Client Key </p>
-<h4>Select Fields to Extract</h4>
-<p>Connect &amp; Extract Data</p>
-<h2>Data Mine</h2>
-<p>Collate and layer data from various external sources for your desk study.</p>
-<p>Site Name / Reference </p>
-<p>Site Code (e.g., SAC/SPA Code) </p>
-<p>County </p>
-<p>Websites to Search (comma-separated) </p>
-<p>Search for Records</p>
-<h3>Data Mine Results for &quot;Lough Ennell SAC&quot;</h3>
-<h4>Existing Reports / Records</h4>
-<ul>
-<li>Lough Ennell SAC Study (2021) - Green Project</li>
-<li>NPWS Species Records for Grid Ref F890 105 (2019-2023)</li>
-</ul>
-<h4>Statutory Designation Maps</h4>
-<ul>
-<li>Owenduff/Nephin Complex SAC (Site Code: 000534) - Boundary 2.5km from site.</li>
-<li>Slieve Fyagh Bog SAC (Site Code: 000542) - Boundary 8km from site.</li>
-</ul>
-<h4>Historical Aerial Imagery</h4>
-<p><img src="https://placehold.co/600x300/e2e8f0/475569?text=Ortho-rectified+Aerial+Photo+2005" alt="Historical Map"></p>
-<h4>Key Data Identified</h4>
-<p>Review the following data and select any to apply to your survey draft.</p>
-<p>Blanket Bog (PB2)</p>
-<p>Classification: Ireland / EU</p>
-<p>Use this data? </p>
-<p>Wet Heath (HH3)</p>
-<p>Classification: Ireland / EU</p>
-<p>Use this data? </p>
-<p>Apply Selected Data to Survey</p>
-<h2>Field Survey Editor</h2>
-<p>Create and edit field survey templates and data.</p>
-<h3>Survey Details</h3>
-<p>Survey Name </p>
-<p>Date </p>
-<p>Surveyor(s) </p>
-<h3>Site Conditions</h3>
-<p>Time </p>
-<p>Temp (°C) </p>
-<p>Wind Calm Light Breeze Moderate Strong</p>
-<p>Cloud Cover 0% 25% 50% 75% 100%</p>
-<p>Precipitation None Drizzle Rain Heavy Rain</p>
-<h3>Habitat Mapping</h3>
-<p>Add Entry</p>
-<h3>Fauna</h3>
-<p>Add Sighting</p>
-<h3>Flora</h3>
-<p>Add Record</p>
-<h3>Field Notes</h3>
-<h2>Team Management</h2>
-<p>Manage internal team members and assign tasks to third parties.</p>
-<p>Assign to 3rd Party</p>
-<p>Name</p>
-<p>Email</p>
-<p>Role</p>
-<p>Actions</p>
-<h2>Wind Farm Collision Risk Model</h2>
-<p>Based on the Nature Scot (Band, 2007) standard for calculating avian collision risk.</p>
-<h3>Stage 1 &amp; 2: Bird Passage Rate</h3>
-<p>Estimates the number of birds passing through the rotors annually based on field survey data.</p>
-<p>Target Species </p>
-<p>Flights at Collision Height (from VP surveys) </p>
-<p>Total Vantage Point Watch Hours </p>
-<p>Estimated Annual Passages through Rotors</p>
-<p>11.19</p>
-<h3>Stage 3: Collision Probability</h3>
-<p>Calculates the probability of a bird being hit during a single passage through a rotor.</p>
-<h4>Bird Parameters</h4>
-<p>Length (m)</p>
-<p>Wingspan (m)</p>
-<p>Flight Speed (m/s)</p>
-<h4>Turbine Parameters</h4>
-<p>Rotor Diameter (m)</p>
-<p>Max Blade Chord (m)</p>
-<p>Blade Pitch (°)</p>
-<p>Rotation (s/rev)</p>
-<p>Calculated Collision Probability per Passage (Average)</p>
-<p>17.9%</p>
-<h3>Stage 4 &amp; 5: Adjustments</h3>
-<p>Accounts for turbine downtime and the bird&#39;s natural avoidance behaviour.</p>
-<p>Turbine Operational Time (%) </p>
-<p>Avoidance Rate (%) </p>
-<h3>Estimated Annual Collisions</h3>
-<p>0.03</p>
-<p>This is the predicted mortality assuming no mitigation measures are applied.</p>
-<h3>Generated Report</h3>
-<p>Export</p>
-<p>Your AI-generated report will appear here. Use the AI assistant on the right to get started.</p>
-<h3>AI Reporting Assistant</h3>
-<p>Welcome to the Intelligent Reporting suite. I have access to all your project data including desk studies, field surveys, and impact calculations. How can I help you today?</p>
-<p>Generate Draft Report</p>
-<p>Audience Tone Technical (Internal) Public Investor</p>
-<p>Add Visualisation Enrich with Data</p>
-<h2>Configure Project Visualisation</h2>
-<p>Review your project settings before publishing the public visualisation map.</p>
-<p>Back to Dashboard</p>
-<p>County:</p>
-<p>Area: ha</p>
-<h3>Site Map (Figure 1)</h3>
-<p><img src="https://placehold.co/600x400/e2e8f0/475569?text=Rossbehy+Overview+Map+(Fig+1)" alt="Site Map Placeholder"></p>
-<p>Click to explore</p>
-<h3>Key Habitats &amp; Species</h3>
-<h4>Habitats</h4>
-<h4>Species</h4>
-<h3>Table 1: Habitats at Site 13 Rossbehy</h3>
-<h3>Table 2: Species at Site 13 Rossbehy</h3>
-<h3>Table 3: Conservation Objectives for Site 13 Rossbehy</h3>
-<h3>Full Assessment Document (Excerpt)</h3>
-<p>Habitat Mapping</p>
-<p>Habitat Type (Irish Classification) GS2 - Dry meadows and grassy verges WL1 - Hedgerows WD1 - Oak-birch-holly woodland FW2 - Rivers and streams</p>
-<p>Notes on Habitat Condition</p>
-<p>Species Records</p>
-<p>Species Observed </p>
-<p>Notes</p>
-<p>GPS-tagged Photos</p>
-<p> Add Photo</p>
-<p>Submit Survey Data</p>
-<h3>Create New Survey Project</h3>
-<p>This will create a new project container for your survey.</p>
-<p>Project Name </p>
-<p>Client Name </p>
-<p>Cancel Create Project</p>
-<h3>Survey Ready to Assign</h3>
-<p>Share this secure link with the field ecologist.</p>
-<p>Copy Link Close</p>
-<h3>Assign Task to a Third Party</h3>
-<p>3rd Party Email Address </p>
-<p>Assign Task Assign Full Survey Request Field Data Upload</p>
-<p>Cancel Generate Link</p>
-<h3>Secure Link Generated</h3>
-<p>Share this link with the third party to grant access.</p>
-<p>Copy Link Done</p>
-<p>// --- DATA STORE (Mock Database &amp; Local Storage) --- let db; const defaultDb = { projects: [ { id: 1, name: &quot;Lough Ennell SAC&quot;, client: &quot;NPWS&quot;, code: &quot;NPWS-001-25&quot; }, ], surveys: [ { id: 101, projectId: 1, siteName: &quot;Site A - Woodland&quot;, template: &quot;PEA&quot;, status: &quot;Completed&quot;, data: { habitat: &quot;WD1 - Oak-birch-holly woodland&quot;, notes: &quot;Mature oak canopy, limited undergrowth.&quot;, species: &quot;Sciurus vulgaris (Red Squirrel)&quot;, photo: &quot;<a href="https://placehold.co/600x400/a3e635/ffffff?text=Woodland+Canopy">https://placehold.co/600x400/a3e635/ffffff?text=Woodland+Canopy</a>&quot; } }, { id: 102, projectId: 1, siteName: &quot;Site B - River Crossing&quot;, template: &quot;EcIA&quot;, status: &quot;In Progress&quot;, data: {} }, ], team: [ { name: &quot;Dr. Aoife Murphy&quot;, email: &quot;<a href="mailto:aoife.murphy@dulra.ie">aoife.murphy@dulra.ie</a>&quot;, role: &quot;Principal Ecologist&quot; }, { name: &quot;Cian O&#39;Donnell&quot;, email: &quot;<a href="mailto:cian.odonnell@dulra.ie">cian.odonnell@dulra.ie</a>&quot;, role: &quot;Field Ecologist&quot; }, { name: &quot;Siobhán Kelly&quot;, email: &quot;<a href="mailto:siobhan.kelly@dulra.ie">siobhan.kelly@dulra.ie</a>&quot;, role: &quot;GIS Specialist&quot; } ] }; function saveData() { localStorage.setItem(&#39;dulraDb&#39;, JSON.stringify(db)); } function loadData() { const storedDb = localStorage.getItem(&#39;dulraDb&#39;); db = storedDb ? JSON.parse(storedDb) : JSON.parse(JSON.stringify(defaultDb)); } const surveyTemplates = [ { id: &quot;PEA&quot;, name: &quot;Preliminary Ecological Appraisal&quot;, description: &quot;A baseline ecological assessment.&quot;, icon: &quot;clipboard-list&quot; }, { id: &quot;EcIA&quot;, name: &quot;Ecological Impact Assessment&quot;, description: &quot;Assess potential project impacts.&quot;, icon: &quot;alert-triangle&quot; }, { id: &quot;NIS&quot;, name: &quot;Natura Impact Statement&quot;, description: &quot;For projects affecting Natura 2000 sites.&quot;, icon: &quot;shield-check&quot; }, { id: &quot;AA&quot;, name: &quot;Appropriate Assessment Screening&quot;, description: &quot;Initial screening for AA.&quot;, icon: &quot;search&quot; }, { id: &quot;Bat&quot;, name: &quot;Bat Survey&quot;, description: &quot;Surveys for bat activity and roosts.&quot;, icon: &quot;moon&quot; }, { id: &quot;Bird&quot;, name: &quot;Bird Survey&quot;, description: &quot;Various methods for avian populations.&quot;, icon: &quot;bird&quot; }, { id: &quot;Habitat&quot;, name: &quot;Habitat &amp; Botanical Survey&quot;, description: &quot;Mapping and assessing habitats.&quot;, icon: &quot;leaf&quot; }, { id: &quot;Invasive&quot;, name: &quot;Invasive Species Survey&quot;, description: &quot;Mapping and management plans.&quot;, icon: &quot;bug&quot; }, { id: &quot;ECoW&quot;, name: &quot;ECoW Report&quot;, description: &quot;Ecological Clerk of Works monitoring.&quot;, icon: &quot;user-check&quot; } ]; let currentProjectId = null; let currentProjectTab = &#39;surveys&#39;; let currentVisualisationTab = &#39;basic&#39;; let chartInstances = {}; // To hold chart objects let currentTasksTab = &#39;assessments&#39;; let currentSiteStatusTab = &#39;sac&#39;; // --- VIEW MANAGEMENT --- const views = document.querySelectorAll(&#39;.view&#39;); function showView(viewId, param = null) { views.forEach(view =&gt; view.classList.remove(&#39;active-view&#39;)); document.getElementById(viewId).classList.add(&#39;active-view&#39;); document.querySelector(&#39;main&#39;).scrollTo(0, 0); if (viewId === &#39;dashboard-view&#39;) renderDashboard(); if (viewId === &#39;tasks-view&#39;) renderTasksView(); if (viewId === &#39;my-surveys-view&#39;) renderProjects(); if (viewId === &#39;project-detail-view&#39;) { currentProjectId = param; renderProjectDetails(param); } if (viewId === &#39;survey-form-view&#39;) renderSurveyForm(param); if (viewId === &#39;survey-template-view&#39;) renderSurveyTemplates(); if (viewId === &#39;eiar-editor-view&#39;) renderEiarEditor(param); if (viewId === &#39;ecow-editor-view&#39;) renderEcowEditor(param); if (viewId === &#39;gis-view&#39;) showInitialGisChoice(); if (viewId === &#39;datamine-view&#39;) document.getElementById(&#39;datamine-results-container&#39;).classList.add(&#39;hidden&#39;); if (viewId === &#39;team-view&#39;) renderTeamView(); if (viewId === &#39;impact-view&#39;) updateImpactCalculation(); if (viewId === &#39;visualisation-view&#39;) renderVisualisationView(); if (viewId === &#39;assessment-detail-view&#39;) renderAssessmentDetailView(param); } // --- ROUTING (based on URL) --- function handleRouting() { const params = new URLSearchParams(window.location.search); const surveyId = params.get(&#39;survey&#39;); if(surveyId) { const survey = db.surveys.find(s =&gt; s.id == surveyId); if(survey) { showView(&#39;survey-form-view&#39;, survey.id); } else { showView(&#39;dashboard-view&#39;); // Fallback if survey ID invalid } } else { showView(&#39;dashboard-view&#39;); // Default to dashboard } } // --- RENDERING FUNCTIONS --- function renderSurveyTemplates() { const container = document.querySelector(&#39;#survey-template-view .grid&#39;); container.innerHTML = surveyTemplates.map(template =&gt; ` <div onclick="startSurveyFromTemplate('${template.id}')" class="bg-surface p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer flex flex-col"> <div class="flex-1"> <i data-lucide="${template.icon}" class="w-8 h-8 text-accent mb-3"></i> <h3 class="font-bold text-lg text-secondary">${template.name}</h3> <p class="text-sm text-gray-500 mt-1">${template.description}</p> </div> <button class="mt-4 text-sm font-semibold text-accent text-left">Start Survey &rarr;</button> </div> `).join(&#39;&#39;); lucide.createIcons(); } function renderProjects() { const list = document.getElementById(&#39;project-list&#39;); if (db.projects.length === 0) { list.innerHTML = `<div class="text-center py-12 bg-surface rounded-lg shadow-sm"> <i data-lucide="folder-search" class="w-12 h-12 text-gray-300 mx-auto"></i> <h3 class="mt-2 text-lg font-medium text-secondary">No surveys yet</h3> <p class="mt-1 text-sm text-gray-500">Get started by creating your first survey.</p> <button onclick="showView('survey-template-view')" class="mt-4 bg-primary text-secondary py-2 px-4 rounded-md hover:brightness-95 text-sm">Create Survey</button> </div>`; lucide.createIcons(); return; } list.innerHTML = db.projects.map(p =&gt; { const projectSurveys = db.surveys.filter(s =&gt; s.projectId === p.id); const completed = projectSurveys.filter(s =&gt; s.status === &#39;Completed&#39;).length; return ` <div class="bg-surface p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer" onclick="showView('project-detail-view', ${p.id})"> <div class="flex justify-between items-start"> <div> <h3 class="font-bold text-lg text-secondary">${p.name}</h3> <p class="text-sm text-gray-500">${p.client}</p> </div> <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">${p.code}</span> </div> <div class="mt-4 pt-4 border-t border-gray-100"> <p class="text-xs text-gray-500">${completed} of ${projectSurveys.length} surveys completed.</p> <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1"> <div class="bg-accent h-1.5 rounded-full" style="width: ${projectSurveys.length > 0 ? (completed / projectSurveys.length) \* 100 : 0}%"></div> </div> </div> </div> `}).join(&#39;&#39;); } function renderProjectDetails(projectId) { const project = db.projects.find(p =&gt; p.id === projectId); document.getElementById(&#39;project-title&#39;).textContent = project.name; document.getElementById(&#39;project-client&#39;).textContent = project.client; document.getElementById(&#39;project-code&#39;).textContent = project.code; renderProjectTabs(projectId); renderProjectTabContent(projectId); } function renderEiarEditor(params) { const { projectId } = params; const project = db.projects.find(p =&gt; p.id === projectId); currentProjectId = projectId; document.getElementById(&#39;eiar-editor-project-name&#39;).textContent = `Project: ${project.name}`; } function renderEcowEditor(params) { const { projectId } = params; const project = db.projects.find(p =&gt; p.id === projectId); currentProjectId = projectId; document.getElementById(&#39;ecow-editor-project-name&#39;).textContent = `Project: ${project.name}`; } function renderTeamView() { const list = document.getElementById(&#39;team-list&#39;); list.innerHTML = db.team.map(member =&gt; ` <tr> <td class="p-4 font-medium text-secondary">${member.name}</td> <td class="p-4 text-gray-600">${member.email}</td> <td class="p-4"><span class="text-xs font-medium px-2.5 py-0.5 rounded ${member.role === 'Principal Ecologist' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}">${member.role}</span></td> <td class="p-4"><button class="text-gray-400 hover:text-accent"><i data-lucide="more-horizontal"></i></button></td> </tr> `).join(&#39;&#39;); lucide.createIcons(); } function renderProjectTabs(projectId) { const tabs = [ { id: &#39;surveys&#39;, name: &#39;Surveys&#39; } ]; const tabsContainer = document.getElementById(&#39;project-tabs&#39;); tabsContainer.innerHTML = tabs.map(tab =&gt; ` <button onclick="setProjectTab('${tab.id}')" class="${currentProjectTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> ${tab.name} </button> `).join(&#39;&#39;); } function setProjectTab(tabId) { currentProjectTab = tabId; renderProjectTabs(currentProjectId); renderProjectTabContent(currentProjectId); } function renderProjectTabContent(projectId) { const contentContainer = document.getElementById(&#39;project-tab-content&#39;); if (currentProjectTab === &#39;surveys&#39;) { const projectSurveys = db.surveys.filter(s =&gt; s.projectId === projectId); contentContainer.innerHTML = ` <div id="survey-list" class="space-y-4"> ${projectSurveys.length &gt; 0 ? projectSurveys.map(s =&gt; { const statusColor = getStatusColorClass(s.status); // Use helper return ` <div class="border border-gray-200 p-4 rounded-lg flex justify-between items-center"> <div> <p class="font-semibold text-secondary">${s.siteName} <span class="text-xs font-normal text-gray-500 ml-2">(${s.template})</span></p> <span class="status-badge ${statusColor}">${s.status}</span> </div> <div class="flex items-center space-x-2"> ${s.status === &#39;Ready&#39; ? `<button onclick="assignSurvey(${s.id})" class="text-sm bg-accent text-white py-1 px-3 rounded-md hover:bg-orange-500">Assign</button>` : &#39;&#39;} ${s.status === &#39;Completed&#39; ? `<button onclick="generateReport(${s.id})" class="text-sm bg-secondary text-white py-1 px-3 rounded-md hover:bg-slate-600">Generate Report</button>` : &#39;&#39;} </div> </div>`; }).join(&#39;&#39;) : &#39;<p class="text-gray-500">No surveys created for this project yet.</p>&#39;} </div> `; } lucide.createIcons(); } function renderSurveyForm(surveyId) { const survey = db.surveys.find(s =&gt; s.id === surveyId); const project = db.projects.find(p =&gt; p.id === survey.projectId); const template = surveyTemplates.find(t =&gt; t.id === survey.template); document.getElementById(&#39;survey-id-input&#39;).value = survey.id; document.getElementById(&#39;survey-form-title&#39;).textContent = template.name; document.getElementById(&#39;survey-form-project-name&#39;).textContent = project.name; document.getElementById(&#39;survey-form-site-name&#39;).textContent = survey.siteName; } // --- Assessment Detail View --- function renderAssessmentDetailView(params) { const { siteCode } = params; // Find the assessment data - combining CSV and potentially other sources const assessments = parseCsv(sacConditionsCsv).concat(parseCsv(spaConditionsCsv)).concat(parseCsv(nhaConditionsCsv)); const siteData = assessments.find(site =&gt; site.Sitecode == siteCode) || { SiteName: &#39;Rossbehy&#39;, Sitecode: &#39;13&#39;, Status: &#39;Completed&#39;, COUNTY: &#39;Kerry&#39;, HA: &#39;91.71&#39; }; // Use Rossbehy as default/fallback document.getElementById(&#39;assessment-site-name&#39;).textContent = siteData.SiteName; document.getElementById(&#39;assessment-site-code&#39;).textContent = `Site Code: ${siteData.Sitecode}`; document.getElementById(&#39;assessment-county&#39;).textContent = siteData.COUNTY || &#39;N/A&#39;; document.getElementById(&#39;assessment-area&#39;).textContent = siteData.HA || &#39;N/A&#39;; const statusBadge = document.getElementById(&#39;assessment-status-badge&#39;); statusBadge.textContent = siteData.Status || &#39;Unknown&#39;; statusBadge.className = `status-badge ${getStatusColorClass(siteData.Status)}`; // --- Simulate Habitat and Species Data for Rossbehy --- const habitatsList = document.getElementById(&#39;assessment-habitats&#39;); const speciesList = document.getElementById(&#39;assessment-species&#39;); const table1 = document.getElementById(&#39;rossbehy-table-1&#39;); const table2 = document.getElementById(&#39;rossbehy-table-2&#39;); const table3 = document.getElementById(&#39;rossbehy-table-3&#39;); const docContent = document.getElementById(&#39;rossbehy-doc-content&#39;); // Based on Rossbehy.docx if (siteCode == 13) { habitatsList.innerHTML = ` <li>Fixed coastal dunes with herbaceous vegetation (grey dunes) (* priority habitat) (2130)</li> <li>Embryonic shifting dunes (2110)</li> <li>Shifting dunes along the shoreline with Ammophila arenaria (white dunes) (2120)</li> <li>Atlantic salt meadows (Glauco-Puccinellietalia maritimae) (1330)</li> <li>Mediterranean salt meadows (Juncetalia maritimi) (1410)</li> `; speciesList.innerHTML = ` <li>Light-bellied Brent Goose (Branta bernicla hrota) [A046]</li> <li>Common Scoter (Melanitta nigra) [A065]</li> <li>Red-breasted Merganser (Mergus serrator) [A069]</li> <li>Ringed Plover (Charadrius hiaticula) [A137]</li> <li>Sanderling (Calidris alba) [A144]</li> <li>Bar-tailed Godwit (Limosa lapponica) [A157]</li> <li>Curlew (Numenius arquata) [A160]</li> <li>Redshank (Tringa totanus) [A162]</li> <li>Turnstone (Arenaria interpres) [A169]</li> <li>Wetland and Waterbirds [A999]</li> `; // Populate Tables (simplified data extraction) table1.innerHTML = ` <thead><tr><th>Habitat Code</th><th>Habitat Name</th><th>Area (ha)</th><th>Subsite</th></tr></thead> <tbody> <tr><td>2130</td><td>Fixed coastal dunes*</td><td>10.39</td><td>1</td></tr> <tr><td>2110</td><td>Embryonic shifting dunes</td><td>0.09</td><td>1</td></tr> <tr><td>2120</td><td>Shifting dunes (white dunes)</td><td>9.60</td><td>1</td></tr> <tr><td>1330</td><td>Atlantic salt meadows</td><td>14.16</td><td>2</td></tr> <tr><td>1410</td><td>Mediterranean salt meadows</td><td>55.57</td><td>2</td></tr> </tbody> `; table2.innerHTML = ` <thead><tr><th>Species Code</th><th>Species Name</th><th>Population/Range</th><th>Subsite</th></tr></thead> <tbody> <tr><td>A046</td><td>Light-bellied Brent Goose</td><td>Population</td><td>-</td></tr> <tr><td>A065</td><td>Common Scoter</td><td>Population</td><td>-</td></tr> <tr><td>A069</td><td>Red-breasted Merganser</td><td>Population</td><td>-</td></tr> <tr><td>A137</td><td>Ringed Plover</td><td>Population</td><td>-</td></tr> <tr><td>A144</td><td>Sanderling</td><td>Population</td><td>-</td></tr> <tr><td>A157</td><td>Bar-tailed Godwit</td><td>Population</td><td>-</td></tr> <tr><td>A160</td><td>Curlew</td><td>Population</td><td>-</td></tr> <tr><td>A162</td><td>Redshank</td><td>Population</td><td>-</td></tr> <tr><td>A169</td><td>Turnstone</td><td>Population</td><td>-</td></tr> <tr><td>A999</td><td>Wetland and Waterbirds</td><td>Range</td><td>-</td></tr> </tbody> `; table3.innerHTML = ` <thead><tr><th>Habitat Code</th><th>Conservation Objective</th><th>Target</th></tr></thead> <tbody> <tr><td>2130</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> <tr><td>2110</td><td>Maintain favourable conservation condition</td><td>Maintain</td></tr> <tr><td>2120</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> <tr><td>1330</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> <tr><td>1410</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> <!-- Add species objectives if needed --> </tbody> `; // Simulate document content docContent.innerHTML = ` <h4 class="font-bold">Site Description</h4> <p>Rossbehy is a large site covering almost 92ha located approximately 1.2km to the north-west of Glenbeigh, Co. Kerry, on the southern shore of Dingle Bay. The site comprises a sand spit which extends northwards into Dingle Bay and an area of saltmarsh which occurs behind (to the east of) the sand dunes. The dunes at Rossbehy occur to the south of the Inch dune system which extends south from the northern shore of Dingle Bay. Almost the entire site (99.7% or 91.71ha) occurs within the Castlemaine Harbour SAC (000343) (Figure 1), while 94% (86.76ha) of the site occurs within the Castlemaine Harbour SPA (004029)...</p> <h4 class="font-bold mt-4">Habitats</h4> <p>Five Annex I habitats occur at Rossbehy including one priority habitat Fixed coastal dunes with herbaceous vegetation (grey dunes) (2130) (Table 1). There is also Embryonic shifting dunes (2110), Shifting dunes along the shoreline with Ammophila arenaria (white dunes) (2120), Atlantic salt meadows (Glauco-Puccinellietalia maritimae) (1330) and Mediterranean salt meadows (Juncetalia maritimi) (1410). Combined, these habitats cover 91.7% of the site (84.1ha). The fixed dunes are the largest habitat at the site and cover 10.39ha, followed by the white dunes (9.60ha), and the embryonic dunes (0.09ha). The Atlantic salt meadows cover 14.16ha, and the Mediterranean salt meadows cover 55.57ha...</p> `; } else { habitatsList.innerHTML = `<li>Placeholder Habitat 1</li><li>Placeholder Habitat 2</li>`; speciesList.innerHTML = `<li>Placeholder Species A</li><li>Placeholder Species B</li>`; table1.innerHTML = `<tr><td>No data available for this site.</td></tr>`; table2.innerHTML = `<tr><td>No data available for this site.</td></tr>`; table3.innerHTML = `<tr><td>No data available for this site.</td></tr>`; docContent.innerHTML = `<p>No document data available for this site.</p>`; } } function showMapDetail(event) { const mapInfo = document.getElementById(&#39;map-detail-info&#39;); const targetElement = event.target.closest(&#39;[data-info]&#39;); // Find the clicked zone if (targetElement) { mapInfo.textContent = `You clicked on: ${targetElement.dataset.info}`; } else { mapInfo.textContent = `Exploring the map...`; } // Clear the message after a few seconds setTimeout(() =&gt; { mapInfo.textContent = &#39;&#39;; }, 2500); } // --- MODAL CONTROLS --- const newSurveyProjectModal = document.getElementById(&#39;new-survey-project-modal&#39;); const assignSurveyModal = document.getElementById(&#39;assign-survey-modal&#39;); const assignThirdPartyModal = document.getElementById(&#39;assign-third-party-modal&#39;); function showNewSurveyProjectModal() { newSurveyProjectModal.classList.remove(&#39;hidden&#39;); } function hideNewSurveyProjectModal() { newSurveyProjectModal.classList.add(&#39;hidden&#39;); } function showAssignSurveyModal() { assignSurveyModal.classList.remove(&#39;hidden&#39;); } function hideAssignSurveyModal() { assignSurveyModal.classList.add(&#39;hidden&#39;); } function showAssignToThirdPartyModal() { document.getElementById(&#39;assign-third-party-form&#39;).style.display = &#39;block&#39;; document.getElementById(&#39;assign-third-party-link&#39;).style.display = &#39;none&#39;; assignThirdPartyModal.classList.remove(&#39;hidden&#39;); } function hideAssignToThirdPartyModal() { assignThirdPartyModal.classList.add(&#39;hidden&#39;); } // --- TOAST NOTIFICATION --- function showToast(message, type = &#39;success&#39;) { const toast = document.getElementById(&#39;toast&#39;); const toastMessage = document.getElementById(&#39;toast-message&#39;); const toastIcon = document.getElementById(&#39;toast-icon&#39;); toastMessage.textContent = message; toast.className = &#39;toast show&#39;; // Reset and show if (type === &#39;success&#39;) { toast.classList.add(&#39;bg-green-600&#39;, &#39;text-white&#39;); toastIcon.setAttribute(&#39;data-lucide&#39;, &#39;check-circle&#39;); } else { // error toast.classList.add(&#39;bg-red-600&#39;, &#39;text-white&#39;); toastIcon.setAttribute(&#39;data-lucide&#39;, &#39;alert-circle&#39;); } lucide.createIcons(); setTimeout(() =&gt; { toast.classList.remove(&#39;show&#39;); }, 3000); } // --- GIS VIEW CONTROLS --- const gisFields = [ { id: &#39;foss_qualifi&#39;, name: &#39;FOSS_QUALIFI&#39;, description: &#39;Qualifier code for Guide to Habitats classification subtypes.&#39; }, { id: &#39;add_hab&#39;, name: &#39;ADD_HAB&#39;, description: &#39;Field for secondary habitat classification schemes.&#39; }, { id: &#39;foss_name&#39;, name: &#39;FOSS_NAME&#39;, description: &#39;Habitat name corresponding to the Guide to Habitats code.&#39; }, { id: &#39;area_length&#39;, name: &#39;AREA / LENGTH&#39;, description: &#39;Total area (m²) for polygons or length (m) for polylines.&#39; }, { id: &#39;easting_northing&#39;, name: &#39;EASTING / NORTHING&#39;, description: &#39;Coordinates of a point feature or centroid.&#39; }, { id: &#39;photo_id&#39;, name: &#39;PHOTO_ID&#39;, description: &#39;Photo identification numbers related to the habitat feature.&#39; }, { id: &#39;annex_spp&#39;, name: &#39;ANNEX_SPP / RDB_SPP&#39;, description: &#39;Binary (0/1) for presence of Annex II/I or Red Data book species.&#39; }, { id: &#39;evaluation&#39;, name: &#39;EVALUATION&#39;, description: &#39;Conservation evaluation (e.g., International, National).&#39; }, { id: &#39;condition&#39;, name: &#39;CONDITION&#39;, description: &#39;Ecological condition of habitats (e.g., scale 1-5).&#39; }, { id: &#39;threats&#39;, name: &#39;THREATS&#39;, description: &#39;Specific codes identifying threats to habitats.&#39; }, { id: &#39;notes_species&#39;, name: &#39;NOTES / SPECIES&#39;, description: &#39;General comments, characteristic, or notable species.&#39; } ]; function showGisConnection(toolName) { document.getElementById(&#39;gis-initial-choice&#39;).classList.add(&#39;hidden&#39;); document.getElementById(&#39;gis-connection-view&#39;).classList.remove(&#39;hidden&#39;); document.getElementById(&#39;gis-connection-title&#39;).textContent = `Connect to ${toolName}`; const fieldList = document.getElementById(&#39;gis-field-list&#39;); fieldList.innerHTML = gisFields.map(field =&gt; ` <div class="relative flex items-start"> <div class="flex h-5 items-center"> <input id="${field.id}" name="${field.id}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-accent focus:ring-accent" checked> </div> <div class="ml-3 text-sm"> <label for="${field.id}" class="font-medium text-secondary">${field.name}</label> <p class="text-gray-500">${field.description}</p> </div> </div> `).join(&#39;&#39;); } function showInitialGisChoice() { document.getElementById(&#39;gis-connection-view&#39;).classList.add(&#39;hidden&#39;); document.getElementById(&#39;gis-initial-choice&#39;).classList.remove(&#39;hidden&#39;); } // --- DATA MINE CONTROLS --- function performDataMineSearch() { const resultsContainer = document.getElementById(&#39;datamine-results-container&#39;); const loading = document.getElementById(&#39;datamine-loading&#39;); const content = document.getElementById(&#39;datamine-results-content&#39;); resultsContainer.classList.remove(&#39;hidden&#39;); content.classList.add(&#39;hidden&#39;); loading.classList.remove(&#39;hidden&#39;); // Simulate a network request setTimeout(() =&gt; { loading.classList.add(&#39;hidden&#39;); content.classList.remove(&#39;hidden&#39;); }, 1500); } // --- DYNAMIC FIELD SURVEY ENTRY --- function addHabitatEntry() { const container = document.getElementById(&#39;habitat-entries&#39;); const newEntry = document.createElement(&#39;div&#39;); newEntry.className = &#39;p-4 border rounded-md bg-gray-50&#39;; newEntry.innerHTML = ` <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div> <label class="block text-sm font-medium text-gray-700">Habitat Code</label> <input type="text" placeholder="e.g., GS2" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> <div> <label class="block text-sm font-medium text-gray-700">Habitat Name</label> <input type="text" placeholder="e.g., Dry meadows" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> </div> <div class="mt-4"> <label class="block text-sm font-medium text-gray-700">Notes</label> <textarea rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea> </div> `; container.appendChild(newEntry); } function addFaunaSighting() { const container = document.getElementById(&#39;fauna-entries&#39;); const newEntry = document.createElement(&#39;div&#39;); newEntry.className = &#39;p-4 border rounded-md bg-gray-50&#39;; newEntry.innerHTML = ` <div class="grid grid-cols-1 md:grid-cols-3 gap-4"> <div> <label class="block text-sm font-medium text-gray-700">Species</label> <input type="text" placeholder="e.g., Otter" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> <div> <label class="block text-sm font-medium text-gray-700">Number</label> <input type="number" value="1" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> <div> <label class="block text-sm font-medium text-gray-700">Evidence</label> <input type="text" placeholder="e.g., Spraint" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> </div> <div class="mt-4"> <label class="block text-sm font-medium text-gray-700">Notes</label> <textarea rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea> </div> <div class="mt-4"> <label class="block text-sm font-medium text-gray-700">Image</label> <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> <div class="space-y-1 text-center"> <i data-lucide="image" class="mx-auto h-12 w-12 text-gray-400"></i> <div class="flex text-sm text-gray-600"><label class="relative cursor-pointer bg-white rounded-md font-medium text-accent hover:text-orange-500 focus-within:outline-none"><span>Upload a file</span><input type="file" class="sr-only"></label><p class="pl-1">or drag and drop</p></div> </div> </div> </div> `; container.appendChild(newEntry); lucide.createIcons(); } function addFloraRecord() { const container = document.getElementById(&#39;flora-entries&#39;); const newEntry = document.createElement(&#39;div&#39;); newEntry.className = &#39;p-4 border rounded-md bg-gray-50&#39;; newEntry.innerHTML = ` <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div> <label class="block text-sm font-medium text-gray-700">Species Name</label> <input type="text" placeholder="e.g., Bluebell" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> <div> <label class="block text-sm font-medium text-gray-700">DAFOR Scale</label> <select class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> <option>Dominant</option> <option>Abundant</option> <option>Frequent</option> <option>Occasional</option> <option>Rare</option> </select> </div> </div> <div class="mt-4"> <label class="block text-sm font-medium text-gray-700">Notes</label> <textarea rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea> </div> <div class="mt-4"> <label class="block text-sm font-medium text-gray-700">Image</label> <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> <div class="space-y-1 text-center"> <i data-lucide="image" class="mx-auto h-12 w-12 text-gray-400"></i> <div class="flex text-sm text-gray-600"><label class="relative cursor-pointer bg-white rounded-md font-medium text-accent hover:text-orange-500 focus-within:outline-none"><span>Upload a file</span><input type="file" class="sr-only"></label><p class="pl-1">or drag and drop</p></div> </div> </div> </div> `; container.appendChild(newEntry); lucide.createIcons(); } // --- TEMPLATE EDITOR --- function addTemplateElement(type) { const editor = document.getElementById(&#39;custom-template-editor&#39;); const newElement = document.createElement(type === &#39;heading&#39; ? &#39;h4&#39; : &#39;p&#39;); newElement.setAttribute(&#39;contenteditable&#39;, &#39;true&#39;); if (type === &#39;heading&#39;) { newElement.className = &#39;text-lg font-semibold text-secondary focus:outline-none p-2 rounded-md&#39;; newElement.textContent = &#39;New Editable Heading&#39;; } else { newElement.className = &#39;text-gray-700 focus:outline-none p-2 rounded-md&#39;; newElement.textContent = &#39;New editable paragraph. Start typing...&#39;; } editor.appendChild(newElement); newElement.focus(); } function saveCustomTemplate() { // In a real app, you&#39;d save the editor.innerHTML showToast(&#39;Custom template saved!&#39;); showView(&#39;survey-template-view&#39;); } // --- IMPACT CALCULATION --- function updateImpactCalculation() { const passages = 11.19; // Static based on example for UI simplicity const probability = 0.179; // Static based on example const opTime = parseFloat(document.getElementById(&#39;crm-optime&#39;).value) / 100 || 0.85; const avoidance = parseFloat(document.getElementById(&#39;crm-avoidance&#39;).value) / 100 || 0.98; const adjustedProbability = probability * opTime; const finalCollisions = passages * adjustedProbability * (1 - avoidance); document.getElementById(&#39;crm-final-result&#39;).textContent = finalCollisions.toFixed(2); } // --- DASHBOARD --- function renderDashboard() { destroyCharts(); // Clear old charts before rendering new ones renderStatusChart(&#39;actions-chart&#39;, &#39;Action Status&#39;, [5, 3, 8, 12]); // Example data renderStatusChart(&#39;surveys-chart&#39;, &#39;Assessment Status&#39;, [3, 1, 2, 8]); // Updated data renderSiteStatusTabs(); renderSiteStatusTabContent(); } function destroyCharts() { Object.values(chartInstances).forEach(chart =&gt; { if (chart) chart.destroy(); }); chartInstances = {}; } function renderStatusChart(canvasId, label, data) { const ctx = document.getElementById(canvasId).getContext(&#39;2d&#39;); const total = data.reduce((a, b) =&gt; a + b, 0); chartInstances[canvasId] = new Chart(ctx, { type: &#39;doughnut&#39;, data: { labels: [&#39;Not Assigned&#39;, &#39;Pending&#39;, &#39;In Progress&#39;, &#39;Completed&#39;], datasets: [{ label: label, data: data, backgroundColor: [&#39;#E5E7EB&#39;, &#39;#FBBF24&#39;, &#39;#3B82F6&#39;, &#39;#10B981&#39;], // Grey, Yellow, Blue, Green }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: &#39;bottom&#39;, labels: { boxWidth: 12 } }, tooltip: { callbacks: { label: function(context) { let label = context.label || &#39;&#39;; if (label) { label += &#39;: &#39;; } const value = context.raw; const percentage = total &gt; 0 ? ((value / total) * 100).toFixed(1) + &#39;%&#39; : &#39;0%&#39;; label += `${value} (${percentage})`; return label; } } }, datalabels: { formatter: (value, ctx) =&gt; { let sum = ctx.chart.data.datasets[0].data.reduce((a, b) =&gt; a + b, 0); let percentage = sum &gt; 0 ? (value * 100 / sum).toFixed(1) + &quot;%&quot; : &#39;0%&#39;; return percentage; }, color: &#39;#fff&#39;, font: { weight: &#39;bold&#39; } } } }, plugins: [ChartDataLabels] }); } // --- CSV DATA --- const sacConditionsCsv = `Site Name ,Site code,Last Upate ,Habitats Health ,Species Health River Barrow and River Nore SAC,2162,June 2025,Inadequate,Bad Hook Head SAC,764,January 2025,Favourable,Favourable Belgica Mound Province SAC,2327,January 2025,Inadequate,Inadequate West Connacht Coast SAC,2998,January 2025,Bad,Favourable Codling Fault Zone SAC,3015,January 2025,Favourable,Inadequate Lambay Island SAC,204,December 2024,Bad,Bad`; const spaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health Lady&#39;s Island Lake SPA,4009,July 2025,Favourable,Favourable Termoncarragh Lake and Annagh Machair SPA,4093,June 2025,Inadequate,Favourable Inishmore SPA,4152,June 2025,Bad,Bad Dingle Peninsula SPA,4153,June 2025,Favourable,Inadequate Horn Head to Fanad Head SPA,4194,June 2025,Inadequate,Inadequate Cliffs of Moher SPA,4005,June 2025,Favourable,Favourable`; const nhaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7 Inishduff NHA,151,Pending,Donegal,46.5 Roaninish NHA,184,In Progress,Donegal,145.8 Lough Namucka Bog NHA,220,Completed,Galway,221.0`; const assessmentsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,HA,Link to Survey 9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7,<a href="https://www.npws.ie/protected-sites/nha/000009">https://www.npws.ie/protected-sites/nha/000009</a> 151,Inishduff NHA,Pending,Donegal,46.5,<a href="https://www.npws.ie/protected-sites/nha/000151">https://www.npws.ie/protected-sites/nha/000151</a> 184,Roaninish NHA,In Progress,Donegal,145.8,<a href="https://www.npws.ie/protected-sites/nha/000184">https://www.npws.ie/protected-sites/nha/000184</a> 220,Lough Namucka Bog NHA,Completed,Galway,221.0,<a href="https://www.npws.ie/protected-sites/nha/000220">https://www.npws.ie/protected-sites/nha/000220</a> 6, Killyconny Bog (Cloghbally) SAC,Pending, Cavan, 284, 7, Lough Oughter and Associated Loughs SAC, Completed, Galway, 898, 4, Ballyallia Lake SAC, Completed, Galway, 897, 10, Ballycullinan Lake SAC, Completed, Galway, 798, 20, Black Head/Poulsallagh Complex, Completed, Donegal,199, 90, Danes Hole Poulnalecka SAC, Completed, Mayo, 7889 32, Dromore Woods &amp; Loughs, Completed, Cork, 8978, 37, Pouladatig Cave 1999, Completed, Cork, 879, 51, Lough Gash Turlough SAC, Completed, Cork, 878, 54, Moneen Mountain 1997, Completed, Limerick, 9889, 57, Moyree River System, Completed, Cork, 878, 64, Poulnagordon Cave (Quin) SAC, Completed, Cork, 878, 77, Ballymacoda(Clonpriest and Pillmore)SAC, Completed, Cork, 7768, 90, Glengarriff Harbour and Woodland, Completed, Cork, 756, 91, Clonakilty Bay SAC, Completed, Mayo, 435, 93, Caha Mountains SAC, Completed, Donegal, 426, 97, Lough Hyne Nature Reserve and Environs SAC, Completed, Sligo, 549, 101, Roaringwater Bay and Islands SAC, Completed, Sligo,470, 106, St. Gobnet&#39;s Wood SAC, Completed, Donegal,216, 109, Three Castle Head to Mizen Head, Completed, Donegal,540, 111, Aran Island (Donegal) Cliffs SAC, Completed, Donegal, 613,`; const actionsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,Action Type,Link to Survey 245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,<a href="https://www.npws.ie/protected-sites/nha/000245">https://www.npws.ie/protected-sites/nha/000245</a> 247,Slieve Bog NHA,Completed,Galway,Species protection,<a href="https://www.npws.ie/protected-sites/nha/000247">https://www.npws.ie/protected-sites/nha/000247</a> 249,Cloonoolish Bog NHA,Completed,Galway,Species protection,<a href="https://www.npws.ie/protected-sites/nha/000249">https://www.npws.ie/protected-sites/nha/000249</a> 253,Cregganna Marsh NHA,Completed,Galway,Species protection,<a href="https://www.npws.ie/protected-sites/nha/000253">https://www.npws.ie/protected-sites/nha/000253</a> 254,Crit Island West NHA,Not Assigned,Galway,Public engagement and education,<a href="https://www.npws.ie/protected-sites/nha/000254">https://www.npws.ie/protected-sites/nha/000254</a> 267,Funshin Bog NHA,Not Assigned,Galway,Site and habitat management,<a href="https://www.npws.ie/protected-sites/nha/000267">https://www.npws.ie/protected-sites/nha/000267</a> 280,Castle Ffrench West Bog NHA,Not Assigned,Galway,Site and habitat management,<a href="https://www.npws.ie/protected-sites/nha/000280">https://www.npws.ie/protected-sites/nha/000280</a> 281,Keeloges Bog NHA,Pending,Galway,Site and habitat management,<a href="https://www.npws.ie/protected-sites/nha/000281">https://www.npws.ie/protected-sites/nha/000281</a> 283,Kilmore Bog NHA,Pending,Galway,Site and habitat management,<a href="https://www.npws.ie/protected-sites/nha/000283">https://www.npws.ie/protected-sites/nha/000283</a> 284,Kilnaborris Bog NHA,Pending,Galway,Site and habitat management,<a href="https://www.npws.ie/protected-sites/nha/000284">https://www.npws.ie/protected-sites/nha/000284</a> 6, Killyconny Bog (Cloghbally) SAC, Completed,Cavan, Site and habitat management, 7, Lough Oughter and Associated Loughs SAC, Completed, Galway, Site and habitat management, 4, Ballyallia Lake SAC, Completed,Galway, Site and habitat management, 10, Ballycullinan Lake SAC, Completed, Galway, Site and habitat management, 20, Black Head/Poulsallagh Complex, Completed, Donegal,Site and habitat management, 90, Danes Hole Poulnalecka SAC, Completed, Mayo, Site and habitat management, 32, Dromore Woods &amp; Loughs, Completed, Cork, Site and habitat management, 37, Pouladatig Cave 1999, Completed, Cork, Site and habitat management, 51, Lough Gash Turlough SAC, Completed, Cork,Site and habitat management, 54, Moneen Mountain 1997, Completed, Limerick, Site and habitat management, 57, Moyree River System, Completed,Cork,Site and habitat management, 64, Poulnagordon Cave (Quin) SAC, Completed, Cork, Site and habitat management, 77, Ballymacoda(Clonpriest and Pillmore)SAC, Completed,Cork, Site and habitat management, 90, Glengarriff Harbour and Woodland, Completed,Cork, Site and habitat management, 91, Clonakilty Bay SAC, Completed, Mayo, Site and habitat management, 93, Caha Mountains SAC, Completed, Donegal, Site and habitat management, 97, Lough Hyne Nature Reserve and Environs SAC,Completed, Sligo, Site and habitat management, 101, Roaringwater Bay and Islands SAC, Completed, Sligo,Site and habitat management, 106, St. Gobnet&#39;s Wood SAC, Completed,Donegal,Site and habitat management 109, Three Castle Head to Mizen Head, Completed, Donegal,Site and habitat management, 111, Aran Island (Donegal) Cliffs SAC, Completed,Donegal,Site and habitat management,`; function parseCsv(csvString) { const rows = csvString.trim().split(&#39;\n&#39;); const headers = rows.shift().split(&#39;,&#39;).map(h =&gt; h.trim().replace(/\s+/g, &#39;&#39;)); return rows.map(row =&gt; { const values = row.split(&#39;,&#39;); return headers.reduce((obj, header, index) =&gt; { obj[header] = values[index] ? values[index].trim() : &#39;&#39;; return obj; }, {}); }); } function getStatusColorClass(status) { if (!status) return &#39;bg-gray-100 text-gray-800&#39;; const lowerStatus = status.toLowerCase(); if (lowerStatus === &#39;completed&#39;) return &#39;bg-green-100 text-green-800&#39;; if (lowerStatus === &#39;in progress&#39;) return &#39;bg-blue-100 text-blue-800&#39;; if (lowerStatus === &#39;pending&#39;) return &#39;bg-yellow-100 text-yellow-800&#39;; if (lowerStatus === &#39;not assigned&#39;) return &#39;bg-gray-100 text-gray-800&#39;; return &#39;bg-gray-100 text-gray-800&#39;; } function getStatusDot(status) { if (!status) return &#39;<span class="w-3 h-3 rounded-full bg-gray-400 block mx-auto"></span>&#39;; const lowerStatus = status.toLowerCase(); if (lowerStatus.includes(&#39;favourable&#39;)) return &#39;&lt;span class_name=&quot;w-3 h-3 rounded-full bg-status-favourable block mx-auto&quot;&gt;</span>&#39;; if (lowerStatus.includes(&#39;inadequate&#39;)) return &#39;<span class="w-3 h-3 rounded-full bg-status-inadequate block mx-auto"></span>&#39;; if (lowerStatus.includes(&#39;bad&#39;)) return &#39;<span class="w-3 h-3 rounded-full bg-status-bad block mx-auto"></span>&#39;; return &#39;<span class="w-3 h-3 rounded-full bg-gray-400 block mx-auto"></span>&#39;; } function generateRandomConservationString() { const statuses = [&#39;Favourable&#39;, &#39;Inadequate&#39;, &#39;Bad&#39;]; const randStatus = () =&gt; statuses[Math.floor(Math.random() * 3)]; const statusColor = (status) =&gt; { if (status === &#39;Favourable&#39;) return &#39;text-status-favourable&#39;; if (status === &#39;Inadequate&#39;) return &#39;text-status-inadequate&#39;; return &#39;text-status-bad&#39;; }; let s1 = randStatus(); let s2 = randStatus(); let s3 = randStatus(); let s4 = randStatus(); return ` <div class="text-xs space-y-1"> <div>Range: <span class="font-medium ${statusColor(s1)}">${s1}</span></div> <div>Area: <span class="font-medium ${statusColor(s2)}">${s2}</span></div> <div>Structure &amp; Functions: <span class="font-medium ${statusColor(s3)}">${s3}</span></div> <div>Future Prospects: <span class="font-medium ${statusColor(s4)}">${s4}</span></div> </div> `; } // --- DASHBOARD: SITE STATUS --- function renderSiteStatusTabs() { const tabs = [ { id: &#39;sac&#39;, name: &#39;SAC&#39; }, { id: &#39;spa&#39;, name: &#39;SPA&#39; }, { id: &#39;nha&#39;, name: &#39;NHA&#39; } ]; const tabsContainer = document.getElementById(&#39;site-status-tabs&#39;); tabsContainer.innerHTML = tabs.map(tab =&gt; ` <button onclick="setSiteStatusTab('${tab.id}')" class="${currentSiteStatusTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> ${tab.name} </button> `).join(&#39;&#39;); } function setSiteStatusTab(tabId) { currentSiteStatusTab = tabId; renderSiteStatusTabs(); renderSiteStatusTabContent(); } function renderSiteStatusTabContent() { const content = document.getElementById(&#39;site-status-content&#39;); let csvData; if (currentSiteStatusTab === &#39;sac&#39;) { csvData = parseCsv(sacConditionsCsv); } else if (currentSiteStatusTab === &#39;spa&#39;) { csvData = parseCsv(spaConditionsCsv); } else { csvData = parseCsv(nhaConditionsCsv); } let stats = { favourable: 0, unfavourable: 0, speciesFavourable: 0, total: csvData.length }; csvData.forEach(row =&gt; { if (row.HabitatsHealth?.toLowerCase().includes(&#39;favourable&#39;)) stats.favourable++; if (row.HabitatsHealth?.toLowerCase().includes(&#39;inadequate&#39;) || row.HabitatsHealth?.toLowerCase().includes(&#39;bad&#39;)) stats.unfavourable++; if (row.SpeciesHealth?.toLowerCase().includes(&#39;favourable&#39;)) stats.speciesFavourable++; }); document.getElementById(&#39;total-assessments-stat&#39;).textContent = stats.total; document.getElementById(&#39;habitats-favourable-stat&#39;).textContent = stats.favourable; document.getElementById(&#39;habitats-unfavourable-stat&#39;).textContent = stats.unfavourable; document.getElementById(&#39;species-favourable-stat&#39;).textContent = stats.speciesFavourable; content.innerHTML = ` <div class="h-96 overflow-y-auto pr-2"> <table class="w-full text-left text-sm"> <thead class="bg-gray-50 sticky top-0"> <tr> <th class="p-2 font-semibold">Site Code</th> <th class="p-2 font-semibold">Site Name</th> <th class="p-2 font-semibold">Habitats Health</th> <th class="p-2 font-semibold">Species Health</th> <th class="p-2 font-semibold">Last Updated</th> </tr> </thead> <tbody class="divide-y divide-gray-200"> ${csvData.map(row =&gt; { return ` <tr class="hover:bg-gray-50"> <td class="p-2">${row.Sitecode}</td> <td class="p-2">${row.SiteName}</td> <td class="p-2">${generateRandomConservationString()}</td> <td class="p-2">${generateRandomConservationString()}</td> <td class="p-2">${row.LastUpate || row.LastUpdated || &#39;N/A&#39;}</td> </tr> `}).join(&#39;&#39;)} </tbody> </table> </div> `; } // --- TASKS PAGE --- function renderTasksView() { currentTasksTab = &#39;assessments&#39;; // Default to first tab renderTasksTabs(); renderTasksTabContent(); } function renderTasksTabs() { const tabs = [ { id: &#39;assessments&#39;, name: &#39;Conservation Assessments&#39; }, { id: &#39;actions&#39;, name: &#39;Conservation Actions&#39; } ]; const tabsContainer = document.getElementById(&#39;tasks-tabs&#39;); tabsContainer.innerHTML = tabs.map(tab =&gt; ` <button onclick="setTasksTab('${tab.id}')" class="${currentTasksTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> ${tab.name} </button> `).join(&#39;&#39;); } function setTasksTab(tabId) { currentTasksTab = tabId; renderTasksTabs(); renderTasksTabContent(); } function renderTasksTabContent() { const content = document.getElementById(&#39;tasks-content&#39;); if (currentTasksTab === &#39;assessments&#39;) { let assessmentsData = parseCsv(assessmentsCsvData); const rossbehyAssessment = { SITECODE: &#39;13&#39;, SITE_NAME: &#39;Rossbehy&#39;, Status: &#39;Completed&#39;, COUNTY: &#39;Kerry&#39;, HA: &#39;91.71&#39;, Link: &#39;#&#39; }; if (!assessmentsData.some(item =&gt; item.SITECODE === &#39;13&#39;)) { assessmentsData.push(rossbehyAssessment); } content.innerHTML = ` <div class="bg-surface p-6 rounded-lg shadow-md"> <div class="h-\[60vh\] overflow-y-auto pr-2"> <table class="w-full text-left text-sm"> <thead class="bg-gray-50 sticky top-0"> <tr> <th class="p-2 font-semibold">Site Code</th> <th class="p-2 font-semibold">Site Name</th> <th class="p-2 font-semibold">Status</th> <th class="p-2 font-semibold">County</th> <th class="p-2 font-semibold text-right">Area (ha)</th> </tr> </thead> <tbody class="divide-y divide-gray-200"> ${assessmentsData.map(row =&gt; ` &lt;tr class=&quot;${row.SITECODE == &#39;13&#39; ? &#39;cursor-pointer hover:bg-gray-50&#39; : &#39;&#39;}&quot; ${row.SITECODE == &#39;13&#39; ? `onclick=&quot;showView(&#39;assessment-detail-view&#39;, { siteCode: 13 })&quot;` : &#39;&#39;}&gt; <td class="p-2">${row.SITECODE}</td> <td class="p-2">${row.SITE_NAME}</td> <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td> <td class="p-2">${row.COUNTY}</td> <td class="p-2 text-right">${row.HA}</td> </tr>`).join(&#39;&#39;)} </tbody> </table> </div> </div> `; } else if (currentTasksTab === &#39;actions&#39;) { let actionsData = parseCsv(actionsCsvData); content.innerHTML = ` <div class="bg-surface p-6 rounded-lg shadow-md"> <div class="h-\[60vh\] overflow-y-auto pr-2"> <table class="w-full text-left text-sm"> <thead class="bg-gray-50 sticky top-0"> <tr> <th class="p-2 font-semibold">Site Code</th> <th class="p-2 font-semibold">Site Name</th> <th class="p-2 font-semibold">Status</th> <th class="p-2 font-semibold">Action Type</th> <th classs="p-2 font-semibold">County</th> </tr> </thead> <tbody class="divide-y divide-gray-200"> ${actionsData.map(row =&gt; ` <tr> <td class="p-2">${row.SITECODE}</td> <td class="p-2">${row.SITE_NAME}</td> <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td> <td class="p-2">${row.ActionType}</td> <td class="p-2">${row.COUNTY}</td> </tr>`).join(&#39;&#39;)} </tbody> </table> </div> </div> `; } } // --- VISUALISATION VIEW --- const visTabs = [ { id: &#39;basic&#39;, name: &#39;Basic Information&#39;, icon: &#39;file-text&#39; }, { id: &#39;impacts&#39;, name: &#39;Impacts&#39;, icon: &#39;alert-triangle&#39; }, { id: &#39;metrics&#39;, name: &#39;Metrics&#39;, icon: &#39;bar-chart-3&#39; }, { id: &#39;habitats&#39;, name: &#39;Habitats&#39;, icon: &#39;leaf&#39; }, { id: &#39;sites&#39;, name: &#39;Sites&#39;, icon: &#39;map-pin&#39; }, { id: &#39;funding&#39;, name: &#39;Funding&#39;, icon: &#39;landmark&#39; }, { id: &#39;badges&#39;, name: &#39;Badges&#39;, icon: &#39;award&#39; }, { id: &#39;finish&#39;, name: &#39;Finish&#39;, icon: &#39;check-circle&#39; } ]; function renderVisualisationView() { currentVisualisationTab = &#39;basic&#39;; renderVisualisationNav(); renderVisualisationContent(); } function renderVisualisationNav() { const nav = document.getElementById(&#39;visualisation-nav&#39;); nav.innerHTML = visTabs.map(tab =&gt; ` <button onclick="setVisualisationTab('${tab.id}')" class="${currentVisualisationTab === tab.id ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100'} w-full flex items-center space-x-3 py-2 px-3 rounded-md text-sm font-medium"> <i data-lucide="${tab.icon}" class="w-5 h-5"></i> <span>${tab.name}</span> </button> `).join(&#39;&#39;); lucide.createIcons(); } function setVisualisationTab(tabId) { currentVisualisationTab = tabId; renderVisualisationNav(); renderVisualisationContent(); } function renderVisualisationContent() { const content = document.getElementById(&#39;visualisation-content&#39;); let html = &#39;&#39;; switch(currentVisualisationTab) { case &#39;basic&#39;: html = ` <h3 class="text-2xl font-bold text-secondary mb-4">Basic Information</h3> <div class="space-y-4"> <div> <label class="block text-sm font-medium text-gray-700">Project Name</label> <input type="text" value="Ballycroy Wind Farm EIA" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> </div> <div> <label class="block text-sm font-medium text-gray-700">Project Description</label> <textarea rows="4" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md">Ecological Impact Assessment for a proposed wind farm development in County Mayo.</textarea> </div> </div>`; break; case &#39;impacts&#39;: html = ` <h3 class="text-2xl font-bold text-secondary mb-4">Impacts</h3> <p class="text-gray-600 mb-4">Data automatically populated from the Impact Calculation module.</p> <div class="p-4 border rounded-md bg-gray-50"> <label class="block text-sm font-medium text-gray-700">Ornithological Collision Risk (Hen Harrier)</label> <input type="text" value="0.03 collisions / year" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-200" readonly> </div>`; break; case &#39;habitats&#39;: html = ` <h3 class="text-2xl font-bold text-secondary mb-4">Habitats</h3> <p class="text-gray-600 mb-4">Data populated from Data Mine and Field Survey modules.</p> <div class="space-y-2"> <div class="p-3 bg-gray-50 rounded-md">Blanket Bog (PB2)</div> <div class="p-3 bg-gray-50 rounded-md">Wet Heath (HH3)</div> </div> `; break; case &#39;sites&#39;: html = ` <h3 class="text-2xl font-bold text-secondary mb-4">Site Location</h3> <p class="text-gray-600 mb-4">Configure the project site on the map.</p> <div class="mt-2 text-center border rounded-md"> <img src="https://placehold.co/800x400/e2e8f0/475569?text=Interactive+Map+Interface" alt="Map Placeholder" class="w-full rounded-md"> </div> `; break; case &#39;finish&#39;: html = ` <h3 class="text-2xl font-bold text-secondary mb-4">Finish Project Setup</h3> <p class="text-gray-600 mb-6">Your project is almost ready. Review your settings and decide if you want to publish it.</p> <div class="p-4 border rounded-lg flex items-center justify-between"> <div> <h4 class="font-semibold">Project Visibility</h4> <p class="text-sm text-gray-500">Publishing your project will make it visible on the public map. Users will be able to see your project details, funding information, and impact metrics.</p> </div> <label class="relative inline-flex items-center cursor-pointer"> <input type="checkbox" value="" class="sr-only peer"> <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-\[''\] after:absolute after:top-\[2px\] after:left-\[2px\] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div> </label> </div> <div class="mt-8 flex justify-end"> <button class="bg-accent text-white py-2 px-6 rounded-md hover:bg-orange-500">Finish</button> </div>`; break; default: html = `<h3 class="text-2xl font-bold text-secondary">${visTabs.find(t=&gt;t.id===currentVisualisationTab).name}</h3><p>Configuration options for this section will appear here.</p>`; } content.innerHTML = html; } // --- AI REPORTING --- function addAiChatMessage(content, isUser = false) { const history = document.getElementById(&#39;ai-chat-history&#39;); const messageDiv = document.createElement(&#39;div&#39;); messageDiv.className = isUser ? &#39;p-3 bg-gray-200 rounded-lg text-secondary text-sm&#39; : &#39;p-3 bg-blue-100 rounded-lg text-blue-800 text-sm&#39;; messageDiv.innerHTML = `<p>${content}</p>`; history.appendChild(messageDiv); history.scrollTop = history.scrollHeight; } function generateAiReport() { const reportContent = document.getElementById(&#39;ai-report-content&#39;); const audience = document.getElementById(&#39;audience-tone&#39;).value; reportContent.innerHTML = `<div class="flex items-center justify-center h-full"><div class="text-center"><div class="loading-spinner mx-auto"></div><p class="mt-4 text-gray-500">Generating report for: <b>${audience}</b>...</p></div></div>`; addAiChatMessage(`Okay, I&#39;m generating a draft report with a tone suitable for a <b>${audience}</b> audience. I&#39;ll pull in the desk study, field survey data, and the latest impact calculation results.`); setTimeout(() =&gt; { reportContent.innerHTML = ` <h2>1.0 Introduction</h2> <p>This report presents the findings of an Ecological Impact Assessment for the proposed N59 Road Realignment. The assessment identifies key ecological receptors and evaluates the potential effects of the project.</p> <h2>2.0 Field Survey Summary</h2> <p>Field surveys were conducted on 23/09/2025. The dominant habitat recorded was <b>WD1 - Oak-birch-holly woodland</b>. Key species identified included Sciurus vulgaris (Red Squirrel).</p> <h2>3.0 Impact Assessment (Ornithology)</h2> <p>Based on the Nature Scot Collision Risk Model, the predicted mortality for Hen Harrier is <b>0.03 collisions per year</b>, assuming a 98% avoidance rate. This is considered a low-significance impact.</p> <h2>4.0 Proposed Mitigation</h2> <p>Mitigation measures will include...</p> `; addAiChatMessage(&#39;The draft report is ready for your review. You can edit the text directly or ask me for refinements.&#39;); }, 2500); } function addVisualisation() { addAiChatMessage(&quot;Sure. What kind of visualisation would you like to add? For example, &#39;a map of the survey area&#39; or &#39;a bar chart of habitat types&#39;.&quot;); } function enrichData() { addAiChatMessage(&quot;Okay. I can enrich this report with third-party datasets. I have access to regional climate models and habitat layers. This will add deeper context for evaluation. Processing...&quot;); } // --- CORE ACTIONS --- function startSurveyFromTemplate(templateId) { const template = surveyTemplates.find(t =&gt; t.id === templateId); document.getElementById(&#39;new-survey-template-id-input&#39;).value = templateId; document.getElementById(&#39;new-project-name&#39;).value = `${template.name} - ${new Date().toLocaleDateString(&#39;en-IE&#39;)}`; document.getElementById(&#39;new-client-name&#39;).value = &quot;Default Client&quot;; showNewSurveyProjectModal(); } function createNewSurveyFromModal() { const templateId = document.getElementById(&#39;new-survey-template-id-input&#39;).value; const projectName = document.getElementById(&#39;new-project-name&#39;).value; const clientName = document.getElementById(&#39;new-client-name&#39;).value; if (!projectName || !clientName) { showToast(&quot;Please fill out all fields.&quot;, &quot;error&quot;); return; } const newProjectId = (db.projects[db.projects.length - 1]?.id || 0) + 1; const newProject = { id: newProjectId, name: projectName, client: clientName, code: `${clientName.substring(0,3).toUpperCase()}-${String(Math.floor(100 + Math.random() * 900))}-25` }; db.projects.push(newProject); const newSurveyId = (db.surveys[db.surveys.length - 1]?.id || 0) + 1; db.surveys.push({ id: newSurveyId, projectId: newProjectId, siteName: &quot;Default Site&quot;, template: templateId, status: &quot;Ready&quot;, data: {} }); saveData(); hideNewSurveyProjectModal(); if (templateId === &#39;EcIA&#39;) { showView(&#39;eiar-editor-view&#39;, { projectId: newProjectId }); } else if (templateId === &#39;ECoW&#39;) { showView(&#39;ecow-editor-view&#39;, { projectId: newProjectId }); } else { showView(&#39;project-detail-view&#39;, newProjectId); } } function saveEiarSurvey() { // In a real app, this would save the content of the textareas. showToast(&quot;Survey content saved!&quot;); showView(&#39;project-detail-view&#39;, currentProjectId); } function saveEcowReport() { showToast(&quot;ECoW report saved!&quot;); showView(&#39;project-detail-view&#39;, currentProjectId); } function assignSurvey(surveyId) { const surveyLink = `${window.location.origin}${window.location.pathname}?survey=${surveyId}`; document.getElementById(&#39;survey-link-input&#39;).value = surveyLink; showAssignSurveyModal(); } function copySurveyLink() { const input = document.getElementById(&#39;survey-link-input&#39;); input.select(); input.setSelectionRange(0, 99999); // For mobile devices document.execCommand(&#39;copy&#39;); showToast(&#39;Link copied to clipboard!&#39;); } function generateThirdPartyLink() { const email = document.getElementById(&#39;third-party-email&#39;).value; const task = document.getElementById(&#39;third-party-task&#39;).value; const randomToken = Math.random().toString(36).substring(2, 12); const link = `${window.location.origin}${window.location.pathname}?task=${task}&amp;token=${randomToken}`; document.getElementById(&#39;third-party-link-input&#39;).value = link; document.getElementById(&#39;assign-third-party-form&#39;).style.display = &#39;none&#39;; document.getElementById(&#39;assign-third-party-link&#39;).style.display = &#39;block&#39;; } function copyThirdPartyLink() { const input = document.getElementById(&#39;third-party-link-input&#39;); input.select(); input.setSelectionRange(0, 99999); document.execCommand(&#39;copy&#39;); showToast(&#39;Link copied to clipboard!&#39;); } function displayPhotoPreview(event) { const container = document.getElementById(&#39;photo-preview-container&#39;); const file = event.target.files[0]; if (file) { const reader = new FileReader(); reader.onload = function(e) { container.innerHTML = `<img src="${e.target.result}" class="max-h-40 rounded-md mx-auto">`; } reader.readAsDataURL(file); } } function submitSurvey() { const surveyId = document.getElementById(&#39;survey-id-input&#39;).value; const survey = db.surveys.find(s =&gt; s.id == surveyId); if (survey) { survey.status = &quot;Completed&quot;; survey.data = { habitat: document.getElementById(&#39;habitat-type&#39;).value, notes: document.getElementById(&#39;habitat-notes&#39;).value, species: document.getElementById(&#39;species-observed&#39;).value, speciesNotes: document.getElementById(&#39;species-notes&#39;).value, photo: document.querySelector(&#39;#photo-preview-container img&#39;)?.src || &#39;<a href="https://placehold.co/600x400/e2e8f0/475569?text=No+Photo">https://placehold.co/600x400/e2e8f0/475569?text=No+Photo</a>&#39; }; saveData(); document.getElementById(&#39;mobile-survey-form&#39;).innerHTML = ` <div class="text-center py-10"> <i data-lucide="check-circle" class="w-16 h-16 text-green-500 mx-auto mb-4"></i> <h2 class="text-2xl font-bold text-secondary">Survey Submitted</h2> <p class="text-gray-600 mt-2">Thank you. Your data has been successfully recorded.</p> <button onclick="closeSurveyWindow()" class="mt-6 text-sm bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300">Close Window</button> </div> `; lucide.createIcons(); } else { showToast(&#39;Error: Could not find survey to submit.&#39;, &#39;error&#39;); } } function closeSurveyWindow(){ window.location.href = window.location.pathname; } // --- REPORT GENERATION (MVP Magic) --- function generateReport(surveyId) { const survey = db.surveys.find(s =&gt; s.id === surveyId); const project = db.projects.find(p =&gt; p.id === survey.projectId); const template = surveyTemplates.find(t =&gt; t.id === survey.template); const { Document, Packer, Paragraph, TextRun, HeadingLevel } = docx; const doc = new Document({ sections: [{ properties: {}, children: [ new Paragraph({ text: template.name, heading: HeadingLevel.TITLE }), new Paragraph({ text: `Project: ${project.name}`, style: &quot;IntenseQuote&quot; }), new Paragraph({ text: `Client: ${project.client}`, style: &quot;IntenseQuote&quot; }), new Paragraph({ text: `Survey Site: ${survey.siteName}`, style: &quot;IntenseQuote&quot; }), new Paragraph({ text: `Date: ${new Date().toLocaleDateString(&#39;en-IE&#39;)}`, style: &quot;IntenteQuote&quot; }), new Paragraph({ text: &quot;1.0 Desk Study&quot;, heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), new Paragraph(&quot;A desk-based study was undertaken to identify ecological features within the study area. (Note: Prototype uses placeholder text).&quot;), new Paragraph({ text: &quot;2.0 Field Survey Results&quot;, heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), new Paragraph({ text: &quot;2.1 Habitats&quot;, heading: HeadingLevel.HEADING_2, spacing: { before: 200 } }), new Paragraph(new TextRun({ text: &quot;Habitat Type:&quot;, bold: true }).addChild(new TextRun(` ${survey.data.habitat}`))), new Paragraph(new TextRun({ text: &quot;Condition Notes:&quot;, bold: true }).addChild(new TextRun(` ${survey.data.notes}`))), new Paragraph({ text: &quot;2.2 Species&quot;, heading: HeadingLevel.HEADING_2, spacing: { before: 200 } }), new Paragraph(new TextRun({ text: &quot;Species Observed:&quot;, bold: true }).addChild(new TextRun(` ${survey.data.species || &#39;None recorded.&#39;}`))), new Paragraph(new TextRun({ text: &quot;Notes:&quot;, bold: true }).addChild(new TextRun(` ${survey.data.speciesNotes || &#39;N/A&#39;}`))), new Paragraph({ text: &quot;3.0 Photographic Record&quot;, heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), new Paragraph(&quot;The following photograph was taken on-site:&quot;), new Paragraph({ children: [ new TextRun(`[Image placeholder: A photo was captured for ${survey.siteName}]`)] }), ], }], }); Packer.toBlob(doc).then(blob =&gt; { saveAs(blob, `${project.code}_${template.id}_Report.docx`); showToast(&quot;Report downloaded successfully!&quot;); }); } // --- INITIALIZATION --- document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; { loadData(); lucide.createIcons(); handleRouting(); // Add a default entry to each dynamic section on load for demo purposes addHabitatEntry(); addFaunaSighting(); addFloraRecord(); });</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulra - Ecological Management Platform</title>
+    
+    <style>
+        /* CSS from original file */
+        .view { display: none; }
+        .active-view { display: block; }
+        body { background-color: #F3F7F9; font-family: 'Inter', sans-serif; }
+        .eiar-textarea { 
+            width: 100%; 
+            padding: 0.75rem; 
+            border-radius: 0.375rem; 
+            border: 1px solid #d1d5db; 
+            transition: all 0.2s ease-in-out; 
+            font-size: 1rem; 
+            line-height: 1.5; 
+            resize: vertical; 
+        }
+        .eiar-textarea:focus { 
+            outline: 2px solid #FB923C; 
+            border-color: #FB923C; 
+            box-shadow: 0 0 0 1px #FB923C; 
+        }
+        .toast { 
+            position: fixed; 
+            bottom: 2rem; 
+            right: 2rem; 
+            padding: 1rem 1.5rem; 
+            border-radius: 0.5rem; 
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); 
+            transform: translateX(calc(100% + 2rem)); 
+            transition: transform 0.3s ease-in-out; 
+            z-index: 100; 
+        }
+        .toast.show { transform: translateX(0); }
+        .loading-spinner { 
+            border: 4px solid #f3f3f3; 
+            border-top: 4px solid #122529; 
+            border-radius: 50%; 
+            width: 32px; 
+            height: 32px; 
+            animation: spin 1s linear infinite; 
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+        .status-badge { 
+            display: inline-block; 
+            padding: 0.25rem 0.6rem; 
+            border-radius: 0.25rem; 
+            font-size: 0.75rem; 
+            font-weight: 500; 
+            white-space: nowrap; 
+        }
+        /* Style for Assessment Detail Tables */
+        #assessment-detail-view table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 1rem; 
+            font-size: 0.875rem; 
+        }
+        #assessment-detail-view th, #assessment-detail-view td { 
+            border: 1px solid #e5e7eb; 
+            padding: 0.5rem 0.75rem; 
+            text-align: left; 
+        }
+        #assessment-detail-view th { 
+            background-color: #f9fafb; 
+            font-weight: 600; 
+        }
+        #assessment-detail-view tbody tr:nth-child(even) { 
+            background-color: #f9fafb; 
+        }
+        [contenteditable="true"]:focus { 
+            outline: 2px solid #FB923C; 
+            box-shadow: 0 0 0 2px #FB923C30; 
+        }
 
+        /* Styles for new Projects page progress bar */
+        .progress-bar {
+            width: 100px;
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            display: inline-block;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #FB923C; /* Accent color */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
 
+    <header>
+        <h1>Dulra</h1>
+        <p>Create a project</p>
+    </header>
+
+    <nav>
+        <section>
+            <h3>Workspace</h3>
+            <ul>
+                <li>Dashboard</li>
+                <li>Tasks</li>
+                <li>Surveys</li>
+                <li>Team Members</li>
+                <li>Settings</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Tools for Surveys</h3>
+            <ul>
+                <li>Desktop Research</li>
+                <li>Field Survey</li>
+                <li>Impact Calculation</li>
+                <li>Intelligent Reporting</li>
+                <li>Visualisation</li>
+            </ul>
+        </section>
+    </nav>
+
+    <main>
+        <section id="dashboard-view">
+            <h2>Dashboard</h2>
+            <button>Create Task</button>
+
+            <h3>Action Status</h3>
+            <h3>Assessment Status</h3>
+            <h3>Key Stats</h3>
+            <p>Total Assessments 160</p>
+            <p>Habitats Favourable 130</p>
+            <p>Habitats Unfavourable 20</p>
+            <p>Habitats Inadequate 10</p>
+
+            <h3>Conservation Site Status</h3>
+            </section>
+
+        <section id="projects-view">
+            <h2>Projects</h2>
+            
+            <h3>Project Progress Key</h3>
+            <ul>
+                <li><strong>0% - 25%:</strong> Desktop research</li>
+                <li><strong>25% - 50%:</strong> Field survey</li>
+                <li><strong>50% - 75%:</strong> Report</li>
+                <li><strong>75% - 100%:</strong> Final data deliveries</li>
+            </ul>
+
+            <h3>Project List</h3>
+            <style>
+                .projects-table { width: 100%; border-collapse: collapse; }
+                .projects-table th, .projects-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                .projects-table th { background-color: #f9fafb; }
+            </style>
+            <table class="projects-table">
+                <thead>
+                    <tr>
+                        <th>Project Name (Site Name)</th>
+                        <th>Project Code</th>
+                        <th>Progress</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Rossbehy</td><td>13</td><td><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div> 100%</td><td>Final data deliveries</td></tr>
+                    <tr><td>Slieve Rushen Bog NHA</td><td>9</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div> 20%</td><td>Desktop research</td></tr>
+                    <tr><td>Inishduff NHA</td><td>151</td><td><div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div> 45%</td><td>Field survey</td></tr>
+                    <tr><td>Roaninish NHA</td><td>184</td><td><div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div> 70%</td><td>Report</td></tr>
+                    <tr><td>Lough Namucka Bog NHA</td><td>220</td><td><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div> 100%</td><td>Final data deliveries</td></tr>
+                    <tr><td>Killyconny Bog (Cloghbally) SAC</td><td>6</td><td><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div> 15%</td><td>Desktop research</td></tr>
+                    <tr><td>Lough Oughter and Associated Loughs SAC</td><td>7</td><td><div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div> 50%</td><td>Field survey</td></tr>
+                    <tr><td>Ballyallia Lake SAC</td><td>4</td><td><div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div> 30%</td><td>Field survey</td></tr>
+                    <tr><td>Ballycullinan Lake SAC</td><td>10</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div> 60%</td><td>Report</td></tr>
+                    <tr><td>Black Head/Poulsallagh Complex</td><td>20</td><td><div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div> 80%</td><td>Final data deliveries</td></tr>
+                    <tr><td>Danes Hole Poulnalecka SAC</td><td>90</td><td><div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div> 25%</td><td>Desktop research</td></tr>
+                    <tr><td>Dromore Woods & Loughs</td><td>32</td><td><div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div> 35%</td><td>Field survey</td></tr>
+                    <tr><td>Pouladatig Cave 1999</td><td>37</td><td><div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div> 45%</td><td>Field survey</td></tr>
+                    <tr><td>Lough Gash Turlough SAC</td><td>51</td><td><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div> 75%</td><td>Report</td></tr>
+                    <tr><td>Moneen Mountain 1997</td><td>54</td><td><div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div> 90%</td><td>Final data deliveries</td></tr>
+                    <tr><td>Moyree River System</td><td>57</td><td><div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div> 10%</td><td>Desktop research</td></tr>
+                    <tr><td>Poulnagordon Cave (Quin) SAC</td><td>64</td><td><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div> 20%</td><td>Desktop research</td></tr>
+                    <tr><td>Ballymacoda(Clonpriest and Pillmore)SAC</td><td>77</td><td><div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div> 50%</td><td>Field survey</td></tr>
+                    <tr><td>Glengarriff Harbour and Woodland</td><td>90</td><td><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div> 65%</td><td>Report</td></tr>
+                    <tr><td>Clonakilty Bay SAC</td><td>91</td><td><div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div> 30%</td><td>Field survey</td></tr>
+                    <tr><td>Caha Mountains SAC</td><td>93</td><td><div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div> 85%</td><td>Final data deliveries</td></tr>
+                    <tr><td>Lough Hyne Nature Reserve and Environs SAC</td><td>97</td><td><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div> 100%</td><td>Final data deliveries</td></tr>
+                    <tr><td>Roaringwater Bay and Islands SAC</td><td>101</td><td><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div> 15%</td><td>Desktop research</td></tr>
+                    <tr><td>St. Gobnet's Wood SAC</td><td>106</td><td><div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div> 40%</td><td>Field survey</td></tr>
+                    <tr><td>Three Castle Head to Mizen Head</td><td>109</td><td><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div> 60%</td><td>Report</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="tasks-view">
+            <h2>Tasks</h2>
+            <p>Detailed Search</p>
+        </section>
+
+        <section id="new-survey-view">
+            <h2>Start a New Survey</h2>
+            <p>Select a compliant template to begin your report.</p>
+            <button>Edit Custom Template</button>
+            <button>Back to Templates</button>
+        </section>
+
+        <section id="template-editor-view">
+            <h2>Custom Template Editor</h2>
+            <p>Add your own headings and paragraphs to build a custom survey.</p>
+            <button>Save Template</button>
+            <button>Add Heading</button>
+            <button>Add Paragraph</button>
+
+            <h3>Custom Heading 1</h3>
+            <p>This is an editable paragraph. You can add your own content here.</p>
+        </section>
+
+        <section id="surveys-view">
+            <h2>Surveys</h2>
+            <p>An overview of all your active and completed surveys.</p>
+            <button>Create New Survey</button>
+            <button>Back to Surveys</button>
+        </section>
+        
+        <section id="team-view">
+            <h2>Team Management</h2>
+            <p>Manage internal team members and assign tasks to third parties.</p>
+            <button>Assign to 3rd Party</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+        <section id="eiar-editor-view">
+            <h2>Ecological Impact Assessment Report (EIAR) Editor</h2>
+            <button>Save and Continue</button>
+
+            <h3>Chapter 1: Introduction</h3>
+            <h3>Chapter 2: Background & Need for the Project</h3>
+            <h3>Chapter 3: Consideration of Reasonable Alternatives</h3>
+            <h3>Chapter 4: Description of the Proposed Development</h3>
+            <h3>Chapter 5: Population & Human Health</h3>
+            
+            <h3>Chapter 6: Biodiversity (Ecology)</h3>
+            <h4>6.1 Introduction & Methodology</h4>
+            <p>This chapter presents the Ecological Impact Assessment (EcIA). The assessment identifies, quantifies, and evaluates the potential effects of the project on habitats, species, and ecosystems, referred to as Key Ecological Receptors (KERs). The methodology follows the Guidelines for Ecological Impact Assessment in the UK and Ireland from the Chartered Institute of Ecology and Environmental Management (CIEEM) and guidance from the Environmental Protection Agency (EPA).</p>
+            
+            <h4>6.2 Desk Study</h4>
+            <p>A comprehensive desk study was undertaken to identify ecological features within a 10km radius of the site. This involved consulting: National Parks and Wildlife Service (NPWS) for records of protected species and designated sites (Special Areas of Conservation, Special Protection Areas), National Biodiversity Data Centre, and planning authority databases for other developments to assess cumulative impacts.</p>
+            
+            <h4>6.3 Field Surveys</h4>
+            <p>Field surveys were conducted to establish the baseline ecological conditions.</p>
+            <p><strong>Habitat Surveys:</strong> Habitats across the site were mapped to identify their ecological value and potential for loss or degradation. Surveys included detailed peatland assessments to inform site design and avoid sensitive areas.</p>
+            <p><strong>Protected Mammal Surveys:</strong> Targeted surveys were conducted for legally protected species potentially present, including otter and badger.</p>
+            <p><strong>Bat Surveys:</strong> Surveys followed Bat Conservation Ireland guidelines. Methodologies included Roost Surveys (all structures and mature trees within 200m inspected) and Activity Surveys (static detectors and transects across spring, summer, and autumn).</p>
+            
+            <h4>6.4 Impact Assessment & Mitigation</h4>
+            <p><strong>Potential Impacts:</strong> The assessment identified potential impacts, including direct habitat loss from turbine foundations and access tracks, and collision risk for bats.</p>
+            <p><strong>Mitigation:</strong> To mitigate collision risk for high-risk bat species (e.g., Leisler's bat, pipistrelles), a turbine curtailment strategy is proposed. This involves feathering the blades (stopping rotation) during high-risk periods, such as summer and autumn nights with low wind speeds and temperatures above 10°C.</p>
+
+            <h3>Chapter 7: Ornithology</h3>
+            <h4>7.1 Introduction & Methodology</h4>
+            <p>This chapter assesses the potential impacts on bird populations. While there is no specific national guidance in Ireland, the methodologies used follow the standards developed by NatureScot (formerly SNH), which are widely accepted as best practice by Irish competent authorities.</p>
+
+            <h4>7.2 Field Surveys</h4>
+            <p>A multi-season survey programme was undertaken over two years to establish a robust baseline.</p>
+            <p><strong>Vantage Point (VP) Surveys:</strong> Timed watches were conducted from fixed VPs to record the flight activity of target species (e.g., Hen Harrier, Kestrel, Golden Plover). A minimum of 36 hours of observation per VP per season was completed.</p>
+            <p><strong>Breeding & Wintering Bird Surveys:</strong> Walkover surveys were conducted to map territories and estimate populations.</p>
+            <p><strong>Specialist Surveys:</strong> Targeted surveys for species of high conservation concern, such as Hen Harrier, were undertaken.</p>
+
+            <h4>7.3 Impact Assessment & Mitigation</h4>
+            <p><strong>Potential Impacts:</strong> The primary potential impacts assessed were displacement (disturbance) and collision mortality. Collision risk was quantified using the NatureScot Collision Risk Model (CRM).</p>
+            <p><strong>Mitigation:</strong> The wind farm layout was designed iteratively to avoid known sensitive areas, such as Hen Harrier nesting sites. Habitat management plans are proposed to enhance foraging habitat for key species away from the turbines.</p>
+
+            <h4>7.4 Post-Construction Monitoring</h4>
+            <p>A Bird Monitoring Programme is proposed for the operational phase, often for years 1, 2, 3, 5, 10, and 15. This will include repeating breeding and wintering bird surveys and systematic carcass searches to validate the predictions of the collision risk model.</p>
+
+            <h3>Chapter 8: Land, Soils & Geology</h3>
+            <h3>Chapter 9: Water (Hydrology & Hydrogeology)</h3>
+            <h3>Chapter 10: Air & Climate</h3>
+            <h3>Chapter 11: Noise & Vibration</h3>
+            <h3>Chapter 12: Landscape & Visual Impact</h3>
+            <h3>Chapter 13: Cultural Heritage & Archaeology</h3>
+            <h3>Chapter 14: Material Assets</h3>
+            <h3>Chapter 15: Interactions & Cumulative Effects</h3>
+            <h3>Volume 3: Appendices</h3>
+        </section>
+
+        <section id="ecow-editor-view">
+            <h2>Ecological Clerk of Works (ECoW) Report</h2>
+            <button>Save and Continue</button>
+
+            <h3>1. Project Details</h3>
+            <h3>2. Monitoring Activities</h3>
+            <h4>2.1 Pre-Works Check</h4>
+            <h4>2.2 Site Supervision Log</h4>
+            <h4>2.3 ECoW Intervention Log</h4>
+            <h3>3. Compliance & Incidents</h3>
+            <h4>3.1 Compliance Status</h4>
+            <h4>3.2 Environmental Incidents</h4>
+            <h4>3.3 Biosecurity</h4>
+            <h3>4. Recommendations</h3>
+            <h4>4.1 Look Ahead</h4>
+            <h4>4.2 Further Actions</h4>
+        </section>
+
+        <section id="desktop-research-view">
+            <h2>Desktop Research</h2>
+
+            <hr>
+            
+            <h3>GIS mapping</h3>
+            <h4>Datasets available for the user to add to the GIS mapping tool</h4>
+
+            <h5>NPWS Datasets</h5>
+            <ul>
+                <li>Natural Heritage Areas</li>
+                <li>proposed Natural Heritage Areas</li>
+                <li>Special Area of Conservation</li>
+                <li>Special Areas of Protection</li>
+            </ul>
+
+            <h5>EPA Datasets</h5>
+            <ul>
+                <li>Pollution Impact Potential for Nitrogen</li>
+                <li>Pollution Impact Potential for Phosphorus</li>
+                <li>PIP Phosphorus flow paths</li>
+            </ul>
+
+            <h5>DAFM datasets</h5>
+            <ul>
+                <li>LPIS data</li>
+                <li>BPS data</li>
+            </ul>
+
+            <blockquote>
+                <strong>Note:</strong> When you click a dataset (e.g., "Special Area of Conservation"), it will be highlighted in light blue, and you will be prompted to start a new project.
+            </blockquote>
+
+            <hr>
+
+            <h3>Start GIS Project</h3>
+            <p><em>After selecting a dataset, you are prompted to create or open a project.</em></p>
+            
+            <h4>Option 1: Create a new QGIS project</h4>
+            <button>Create a new QGIS project</button>
+            <p><em>(This will open the QGIS map interface)</em></p>
+            
+            <h4>Option 2: Get an existing project</h4>
+            <button>Get an existing project</button>
+            <p><em>(This will show options to upload or connect)</em></p>
+            
+            <hr>
+
+            <h3>Project Loading & Map Interface</h3>
+            <p><em>This section shows the result of your choice.</em></p>
+            
+            <h4>If you clicked "Create a new QGIS project":</h4>
+            <p><strong>Loading Project...</strong></p>
+            <img src="https://placehold.co/800x600/e2e8f0/475569?text=GIS+Map+of+Ireland+with+Datasets" alt="GIS Map of Ireland with Datasets">
+            
+            <h4>If you clicked "Get an existing project":</h4>
+            <button>Upload files</button>
+            <button>Connect</button>
+
+            <hr>
+            
+            <h3>Data Mine</h3>
+            <p>Collate and layer data from various external sources for your desk study.</p>
+            
+            <form>
+                <label>Site Name / Reference</label>
+                <input type="text">
+                
+                <label>Site Code (e.g., SAC/SPA Code)</label>
+                <input type="text">
+                
+                <label>County</label>
+                <input type="text">
+                
+                <label>Websites to Search (comma-separated)</label>
+                <input type="text">
+                
+                <button type="button">Search for Records</button>
+            </form>
+
+            <h3>Data Mine Results for "Lough Ennell SAC"</h3>
+            <h4>Existing Reports / Records</h4>
+            <ul>
+                <li>Lough Ennell SAC Study (2021) - Green Project</li>
+                <li>NPWS Species Records for Grid Ref F890 105 (2019-2023)</li>
+            </ul>
+
+            <h4>Statutory Designation Maps</h4>
+            <ul>
+                <li>Owenduff/Nephin Complex SAC (Site Code: 000534) - Boundary 2.5km from site.</li>
+                <li>Slieve Fyagh Bog SAC (Site Code: 000542) - Boundary 8km from site.</li>
+            </ul>
+
+            <h4>Historical Aerial Imagery</h4>
+            <img src="https://placehold.co/600x300/e2e8f0/475569?text=Ortho-rectified+Aerial+Photo+2005" alt="Historical Map">
+
+            <h4>Key Data Identified</h4>
+            <p>Review the following data and select any to apply to your survey draft.</p>
+            
+            <p>Blanket Bog (PB2)</p>
+            <p>Classification: Ireland / EU</p>
+            <label><input type="checkbox"> Use this data?</label>
+            
+            <p>Wet Heath (HH3)</p>
+            <p>Classification: Ireland / EU</p>
+            <label><input type="checkbox"> Use this data?</label>
+            
+            <button>Apply Selected Data to Survey</button>
+        </section>
+
+        <section id="field-survey-view">
+            <h2>Field Survey Editor</h2>
+            <p>Create and edit field survey templates and data.</p>
+            
+            <h3>Survey Details</h3>
+            <label>Survey Name</label> <input type="text">
+            <label>Date</label> <input type="date">
+            <label>Surveyor(s)</label> <input type="text">
+
+            <h3>Site Conditions</h3>
+            <label>Time</label> <input type="time">
+            <label>Temp (°C)</label> <input type="number">
+            <label>Wind</label> <select><option>Calm</option><option>Light Breeze</option><option>Moderate</option><option>Strong</option></select>
+            <label>Cloud Cover</label> <select><option>0%</option><option>25%</option><option>50%</option><option>75%</option><option>100%</option></select>
+            <label>Precipitation</label> <select><option>None</option><option>Drizzle</option><option>Rain</option><option>Heavy Rain</option></select>
+
+            <h3>Habitat Mapping</h3>
+            <button>Add Entry</button>
+
+            <h3>Fauna</h3>
+            <button>Add Sighting</button>
+
+            <h3>Flora</h3>
+            <button>Add Record</button>
+
+            <h3>Field Notes</h3>
+            <textarea></textarea>
+        </section>
+
+        <section id="impact-view">
+            <h2>Wind Farm Collision Risk Model</h2>
+            <p>Based on the Nature Scot (Band, 2007) standard for calculating avian collision risk.</p>
+
+            <h3>Stage 1 & 2: Bird Passage Rate</h3>
+            <p>Estimates the number of birds passing through the rotors annually based on field survey data.</p>
+            <label>Target Species</label> <input type="text">
+            <label>Flights at Collision Height (from VP surveys)</label> <input type="number">
+            <label>Total Vantage Point Watch Hours</label> <input type="number">
+            <p>Estimated Annual Passages through Rotors: <strong>11.19</strong></p>
+
+            <h3>Stage 3: Collision Probability</h3>
+            <p>Calculates the probability of a bird being hit during a single passage through a rotor.</p>
+            <h4>Bird Parameters</h4>
+            <label>Length (m)</label> <input type="text">
+            <label>Wingspan (m)</label> <input type="text">
+            <label>Flight Speed (m/s)</label> <input type="text">
+            <h4>Turbine Parameters</h4>
+            <label>Rotor Diameter (m)</label> <input type="text">
+            <label>Max Blade Chord (m)</label> <input type="text">
+            <label>Blade Pitch (°)</label> <input type="text">
+            <label>Rotation (s/rev)</label> <input type="text">
+            <p>Calculated Collision Probability per Passage (Average): <strong>17.9%</strong></p>
+
+            <h3>Stage 4 & 5: Adjustments</h3>
+            <p>Accounts for turbine downtime and the bird's natural avoidance behaviour.</p>
+            <label>Turbine Operational Time (%)</label> <input type="number" id="crm-optime" value="85">
+            <label>Avoidance Rate (%)</label> <input type="number" id="crm-avoidance" value="98">
+
+            <h3>Estimated Annual Collisions</h3>
+            <p><strong id="crm-final-result">0.03</strong></p>
+            <p>This is the predicted mortality assuming no mitigation measures are applied.</p>
+        </section>
+
+        <section id="reporting-view">
+            <h3>Generated Report</h3>
+            <button>Export</button>
+            <div id="ai-report-content">
+                <p>Your AI-generated report will appear here. Use the AI assistant on the right to get started.</p>
+            </div>
+            
+            <h3>AI Reporting Assistant</h3>
+            <p>Welcome to the Intelligent Reporting suite. I have access to all your project data including desk studies, field surveys, and impact calculations.</p>
+            <p>How can I help you today?</p>
+            
+            <div id="ai-chat-history">
+                </div>
+            
+            <button onclick="generateAiReport()">Generate Draft Report</button>
+            <label>Audience Tone</label>
+            <select id="audience-tone">
+                <option>Technical (Internal)</option>
+                <option>Public</option>
+                <option>Investor</option>
+            </select>
+            <button onclick="addVisualisation()">Add Visualisation</button>
+            <button onclick="enrichData()">Enrich with Data</button>
+        </section>
+
+        <section id="visualisation-view">
+            <h2>Configure Project Visualisation</h2>
+            <p>Review your project settings before publishing the public visualisation map.</p>
+            <button>Back to Dashboard</button>
+
+            <p>County: <input type="text"></p>
+            <p>Area: <input type="text"> ha</p>
+
+            <h3>Site Map (Figure 1)</h3>
+            <img src="https://placehold.co/600x400/e2e8f0/475569?text=Rossbehy+Overview+Map+(Fig+1)" alt="Site Map Placeholder">
+            <p>Click to explore</p>
+
+            <h3>Key Habitats & Species</h3>
+            <h4>Habitats</h4>
+            <h4>Species</h4>
+            <h3>Table 1: Habitats at Site 13 Rossbehy</h3>
+            <h3>Table 2: Species at Site 13 Rossbehy</h3>
+            <h3>Table 3: Conservation Objectives for Site 13 Rossbehy</h3>
+
+            <h3>Full Assessment Document (Excerpt)</h3>
+            <div id="rossbehy-doc-content">
+                </div>
+        </section>
+
+        <section id="settings-view">
+            <h2>Settings</h2>
+            
+            <h3>GIS Integration</h3>
+            <p>Connect to your preferred GIS tool to import site boundaries.</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/ArcGIS_logo.png/220px-ArcGIS_logo.png" alt="ArcGIS Logo">
+            <h4>ArcGIS</h4>
+            <p>Connect to the Esri Geospatial Cloud.</p>
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/QGIS_Logo_new.svg/200px-QGIS_Logo_new.svg.png" alt="QGIS Logo">
+            <h4>QGIS</h4>
+            <p>Connect using the open-source GIS leader.</p>
+            
+            <h4>Another GIS</h4>
+            <p>Import from a shapefile or other common formats.</p>
+            <button>Back to GIS Options</button>
+
+            <h4>Connection Details</h4>
+            <label>API Key</label> <input type="text">
+            <label>User / Client Key</label> <input type="text">
+
+            <h4>Select Fields to Extract</h4>
+            <div id="gis-field-list"></div>
+            
+            <button>Connect & Extract Data</button>
+        </section>
+
+        <section id="survey-form-view">
+            <h3>Habitat Mapping</h3>
+            <label>Habitat Type (Irish Classification)</label> <input type="text" id="habitat-type" value="GS2 - Dry meadows and grassy verges">
+            <label>Notes on Habitat Condition</label> <textarea id="habitat-notes"></textarea>
+
+            <h3>Species Records</h3>
+            <label>Species Observed</label> <input type="text" id="species-observed">
+            <label>Notes</label> <textarea id="species-notes"></textarea>
+
+            <h3>GPS-tagged Photos</h3>
+            <div id="photo-preview-container">
+                <input type="file" onchange="displayPhotoPreview(event)">
+            </div>
+            <button>Add Photo</button>
+
+            <button onclick="submitSurvey()">Submit Survey Data</button>
+        </section>
+
+        <div id="new-survey-project-modal" class="hidden">
+            <h3>Create New Survey Project</h3>
+            <p>This will create a new project container for your survey.</p>
+            <label>Project Name</label> <input type="text" id="new-project-name">
+            <label>Client Name</label> <input type="text" id="new-client-name">
+            <input type="hidden" id="new-survey-template-id-input">
+            <button onclick="hideNewSurveyProjectModal()">Cancel</button>
+            <button onclick="createNewSurveyFromModal()">Create Project</button>
+        </div>
+
+        <div id="assign-survey-modal" class="hidden">
+            <h3>Survey Ready to Assign</h3>
+            <p>Share this secure link with the field ecologist.</p>
+            <input type="text" id="survey-link-input" readonly>
+            <button onclick="copySurveyLink()">Copy Link</button>
+            <button onclick="hideAssignSurveyModal()">Close</button>
+        </div>
+
+        <div id="assign-third-party-modal" class="hidden">
+            <div id="assign-third-party-form">
+                <h3>Assign Task to a Third Party</h3>
+                <label>3rd Party Email Address</label> <input type="email" id="third-party-email">
+                <label>Assign Task</label>
+                <select id="third-party-task">
+                    <option value="survey">Assign Full Survey</option>
+                    <option value="upload">Request Field Data Upload</option>
+                </select>
+                <button onclick="hideAssignToThirdPartyModal()">Cancel</button>
+                <button onclick="generateThirdPartyLink()">Generate Link</button>
+            </div>
+            <div id="assign-third-party-link" style="display:none;">
+                <h3>Secure Link Generated</h3>
+                <p>Share this link with the third party to grant access.</p>
+                <input type="text" id="third-party-link-input" readonly>
+                <button onclick="copyThirdPartyLink()">Copy Link</button>
+                <button onclick="hideAssignToThirdPartyModal()">Done</button>
+            </div>
+        </div>
+
+        <div id="toast" class="toast">
+            <span id="toast-icon"></span>
+            <span id="toast-message"></span>
+        </div>
+    </main>
+
+    <script>
+    // --- DATA STORE (Mock Database & Local Storage) --- 
+    let db;
+    const defaultDb = { 
+        projects: [ 
+            { id: 1, name: "Lough Ennell SAC", client: "NPWS", code: "NPWS-001-25" }, 
+        ], 
+        surveys: [ 
+            { id: 101, projectId: 1, siteName: "Site A - Woodland", template: "PEA", status: "Completed", data: { habitat: "WD1 - Oak-birch-holly woodland", notes: "Mature oak canopy, limited undergrowth.", species: "Sciurus vulgaris (Red Squirrel)", photo: "https://placehold.co/600x400/a3e635/ffffff?text=Woodland+Canopy" } }, 
+            { id: 102, projectId: 1, siteName: "Site B - River Crossing", template: "EcIA", status: "In Progress", data: {} }, 
+        ], 
+        team: [ 
+            { name: "Dr. Aoife Murphy", email: "aoife.murphy@dulra.ie", role: "Principal Ecologist" }, 
+            { name: "Cian O'Donnell", email: "cian.odonnell@dulra.ie", role: "Field Ecologist" }, 
+            { name: "Siobhán Kelly", email: "siobhan.kelly@dulra.ie", role: "GIS Specialist" } 
+        ] 
+    }; 
+    function saveData() { 
+        localStorage.setItem('dulraDb', JSON.stringify(db));
+    } 
+    function loadData() { 
+        const storedDb = localStorage.getItem('dulraDb'); 
+        db = storedDb ? JSON.parse(storedDb) : JSON.parse(JSON.stringify(defaultDb));
+    }
+    const surveyTemplates = [ 
+        { id: "PEA", name: "Preliminary Ecological Appraisal", description: "A baseline ecological assessment.", icon: "clipboard-list" }, 
+        { id: "EcIA", name: "Ecological Impact Assessment", description: "Assess potential project impacts.", icon: "alert-triangle" }, 
+        { id: "NIS", name: "Natura Impact Statement", description: "For projects affecting Natura 2000 sites.", icon: "shield-check" }, 
+        { id: "AA", name: "Appropriate Assessment Screening", description: "Initial screening for AA.", icon: "search" }, 
+        { id: "Bat", name: "Bat Survey", description: "Surveys for bat activity and roosts.", icon: "moon" }, 
+        { id: "Bird", name: "Bird Survey", description: "Various methods for avian populations.", icon: "bird" }, 
+        { id: "Habitat", name: "Habitat & Botanical Survey", description: "Mapping and assessing habitats.", icon: "leaf" }, 
+        { id: "Invasive", name: "Invasive Species Survey", description: "Mapping and management plans.", icon: "bug" }, 
+        { id: "ECoW", name: "ECoW Report", description: "Ecological Clerk of Works monitoring.", icon: "user-check" } 
+    ];
+    let currentProjectId = null; 
+    let currentProjectTab = 'surveys'; 
+    let currentVisualisationTab = 'basic'; 
+    let chartInstances = {};
+    // To hold chart objects 
+    let currentTasksTab = 'assessments'; 
+    let currentSiteStatusTab = 'sac';
+    
+    // --- VIEW MANAGEMENT --- 
+    const views = document.querySelectorAll('.view'); 
+    function showView(viewId, param = null) { 
+        views.forEach(view => view.classList.remove('active-view')); 
+        document.getElementById(viewId).classList.add('active-view');
+        document.querySelector('main').scrollTo(0, 0); 
+        if (viewId === 'dashboard-view') renderDashboard(); 
+        if (viewId === 'tasks-view') renderTasksView(); 
+        if (viewId === 'my-surveys-view') renderProjects();
+        if (viewId === 'project-detail-view') { 
+            currentProjectId = param; 
+            renderProjectDetails(param); 
+        } 
+        if (viewId === 'survey-form-view') renderSurveyForm(param); 
+        if (viewId === 'survey-template-view') renderSurveyTemplates();
+        if (viewId === 'eiar-editor-view') renderEiarEditor(param); 
+        if (viewId === 'ecow-editor-view') renderEcowEditor(param); 
+        if (viewId === 'gis-view') showInitialGisChoice(); 
+        if (viewId === 'datamine-view') document.getElementById('datamine-results-container').classList.add('hidden');
+        if (viewId === 'team-view') renderTeamView(); 
+        if (viewId === 'impact-view') updateImpactCalculation(); 
+        if (viewId === 'visualisation-view') renderVisualisationView(); 
+        if (viewId === 'assessment-detail-view') renderAssessmentDetailView(param);
+    } 
+    
+    // --- ROUTING (based on URL) --- 
+    function handleRouting() { 
+        const params = new URLSearchParams(window.location.search); 
+        const surveyId = params.get('survey');
+        if(surveyId) { 
+            const survey = db.surveys.find(s => s.id == surveyId); 
+            if(survey) { 
+                showView('survey-form-view', survey.id); 
+            } else { 
+                showView('dashboard-view');
+            // Fallback if survey ID invalid 
+            } 
+        } else { 
+            showView('dashboard-view');
+        // Default to dashboard 
+        } 
+    } 
+    
+    // --- RENDERING FUNCTIONS --- 
+    function renderSurveyTemplates() { 
+        const container = document.querySelector('#survey-template-view .grid');
+        container.innerHTML = surveyTemplates.map(template => ` 
+            <div onclick="startSurveyFromTemplate('${template.id}')" class="bg-surface p-6 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer flex flex-col"> 
+                <div class="flex-1"> 
+                    <i data-lucide="${template.icon}" class="w-8 h-8 text-accent mb-3"></i> 
+                    <h3 class="font-bold text-lg text-secondary">${template.name}</h3> 
+                    <p class="text-sm text-gray-500 mt-1">${template.description}</p> 
+                </div> 
+                <button class="mt-4 text-sm font-semibold text-accent text-left">Start Survey &rarr;</button> 
+            </div> 
+        `).join('');
+        lucide.createIcons(); 
+    } 
+    
+    function renderProjects() { 
+        const list = document.getElementById('project-list'); 
+        if (db.projects.length === 0) { 
+            list.innerHTML = `<div class="text-center py-12 bg-surface rounded-lg shadow-sm"> 
+                <i data-lucide="folder-search" class="w-12 h-12 text-gray-300 mx-auto"></i> 
+                <h3 class="mt-2 text-lg font-medium text-secondary">No surveys yet</h3> 
+                <p class="mt-1 text-sm text-gray-500">Get started by creating your first survey.</p> 
+                <button onclick="showView('survey-template-view')" class="mt-4 bg-primary text-secondary py-2 px-4 rounded-md hover:brightness-95 text-sm">Create Survey</button> 
+            </div>`;
+            lucide.createIcons(); 
+            return; 
+        } 
+        list.innerHTML = db.projects.map(p => { 
+            const projectSurveys = db.surveys.filter(s => s.projectId === p.id); 
+            const completed = projectSurveys.filter(s => s.status === 'Completed').length; 
+            return ` 
+            <div class="bg-surface p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer" onclick="showView('project-detail-view', ${p.id})"> 
+                <div class="flex justify-between items-start"> 
+                    <div> 
+                        <h3 class="font-bold text-lg text-secondary">${p.name}</h3> 
+                        <p class="text-sm text-gray-500">${p.client}</p> 
+                    </div> 
+                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">${p.code}</span> 
+                </div> 
+                <div class="mt-4 pt-4 border-t border-gray-100"> 
+                    <p class="text-xs text-gray-500">${completed} of ${projectSurveys.length} surveys completed.</p> 
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1"> 
+                        <div class="bg-accent h-1.5 rounded-full" style="width: ${projectSurveys.length > 0 ? (completed / projectSurveys.length) * 100 : 0}%"></div> 
+                    </div> 
+                </div> 
+            </div> 
+            `}).join('');
+    } 
+    
+    function renderProjectDetails(projectId) { 
+        const project = db.projects.find(p => p.id === projectId); 
+        document.getElementById('project-title').textContent = project.name; 
+        document.getElementById('project-client').textContent = project.client;
+        document.getElementById('project-code').textContent = project.code; 
+        renderProjectTabs(projectId); 
+        renderProjectTabContent(projectId); 
+    } 
+    
+    function renderEiarEditor(params) { 
+        const { projectId } = params;
+        const project = db.projects.find(p => p.id === projectId); 
+        currentProjectId = projectId; 
+        document.getElementById('eiar-editor-project-name').textContent = `Project: ${project.name}`;
+    } 
+    
+    function renderEcowEditor(params) { 
+        const { projectId } = params; 
+        const project = db.projects.find(p => p.id === projectId);
+        currentProjectId = projectId; 
+        document.getElementById('ecow-editor-project-name').textContent = `Project: ${project.name}`; 
+    } 
+    
+    function renderTeamView() { 
+        const list = document.getElementById('team-list');
+        list.innerHTML = db.team.map(member => ` 
+            <tr> 
+                <td class="p-4 font-medium text-secondary">${member.name}</td> 
+                <td class="p-4 text-gray-600">${member.email}</td> 
+                <td class="p-4"><span class="text-xs font-medium px-2.5 py-0.5 rounded ${member.role === 'Principal Ecologist' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}">${member.role}</span></td> 
+                <td class="p-4"><button class="text-gray-400 hover:text-accent"><i data-lucide="more-horizontal"></i></button></td> 
+            </tr> 
+        `).join('');
+        lucide.createIcons(); 
+    } 
+    
+    function renderProjectTabs(projectId) { 
+        const tabs = [ { id: 'surveys', name: 'Surveys' } ]; 
+        const tabsContainer = document.getElementById('project-tabs');
+        tabsContainer.innerHTML = tabs.map(tab => ` 
+            <button onclick="setProjectTab('${tab.id}')" class="${currentProjectTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> 
+                ${tab.name} 
+            </button> 
+        `).join('');
+    } 
+    
+    function setProjectTab(tabId) { 
+        currentProjectTab = tabId; 
+        renderProjectTabs(currentProjectId); 
+        renderProjectTabContent(currentProjectId); 
+    } 
+    
+    function renderProjectTabContent(projectId) { 
+        const contentContainer = document.getElementById('project-tab-content');
+        if (currentProjectTab === 'surveys') { 
+            const projectSurveys = db.surveys.filter(s => s.projectId === projectId);
+            contentContainer.innerHTML = ` 
+                <div id="survey-list" class="space-y-4"> 
+                    ${projectSurveys.length > 0 ?
+                    projectSurveys.map(s => { 
+                        const statusColor = getStatusColorClass(s.status); // Use helper 
+                        return ` 
+                        <div class="border border-gray-200 p-4 rounded-lg flex justify-between items-center"> 
+                            <div> 
+                                <p class="font-semibold text-secondary">${s.siteName} <span class="text-xs font-normal text-gray-500 ml-2">(${s.template})</span></p> 
+                                <span class="status-badge ${statusColor}">${s.status}</span> 
+                            </div> 
+                            <div class="flex items-center space-x-2"> 
+                                ${s.status === 'Ready' ? `<button onclick="assignSurvey(${s.id})" class="text-sm bg-accent text-white py-1 px-3 rounded-md hover:bg-orange-500">Assign</button>` : ''} 
+                                ${s.status === 'Completed' ? `<button onclick="generateReport(${s.id})" class="text-sm bg-secondary text-white py-1 px-3 rounded-md hover:bg-slate-600">Generate Report</button>` : ''} 
+                            </div> 
+                        </div>`; 
+                    }).join('') : '<p class="text-gray-500">No surveys created for this project yet.</p>'} 
+                </div> 
+            `;
+        } 
+        lucide.createIcons(); 
+    } 
+    
+    function renderSurveyForm(surveyId) { 
+        const survey = db.surveys.find(s => s.id === surveyId);
+        const project = db.projects.find(p => p.id === survey.projectId); 
+        const template = surveyTemplates.find(t => t.id === survey.template); 
+        document.getElementById('survey-id-input').value = survey.id;
+        document.getElementById('survey-form-title').textContent = template.name; 
+        document.getElementById('survey-form-project-name').textContent = project.name; 
+        document.getElementById('survey-form-site-name').textContent = survey.siteName; 
+    } 
+    
+    // --- Assessment Detail View --- 
+    function renderAssessmentDetailView(params) { 
+        const { siteCode } = params;
+        // Find the assessment data - combining CSV and potentially other sources 
+        const assessments = parseCsv(sacConditionsCsv).concat(parseCsv(spaConditionsCsv)).concat(parseCsv(nhaConditionsCsv));
+        const siteData = assessments.find(site => site.Sitecode == siteCode) || { SiteName: 'Rossbehy', Sitecode: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' };
+        // Use Rossbehy as default/fallback 
+        document.getElementById('assessment-site-name').textContent = siteData.SiteName; 
+        document.getElementById('assessment-site-code').textContent = `Site Code: ${siteData.Sitecode}`; 
+        document.getElementById('assessment-county').textContent = siteData.COUNTY || 'N/A';
+        document.getElementById('assessment-area').textContent = siteData.HA || 'N/A'; 
+        const statusBadge = document.getElementById('assessment-status-badge'); 
+        statusBadge.textContent = siteData.Status || 'Unknown'; 
+        statusBadge.className = `status-badge ${getStatusColorClass(siteData.Status)}`;
+        // --- Simulate Habitat and Species Data for Rossbehy --- 
+        const habitatsList = document.getElementById('assessment-habitats'); 
+        const speciesList = document.getElementById('assessment-species');
+        const table1 = document.getElementById('rossbehy-table-1'); 
+        const table2 = document.getElementById('rossbehy-table-2'); 
+        const table3 = document.getElementById('rossbehy-table-3'); 
+        const docContent = document.getElementById('rossbehy-doc-content');
+        // Based on Rossbehy.docx 
+        if (siteCode == 13) { 
+            habitatsList.innerHTML = ` 
+                <li>Fixed coastal dunes with herbaceous vegetation (grey dunes) (* priority habitat) (2130)</li> 
+                <li>Embryonic shifting dunes (2110)</li> 
+                <li>Shifting dunes along the shoreline with Ammophila arenaria (white dunes) (2120)</li> 
+                <li>Atlantic salt meadows (Glauco-Puccinellietalia maritimae) (1330)</li> 
+                <li>Mediterranean salt meadows (Juncetalia maritimi) (1410)</li> 
+            `;
+            speciesList.innerHTML = ` 
+                <li>Light-bellied Brent Goose (Branta bernicla hrota) [A046]</li> 
+                <li>Common Scoter (Melanitta nigra) [A065]</li> 
+                <li>Red-breasted Merganser (Mergus serrator) [A069]</li> 
+                <li>Ringed Plover (Charadrius hiaticula) [A137]</li> 
+                <li>Sanderling (Calidris alba) [A144]</li> 
+                <li>Bar-tailed Godwit (Limosa lapponica) [A157]</li> 
+                <li>Curlew (Numenius arquata) [A160]</li> 
+                <li>Redshank (Tringa totanus) [A162]</li> 
+                <li>Turnstone (Arenaria interpres) [A169]</li> 
+                <li>Wetland and Waterbirds [A999]</li> 
+            `;
+            // Populate Tables (simplified data extraction) 
+            table1.innerHTML = ` 
+                <thead><tr><th>Habitat Code</th><th>Habitat Name</th><th>Area (ha)</th><th>Subsite</th></tr></thead> 
+                <tbody> 
+                    <tr><td>2130</td><td>Fixed coastal dunes*</td><td>10.39</td><td>1</td></tr> 
+                    <tr><td>2110</td><td>Embryonic shifting dunes</td><td>0.09</td><td>1</td></tr> 
+                    <tr><td>2120</td><td>Shifting dunes (white dunes)</td><td>9.60</td><td>1</td></tr> 
+                    <tr><td>1330</td><td>Atlantic salt meadows</td><td>14.16</td><td>2</td></tr> 
+                    <tr><td>1410</td><td>Mediterranean salt meadows</td><td>55.57</td><td>2</td></tr> 
+                </tbody> 
+            `;
+            table2.innerHTML = ` 
+                <thead><tr><th>Species Code</th><th>Species Name</th><th>Population/Range</th><th>Subsite</th></tr></thead> 
+                <tbody> 
+                    <tr><td>A046</td><td>Light-bellied Brent Goose</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A065</td><td>Common Scoter</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A069</td><td>Red-breasted Merganser</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A137</td><td>Ringed Plover</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A144</td><td>Sanderling</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A157</td><td>Bar-tailed Godwit</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A160</td><td>Curlew</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A162</td><td>Redshank</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A169</td><td>Turnstone</td><td>Population</td><td>-</td></tr> 
+                    <tr><td>A999</td><td>Wetland and Waterbirds</td><td>Range</td><td>-</td></tr> 
+                </tbody> 
+            `;
+            table3.innerHTML = ` 
+                <thead><tr><th>Habitat Code</th><th>Conservation Objective</th><th>Target</th></tr></thead> 
+                <tbody> 
+                    <tr><td>2130</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> 
+                    <tr><td>2110</td><td>Maintain favourable conservation condition</td><td>Maintain</td></tr> 
+                    <tr><td>2120</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> 
+                    <tr><td>1330</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> 
+                    <tr><td>1410</td><td>Restore favourable conservation condition</td><td>Restore</td></tr> 
+                    </tbody> 
+            `;
+            // Simulate document content 
+            docContent.innerHTML = ` 
+                <h4 class="font-bold">Site Description</h4> 
+                <p>Rossbehy is a large site covering almost 92ha located approximately 1.2km to the north-west of Glenbeigh, Co. Kerry, on the southern shore of Dingle Bay. The site comprises a sand spit which extends northwards into Dingle Bay and an area of saltmarsh which occurs behind (to the east of) the sand dunes. The dunes at Rossbehy occur to the south of the Inch dune system which extends south from the northern shore of Dingle Bay. Almost the entire site (99.7% or 91.71ha) occurs within the Castlemaine Harbour SAC (000343) (Figure 1), while 94% (86.76ha) of the site occurs within the Castlemaine Harbour SPA (004029)...</p> 
+                <h4 class="font-bold mt-4">Habitats</h4> 
+                <p>Five Annex I habitats occur at Rossbehy including one priority habitat Fixed coastal dunes with herbaceous vegetation (grey dunes) (2130) (Table 1). There is also Embryonic shifting dunes (2110), Shifting dunes along the shoreline with Ammophila arenaria (white dunes) (2120), Atlantic salt meadows (Glauco-Puccinellietalia maritimae) (1330) and Mediterranean salt meadows (Juncetalia maritimi) (1410). Combined, these habitats cover 91.7% of the site (84.1ha). The fixed dunes are the largest habitat at the site and cover 10.39ha, followed by the white dunes (9.60ha), and the embryonic dunes (0.09ha). The Atlantic salt meadows cover 14.16ha, and the Mediterranean salt meadows cover 55.57ha...</p> 
+            `;
+        } else { 
+            habitatsList.innerHTML = `<li>Placeholder Habitat 1</li><li>Placeholder Habitat 2</li>`; 
+            speciesList.innerHTML = `<li>Placeholder Species A</li><li>Placeholder Species B</li>`;
+            table1.innerHTML = `<tr><td>No data available for this site.</td></tr>`; 
+            table2.innerHTML = `<tr><td>No data available for this site.</td></tr>`;
+            table3.innerHTML = `<tr><td>No data available for this site.</td></tr>`; 
+            docContent.innerHTML = `<p>No document data available for this site.</p>`;
+        } 
+    } 
+    
+    function showMapDetail(event) { 
+        const mapInfo = document.getElementById('map-detail-info'); 
+        const targetElement = event.target.closest('\[data-info\]');
+        // Find the clicked zone 
+        if (targetElement) { 
+            mapInfo.textContent = `You clicked on: ${targetElement.dataset.info}`;
+        } else { 
+            mapInfo.textContent = `Exploring the map...`; 
+        } 
+        // Clear the message after a few seconds 
+        setTimeout(() => { 
+            mapInfo.textContent = ''; 
+        }, 2500);
+    } 
+    
+    // --- MODAL CONTROLS --- 
+    const newSurveyProjectModal = document.getElementById('new-survey-project-modal'); 
+    const assignSurveyModal = document.getElementById('assign-survey-modal'); 
+    const assignThirdPartyModal = document.getElementById('assign-third-party-modal');
+    
+    function showNewSurveyProjectModal() { 
+        newSurveyProjectModal.classList.remove('hidden'); 
+    } 
+    function hideNewSurveyProjectModal() { 
+        newSurveyProjectModal.classList.add('hidden'); 
+    } 
+    function showAssignSurveyModal() { 
+        assignSurveyModal.classList.remove('hidden'); 
+    } 
+    function hideAssignSurveyModal() { 
+        assignSurveyModal.classList.add('hidden');
+    } 
+    function showAssignToThirdPartyModal() { 
+        document.getElementById('assign-third-party-form').style.display = 'block'; 
+        document.getElementById('assign-third-party-link').style.display = 'none'; 
+        assignThirdPartyModal.classList.remove('hidden'); 
+    } 
+    function hideAssignToThirdPartyModal() { 
+        assignThirdPartyModal.classList.add('hidden');
+    } 
+    
+    // --- TOAST NOTIFICATION --- 
+    function showToast(message, type = 'success') { 
+        const toast = document.getElementById('toast'); 
+        const toastMessage = document.getElementById('toast-message');
+        const toastIcon = document.getElementById('toast-icon'); 
+        toastMessage.textContent = message; 
+        toast.className = 'toast show';
+        // Reset and show 
+        if (type === 'success') { 
+            toast.classList.add('bg-green-600', 'text-white'); 
+            toastIcon.setAttribute('data-lucide', 'check-circle'); 
+        } else { 
+            // error 
+            toast.classList.add('bg-red-600', 'text-white');
+            toastIcon.setAttribute('data-lucide', 'alert-circle'); 
+        } 
+        lucide.createIcons(); 
+        setTimeout(() => { 
+            toast.classList.remove('show'); 
+        }, 3000);
+    } 
+    
+    // --- GIS VIEW CONTROLS --- 
+    const gisFields = [ 
+        { id: 'foss_qualifi', name: 'FOSS_QUALIFI', description: 'Qualifier code for Guide to Habitats classification subtypes.' }, 
+        { id: 'add_hab', name: 'ADD_HAB', description: 'Field for secondary habitat classification schemes.' }, 
+        { id: 'foss_name', name: 'FOSS_NAME', description: 'Habitat name corresponding to the Guide to Habitats code.' }, 
+        { id: 'area_length', name: 'AREA / LENGTH', description: 'Total area (m²) for polygons or length (m) for polylines.' }, 
+        { id: 'easting_northing', name: 'EASTING / NORTHING', description: 'Coordinates of a point feature or centroid.' }, 
+        { id: 'photo_id', name: 'PHOTO_ID', description: 'Photo identification numbers related to the habitat feature.' }, 
+        { id: 'annex_spp', name: 'ANNEX_SPP / RDB_SPP', description: 'Binary (0/1) for presence of Annex II/I or Red Data book species.' }, 
+        { id: 'evaluation', name: 'EVALUATION', description: 'Conservation evaluation (e.g., International, National).' }, 
+        { id: 'condition', name: 'CONDITION', description: 'Ecological condition of habitats (e.g., scale 1-5).' }, 
+        { id: 'threats', name: 'THREATS', description: 'Specific codes identifying threats to habitats.' }, 
+        { id: 'notes_species', name: 'NOTES / SPECIES', description: 'General comments, characteristic, or notable species.' } 
+    ];
+    
+    function showGisConnection(toolName) { 
+        document.getElementById('gis-initial-choice').classList.add('hidden'); 
+        document.getElementById('gis-connection-view').classList.remove('hidden'); 
+        document.getElementById('gis-connection-title').textContent = `Connect to ${toolName}`; 
+        const fieldList = document.getElementById('gis-field-list');
+        fieldList.innerHTML = gisFields.map(field => ` 
+            <div class="relative flex items-start"> 
+                <div class="flex h-5 items-center"> 
+                    <input id="${field.id}" name="${field.id}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-accent focus:ring-accent" checked> 
+                </div> 
+                <div class="ml-3 text-sm"> 
+                    <label for="${field.id}" class="font-medium text-secondary">${field.name}</label> 
+                    <p class="text-gray-500">${field.description}</p> 
+                </div> 
+            </div> 
+        `).join('');
+    } 
+    
+    function showInitialGisChoice() { 
+        document.getElementById('gis-connection-view').classList.add('hidden'); 
+        document.getElementById('gis-initial-choice').classList.remove('hidden'); 
+    } 
+    
+    // --- DATA MINE CONTROLS --- 
+    function performDataMineSearch() { 
+        const resultsContainer = document.getElementById('datamine-results-container');
+        const loading = document.getElementById('datamine-loading'); 
+        const content = document.getElementById('datamine-results-content'); 
+        resultsContainer.classList.remove('hidden'); 
+        content.classList.add('hidden'); 
+        loading.classList.remove('hidden');
+        // Simulate a network request 
+        setTimeout(() => { 
+            loading.classList.add('hidden'); 
+            content.classList.remove('hidden'); 
+        }, 1500);
+    } 
+    
+    // --- DYNAMIC FIELD SURVEY ENTRY --- 
+    function addHabitatEntry() { 
+        const container = document.getElementById('habitat-entries'); 
+        if (!container) return; // Don't run if element not on page
+        const newEntry = document.createElement('div');
+        newEntry.className = 'p-4 border rounded-md bg-gray-50'; 
+        newEntry.innerHTML = ` 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">Habitat Code</label> 
+                    <input type="text" placeholder="e.g., GS2" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                </div> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">Habitat Name</label> 
+                    <input type="text" placeholder="e.g., Dry meadows" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                </div> 
+            </div> 
+            <div class="mt-4"> 
+                <label class="block text-sm font-medium text-gray-700">Notes</label> 
+                <textarea rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea> 
+            </div> 
+        `;
+        container.appendChild(newEntry); 
+    } 
+    
+    function addFaunaSighting() { 
+        const container = document.getElementById('fauna-entries'); 
+        if (!container) return;
+        const newEntry = document.createElement('div'); 
+        newEntry.className = 'p-4 border rounded-md bg-gray-50';
+        newEntry.innerHTML = ` 
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4"> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">Species</label> 
+                    <input type="text" placeholder="e.g., Otter" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                </div> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">Number</label> 
+                    <input type="number" value="1" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                </div> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">Evidence</label> 
+                    <input type="text" placeholder="e.g., Spraint" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                </div> 
+            </div> 
+            <div class="mt-4"> 
+                <label class="block text-sm font-medium text-gray-700">Notes</label> 
+                <textarea rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea> 
+            </div> 
+            <div class="mt-4"> 
+                <label class="block text-sm font-medium text-gray-700">Image</label> 
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> 
+                    <div class="space-y-1 text-center"> 
+                        <i data-lucide="image" class="mx-auto h-12 w-12 text-gray-400"></i> 
+                        <div class="flex text-sm text-gray-600"><label class="relative cursor-pointer bg-white rounded-md font-medium text-accent hover:text-orange-500 focus-within:outline-none"><span>Upload a file</span><input type="file" class="sr-only"></label><p class="pl-1">or drag and drop</p></div> 
+                    </div> 
+                </div> 
+            </div> 
+        `;
+        container.appendChild(newEntry); 
+        if (window.lucide) lucide.createIcons(); 
+    } 
+    
+    function addFloraRecord() { 
+        const container = document.getElementById('flora-entries'); 
+        if (!container) return;
+        const newEntry = document.createElement('div'); 
+        newEntry.className = 'p-4 border rounded-md bg-gray-50';
+        newEntry.innerHTML = ` 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">Species Name</label> 
+                    <input type="text" placeholder="e.g., Bluebell" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                </div> 
+                <div> 
+                    <label class="block text-sm font-medium text-gray-700">DAFOR Scale</label> 
+                    <select class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                        <option>Dominant</option> 
+                        <option>Abundant</option> 
+                        <option>Frequent</option> 
+                        <option>Occasional</option> 
+                        <option>Rare</option> 
+                    </select> 
+                </div> 
+            </div> 
+            <div class="mt-4"> 
+                <label class="block text-sm font-medium text-gray-700">Notes</label> 
+                <textarea rows="3" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"></textarea> 
+            </div> 
+            <div class="mt-4"> 
+                <label class="block text-sm font-medium text-gray-700">Image</label> 
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"> 
+                    <div class="space-y-1 text-center"> 
+                        <i data-lucide="image" class="mx-auto h-12 w-12 text-gray-400"></i> 
+                        <div class="flex text-sm text-gray-600"><label class="relative cursor-pointer 
+                            bg-white rounded-md font-medium text-accent hover:text-orange-500 focus-within:outline-none"><span>Upload a file</span><input type="file" class="sr-only"></label><p class="pl-1">or drag and drop</p></div> 
+                    </div> 
+                </div> 
+            </div> 
+        `; 
+        container.appendChild(newEntry); 
+        if (window.lucide) lucide.createIcons();
+    } 
+    
+    // --- TEMPLATE EDITOR --- 
+    function addTemplateElement(type) { 
+        const editor = document.getElementById('custom-template-editor');
+        const newElement = document.createElement(type === 'heading' ? 'h4' : 'p'); 
+        newElement.setAttribute('contenteditable', 'true');
+        if (type === 'heading') { 
+            newElement.className = 'text-lg font-semibold text-secondary focus:outline-none p-2 rounded-md'; 
+            newElement.textContent = 'New Editable Heading';
+        } else { 
+            newElement.className = 'text-gray-700 focus:outline-none p-2 rounded-md'; 
+            newElement.textContent = 'New editable paragraph. Start typing...'; 
+        } 
+        editor.appendChild(newElement); 
+        newElement.focus();
+    } 
+    
+    function saveCustomTemplate() { 
+        // In a real app, you'd save the editor.innerHTML 
+        showToast('Custom template saved!'); 
+        showView('survey-template-view');
+    } 
+    
+    // --- IMPACT CALCULATION --- 
+    function updateImpactCalculation() { 
+        const passages = 11.19;
+        // Static based on example for UI simplicity 
+        const probability = 0.179;
+        // Static based on example 
+        const opTime = parseFloat(document.getElementById('crm-optime').value) / 100 || 0.85; 
+        const avoidance = parseFloat(document.getElementById('crm-avoidance').value) / 100 || 0.98; 
+        const adjustedProbability = probability * opTime; 
+        const finalCollisions = passages * adjustedProbability * (1 - avoidance); 
+        document.getElementById('crm-final-result').textContent = finalCollisions.toFixed(2);
+    } 
+    
+    // --- DASHBOARD --- 
+    function renderDashboard() { 
+        // Check if Chart object exists
+        if (typeof Chart === 'undefined') return; 
+        destroyCharts(); // Clear old charts before rendering new ones 
+        renderStatusChart('actions-chart', 'Action Status', [5, 3, 8, 12]);
+        // Example data 
+        renderStatusChart('surveys-chart', 'Assessment Status', [3, 1, 2, 8]); // Updated data 
+        renderSiteStatusTabs(); 
+        renderSiteStatusTabContent();
+    } 
+    
+    function destroyCharts() { 
+        Object.values(chartInstances).forEach(chart => { 
+            if (chart) chart.destroy(); 
+        }); 
+        chartInstances = {};
+    } 
+    
+    function renderStatusChart(canvasId, label, data) { 
+        const ctx = document.getElementById(canvasId).getContext('2d'); 
+        const total = data.reduce((a, b) => a + b, 0);
+        chartInstances[canvasId] = new Chart(ctx, { 
+            type: 'doughnut', 
+            data: { 
+                labels: ['Not Assigned', 'Pending', 'In Progress', 'Completed'], 
+                datasets: [{ 
+                    label: label, 
+                    data: data, 
+                    backgroundColor: ['#E5E7EB', '#FBBF24', '#3B82F6', '#10B981'], // Grey, Yellow, Blue, Green 
+                }] 
+            }, 
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                plugins: { 
+                    legend: { 
+                        position: 'bottom', 
+                        labels: { boxWidth: 12 } 
+                    }, 
+                    tooltip: { 
+                        callbacks: { 
+                            label: function(context) { 
+                                let label = context.label || ''; 
+                                if (label) { label += ': '; } 
+                                const value = context.raw; 
+                                const percentage = total > 0 ? ((value / total) * 100).toFixed(1) + '%' : '0%'; 
+                                label += `${value} (${percentage})`; 
+                                return label; 
+                            } 
+                        } 
+                    }, 
+                    datalabels: { 
+                        formatter: (value, ctx) => { 
+                            let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0); 
+                            let percentage = sum > 0 ? (value * 100 / sum).toFixed(1) + "%" : '0%'; 
+                            return percentage; 
+                        }, 
+                        color: '#fff', 
+                        font: { weight: 'bold' } 
+                    } 
+                } 
+            }, 
+            plugins: [ChartDataLabels] 
+        });
+    } 
+    
+    // --- CSV DATA --- 
+    const sacConditionsCsv = `Site Name ,Site code,Last Upate ,Habitats Health ,Species Health 
+River Barrow and River Nore SAC,2162,June 2025,Inadequate,Bad 
+Hook Head SAC,764,January 2025,Favourable,Favourable 
+Belgica Mound Province SAC,2327,January 2025,Inadequate,Inadequate 
+West Connacht Coast SAC,2998,January 2025,Bad,Favourable 
+Codling Fault Zone SAC,3015,January 2025,Favourable,Inadequate 
+Lambay Island SAC,204,December 2024,Bad,Bad`;
+    
+    const spaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health 
+Lady's Island Lake SPA,4009,July 2025,Favourable,Favourable 
+Termoncarragh Lake and Annagh Machair SPA,4093,June 2025,Inadequate,Favourable 
+Inishmore SPA,4152,June 2025,Bad,Bad 
+Dingle Peninsula SPA,4153,June 2025,Favourable,Inadequate 
+Horn Head to Fanad Head SPA,4194,June 2025,Inadequate,Inadequate 
+Cliffs of Moher SPA,4005,June 2025,Favourable,Favourable`;
+    
+    const nhaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health 
+Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7 
+Inishduff NHA,151,Pending,Donegal,46.5 
+Roaninish NHA,184,In Progress,Donegal,145.8 
+Lough Namucka Bog NHA,220,Completed,Galway,221.0`;
+    
+    const assessmentsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,HA,Link to Survey 
+9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7,https://www.npws.ie/protected-sites/nha/000009 
+151,Inishduff NHA,Pending,Donegal,46.5,https://www.npws.ie/protected-sites/nha/000151 
+184,Roaninish NHA,In Progress,Donegal,145.8,https://www.npws.ie/protected-sites/nha/000184 
+220,Lough Namucka Bog NHA,Completed,Galway,221.0,https://www.npws.ie/protected-sites/nha/000220 
+6, Killyconny Bog (Cloghbally) SAC,Pending, Cavan, 284, 
+7, Lough Oughter and Associated Loughs SAC, Completed, Galway, 898, 
+4, Ballyallia Lake SAC, Completed, Galway, 897, 
+10, Ballycullinan Lake SAC, Completed, Galway, 798, 
+20, Black Head/Poulsallagh Complex, Completed, Donegal,199, 
+90, Danes Hole Poulnalecka SAC, Completed, Mayo, 7889 
+32, Dromore Woods & Loughs, Completed, Cork, 8978, 
+37, Pouladatig Cave 1999, Completed, Cork, 879, 
+51, Lough Gash Turlough SAC, Completed, Cork, 878, 
+54, Moneen Mountain 1997, Completed, Limerick, 9889, 
+57, Moyree River System, Completed, Cork, 878, 
+64, Poulnagordon Cave (Quin) SAC, Completed, Cork, 878, 
+77, Ballymacoda(Clonpriest and Pillmore)SAC, Completed, Cork, 7768, 
+90, Glengarriff Harbour and Woodland, Completed, Cork, 756, 
+91, Clonakilty Bay SAC, Completed, Mayo, 435, 
+93, Caha Mountains SAC, Completed, Donegal, 426, 
+97, Lough Hyne Nature Reserve and Environs SAC, Completed, Sligo, 549, 
+101, Roaringwater Bay and Islands SAC, Completed, Sligo,470, 
+106, St. Gobnet's Wood SAC, Completed, Donegal,216, 
+109, Three Castle Head to Mizen Head, Completed, Donegal,540, 
+111, Aran Island (Donegal) Cliffs SAC, Completed, Donegal, 613,`;
+    
+    const actionsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,Action Type,Link to Survey 
+245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,https://www.npws.ie/protected-sites/nha/000245 
+247,Slieve Bog NHA,Completed,Galway,Species protection,https://www.npws.ie/protected-sites/nha/000247 
+249,Cloonoolish Bog NHA,Completed,Galway,Species protection,https://www.npws.ie/protected-sites/nha/000249 
+253,Cregganna Marsh NHA,Completed,Galway,Species protection,https://www.npws.ie/protected-sites/nha/000253 
+254,Crit Island West NHA,Not Assigned,Galway,Public engagement and education,https://www.npws.ie/protected-sites/nha/000254 
+267,Funshin Bog NHA,Not Assigned,Galway,Site and habitat management,https://www.npws.ie/protected-sites/nha/000267 
+280,Castle Ffrench West Bog NHA,Not Assigned,Galway,Site and habitat management,https://www.npws.ie/protected-sites/nha/000280 
+281,Keeloges Bog NHA,Pending,Galway,Site and habitat management,https://www.npws.ie/protected-sites/nha/000281 
+283,Kilmore Bog NHA,Pending,Galway,Site and habitat management,https://www.npws.ie/protected-sites/nha/000283 
+284,Kilnaborris Bog NHA,Pending,Galway,Site and habitat management,https://www.npws.ie/protected-sites/nha/000284 
+6, Killyconny Bog (Cloghbally) SAC, Completed,Cavan, Site and habitat management, 
+7, Lough Oughter and Associated Loughs SAC, Completed, Galway, Site and habitat management, 
+4, Ballyallia Lake SAC, Completed,Galway, Site and habitat management, 
+10, Ballycullinan Lake SAC, Completed, Galway, Site and habitat management, 
+20, Black Head/Poulsallagh Complex, Completed, Donegal,Site and habitat management, 
+90, Danes Hole Poulnalecka SAC, Completed, Mayo, Site and habitat management, 
+32, Dromore Woods & Loughs, Completed, Cork, Site and habitat management, 
+37, Pouladatig Cave 1999, Completed, Cork, Site and habitat management, 
+51, Lough Gash Turlough SAC, Completed, Cork,Site and habitat management, 
+54, Moneen Mountain 1997, Completed, Limerick, Site and habitat management, 
+57, Moyree River System, Completed,Cork,Site and habitat management, 
+64, Poulnagordon Cave (Quin) SAC, Completed, Cork, Site and habitat management, 
+77, Ballymacoda(Clonpriest and Pillmore)SAC, Completed,Cork, Site and habitat management, 
+90, Glengarriff Harbour and Woodland, Completed,Cork, Site and habitat management, 
+91, Clonakilty Bay SAC, Completed, Mayo, Site and habitat management, 
+93, Caha Mountains SAC, Completed, Donegal, Site and habitat management, 
+97, Lough Hyne Nature Reserve and Environs SAC,Completed, Sligo, Site and habitat management, 
+101, Roaringwater Bay and Islands SAC, Completed, Sligo,Site and habitat management, 
+106, St. Gobnet's Wood SAC, Completed,Donegal,Site and habitat management 
+109, Three Castle Head to Mizen Head, Completed, Donegal,Site and habitat management, 
+111, Aran Island (Donegal) Cliffs SAC, Completed,Donegal,Site and habitat management,`;
+    
+    function parseCsv(csvString) { 
+        const rows = csvString.trim().split('\n'); 
+        const headers = rows.shift().split(',').map(h => h.trim().replace(/\s+/g, ''));
+        return rows.map(row => { 
+            const values = row.split(','); 
+            return headers.reduce((obj, header, index) => { 
+                obj[header] = values[index] ? values[index].trim() : ''; 
+                return obj; 
+            }, {}); 
+        });
+    } 
+    
+    function getStatusColorClass(status) { 
+        if (!status) return 'bg-gray-100 text-gray-800'; 
+        const lowerStatus = status.toLowerCase(); 
+        if (lowerStatus === 'completed') return 'bg-green-100 text-green-800';
+        if (lowerStatus === 'in progress') return 'bg-blue-100 text-blue-800'; 
+        if (lowerStatus === 'pending') return 'bg-yellow-100 text-yellow-800';
+        if (lowerStatus === 'not assigned') return 'bg-gray-100 text-gray-800'; 
+        return 'bg-gray-100 text-gray-800';
+    } 
+    
+    function getStatusDot(status) { 
+        if (!status) return '<span class="w-3 h-3 rounded-full bg-gray-400 block mx-auto"></span>'; 
+        const lowerStatus = status.toLowerCase();
+        if (lowerStatus.includes('favourable')) return '<span class="w-3 h-3 rounded-full bg-status-favourable block mx-auto"></span>'; 
+        if (lowerStatus.includes('inadequate')) return '<span class="w-3 h-3 rounded-full bg-status-inadequate block mx-auto"></span>';
+        if (lowerStatus.includes('bad')) return '<span class="w-3 h-3 rounded-full bg-status-bad block mx-auto"></span>'; 
+        return '<span class="w-3 h-3 rounded-full bg-gray-400 block mx-auto"></span>';
+    } 
+    
+    function generateRandomConservationString() { 
+        const statuses = ['Favourable', 'Inadequate', 'Bad']; 
+        const randStatus = () => statuses[Math.floor(Math.random() * 3)];
+        const statusColor = (status) => { 
+            if (status === 'Favourable') return 'text-status-favourable'; 
+            if (status === 'Inadequate') return 'text-status-inadequate'; 
+            return 'text-status-bad';
+        }; 
+        let s1 = randStatus(); 
+        let s2 = randStatus(); 
+        let s3 = randStatus(); 
+        let s4 = randStatus();
+        return ` 
+            <div class="text-xs space-y-1"> 
+                <div>Range: <span class="font-medium ${statusColor(s1)}">${s1}</span></div> 
+                <div>Area: <span class="font-medium ${statusColor(s2)}">${s2}</span></div> 
+                <div>Structure & Functions: <span class="font-medium ${statusColor(s3)}">${s3}</span></div> 
+                <div>Future Prospects: <span class="font-medium ${statusColor(s4)}">${s4}</span></div> 
+            </div> 
+        `;
+    } 
+    
+    // --- DASHBOARD: SITE STATUS --- 
+    function renderSiteStatusTabs() { 
+        const tabs = [ 
+            { id: 'sac', name: 'SAC' }, 
+            { id: 'spa', name: 'SPA' }, 
+            { id: 'nha', name: 'NHA' } 
+        ];
+        const tabsContainer = document.getElementById('site-status-tabs'); 
+        tabsContainer.innerHTML = tabs.map(tab => ` 
+            <button onclick="setSiteStatusTab('${tab.id}')" class="${currentSiteStatusTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> 
+                ${tab.name} 
+            </button> 
+        `).join('');
+    } 
+    
+    function setSiteStatusTab(tabId) { 
+        currentSiteStatusTab = tabId; 
+        renderSiteStatusTabs(); 
+        renderSiteStatusTabContent(); 
+    } 
+    
+    function renderSiteStatusTabContent() { 
+        const content = document.getElementById('site-status-content'); 
+        let csvData;
+        if (currentSiteStatusTab === 'sac') { 
+            csvData = parseCsv(sacConditionsCsv); 
+        } else if (currentSiteStatusTab === 'spa') { 
+            csvData = parseCsv(spaConditionsCsv);
+        } else { 
+            csvData = parseCsv(nhaConditionsCsv); 
+        } 
+        let stats = { favourable: 0, unfavourable: 0, speciesFavourable: 0, total: csvData.length };
+        csvData.forEach(row => { 
+            if (row.HabitatsHealth?.toLowerCase().includes('favourable')) stats.favourable++; 
+            if (row.HabitatsHealth?.toLowerCase().includes('inadequate') || row.HabitatsHealth?.toLowerCase().includes('bad')) stats.unfavourable++; 
+            if (row.SpeciesHealth?.toLowerCase().includes('favourable')) stats.speciesFavourable++; 
+        }); 
+        document.getElementById('total-assessments-stat').textContent = stats.total;
+        document.getElementById('habitats-favourable-stat').textContent = stats.favourable; 
+        document.getElementById('habitats-unfavourable-stat').textContent = stats.unfavourable; 
+        document.getElementById('species-favourable-stat').textContent = stats.speciesFavourable; 
+        content.innerHTML = ` 
+            <div class="h-96 overflow-y-auto pr-2"> 
+                <table class="w-full text-left text-sm"> 
+                    <thead class="bg-gray-50 sticky top-0"> 
+                        <tr> 
+                            <th class="p-2 font-semibold">Site Code</th> 
+                            <th class="p-2 font-semibold">Site Name</th> 
+                            <th class="p-2 font-semibold">Habitats Health</th> 
+                            <th class="p-2 font-semibold">Species Health</th> 
+                            <th class="p-2 font-semibold">Last Updated</th> 
+                        </tr> 
+                    </thead> 
+                    <tbody class="divide-y divide-gray-200"> 
+                        ${csvData.map(row => { 
+                            return ` 
+                            <tr class="hover:bg-gray-50"> 
+                                <td class="p-2">${row.Sitecode}</td> 
+                                <td class="p-2">${row.SiteName}</td> 
+                                <td class="p-2">${generateRandomConservationString()}</td> 
+                                <td class="p-2">${generateRandomConservationString()}</td> 
+                                <td class="p-2">${row.LastUpate || row.LastUpdated || 'N/A'}</td> 
+                            </tr> 
+                            `}).join('')} 
+                    </tbody> 
+                </table> 
+            </div> 
+        `;
+    } 
+    
+    // --- TASKS PAGE --- 
+    function renderTasksView() { 
+        currentTasksTab = 'assessments'; // Default to first tab 
+        renderTasksTabs(); 
+        renderTasksTabContent();
+    } 
+    
+    function renderTasksTabs() { 
+        const tabs = [ 
+            { id: 'assessments', name: 'Conservation Assessments' }, 
+            { id: 'actions', name: 'Conservation Actions' } 
+        ];
+        const tabsContainer = document.getElementById('tasks-tabs'); 
+        tabsContainer.innerHTML = tabs.map(tab => ` 
+            <button onclick="setTasksTab('${tab.id}')" class="${currentTasksTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'} whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm"> 
+                ${tab.name} 
+            </button> 
+        `).join('');
+    } 
+    
+    function setTasksTab(tabId) { 
+        currentTasksTab = tabId; 
+        renderTasksTabs(); 
+        renderTasksTabContent(); 
+    } 
+    
+    function renderTasksTabContent() { 
+        const content = document.getElementById('tasks-content');
+        if (currentTasksTab === 'assessments') { 
+            let assessmentsData = parseCsv(assessmentsCsvData); 
+            const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' };
+            if (!assessmentsData.some(item => item.SITECODE === '13')) { 
+                assessmentsData.push(rossbehyAssessment); 
+            } 
+            content.innerHTML = ` 
+                <div class="bg-surface p-6 rounded-lg shadow-md"> 
+                    <div class="h-[60vh] overflow-y-auto pr-2"> 
+                        <table class="w-full text-left text-sm"> 
+                            <thead class="bg-gray-50 sticky top-0"> 
+                                <tr> 
+                                    <th class="p-2 font-semibold">Site Code</th> 
+                                    <th class="p-2 font-semibold">Site Name</th> 
+                                    <th class="p-2 font-semibold">Status</th> 
+                                    <th class="p-2 font-semibold">County</th> 
+                                    <th class="p-2 font-semibold text-right">Area (ha)</th> 
+                                </tr> 
+                            </thead> 
+                            <tbody class="divide-y divide-gray-200"> 
+                                ${assessmentsData.map(row => ` 
+                                <tr class="${row.SITECODE == '13' ? 'cursor-pointer hover:bg-gray-50' : ''}" ${row.SITECODE == '13' ? `onclick="showView('assessment-detail-view', { siteCode: 13 })"` : ''}> 
+                                    <td class="p-2">${row.SITECODE}</td> 
+                                    <td class="p-2">${row.SITE_NAME}</td> 
+                                    <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td> 
+                                    <td class="p-2">${row.COUNTY}</td> 
+                                    <td class="p-2 text-right">${row.HA}</td> 
+                                </tr>`).join('')} 
+                            </tbody> 
+                        </table> 
+                    </div> 
+                </div> 
+            `;
+        } else if (currentTasksTab === 'actions') { 
+            let actionsData = parseCsv(actionsCsvData);
+            content.innerHTML = ` 
+                <div class="bg-surface p-6 rounded-lg shadow-md"> 
+                    <div class="h-[60vh] overflow-y-auto pr-2"> 
+                        <table class="w-full text-left text-sm"> 
+                            <thead class="bg-gray-50 sticky top-0"> 
+                                <tr> 
+                                    <th class="p-2 font-semibold">Site Code</th> 
+                                    <th class="p-2 font-semibold">Site Name</th> 
+                                    <th class="p-2 font-semibold">Status</th> 
+                                    <th class="p-2 font-semibold">Action Type</th> 
+                                    <th classs="p-2 font-semibold">County</th> 
+                                </tr> 
+                            </thead> 
+                            <tbody class="divide-y divide-gray-200"> 
+                                ${actionsData.map(row => ` 
+                                <tr> 
+                                    <td class="p-2">${row.SITECODE}</td> 
+                                    <td class="p-2">${row.SITE_NAME}</td> 
+                                    <td class="p-2"><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td> 
+                                    <td class="p-2">${row.ActionType}</td> 
+                                    <td class="p-2">${row.COUNTY}</td> 
+                                </tr>`).join('')} 
+                            </tbody> 
+                        </table> 
+                    </div> 
+                </div> 
+            `;
+        } 
+    } 
+    
+    // --- VISUALISATION VIEW --- 
+    const visTabs = [ 
+        { id: 'basic', name: 'Basic Information', icon: 'file-text' }, 
+        { id: 'impacts', name: 'Impacts', icon: 'alert-triangle' }, 
+        { id: 'metrics', name: 'Metrics', icon: 'bar-chart-3' }, 
+        { id: 'habitats', name: 'Habitats', icon: 'leaf' }, 
+        { id: 'sites', name: 'Sites', icon: 'map-pin' }, 
+        { id:f: 'funding', name: 'Funding', icon: 'landmark' }, 
+        { id: 'badges', name: 'Badges', icon: 'award' }, 
+        { id: 'finish', name: 'Finish', icon: 'check-circle' } 
+    ];
+    
+    function renderVisualisationView() { 
+        currentVisualisationTab = 'basic'; 
+        renderVisualisationNav(); 
+        renderVisualisationContent(); 
+    } 
+    
+    function renderVisualisationNav() { 
+        const nav = document.getElementById('visualisation-nav');
+        nav.innerHTML = visTabs.map(tab => ` 
+            <button onclick="setVisualisationTab('${tab.id}')" class="${currentVisualisationTab === tab.id ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100'} w-full flex items-center space-x-3 py-2 px-3 rounded-md text-sm font-medium"> 
+                <i data-lucide="${tab.icon}" class="w-5 h-5"></i> 
+                <span>${tab.name}</span> 
+            </button> 
+        `).join('');
+        lucide.createIcons(); 
+    } 
+    
+    function setVisualisationTab(tabId) { 
+        currentVisualisationTab = tabId; 
+        renderVisualisationNav(); 
+        renderVisualisationContent(); 
+    } 
+    
+    function renderVisualisationContent() { 
+        const content = document.getElementById('visualisation-content');
+        let html = ''; 
+        switch(currentVisualisationTab) { 
+            case 'basic': 
+                html = ` 
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Basic Information</h3> 
+                    <div class="space-y-4"> 
+                        <div> 
+                            <label class="block text-sm font-medium text-gray-700">Project Name</label> 
+                            <input type="text" value="Ballycroy Wind Farm EIA" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md"> 
+                        </div> 
+                        <div> 
+                            <label class="block text-sm font-medium text-gray-700">Project Description</label> 
+                            <textarea rows="4" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md">Ecological Impact Assessment for a proposed wind farm development in County Mayo.</textarea> 
+                        </div> 
+                    </div>`;
+                break; 
+            case 'impacts': 
+                html = ` 
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Impacts</h3> 
+                    <p class="text-gray-600 mb-4">Data automatically populated from the Impact Calculation module.</p> 
+                    <div class="p-4 border rounded-md bg-gray-50"> 
+                        <label class="block text-sm font-medium text-gray-700">Ornithological Collision Risk (Hen Harrier)</label> 
+                        <input type="text" value="0.03 collisions / year" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-200" readonly> 
+                    </div>`;
+                break; 
+            case 'habitats': 
+                html = ` 
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Habitats</h3> 
+                    <p class="text-gray-600 mb-4">Data populated from Data Mine and Field Survey modules.</p> 
+                    <div class="space-y-2"> 
+                        <div class="p-3 bg-gray-50 rounded-md">Blanket Bog (PB2)</div> 
+                        <div class="p-3 bg-gray-50 rounded-md">Wet Heath (HH3)</div> 
+                    </div> 
+                `;
+                break; 
+            case 'sites': 
+                html = ` 
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Site Location</h3> 
+                    <p class="text-gray-600 mb-4">Configure the project site on the map.</p> 
+                    <div class="mt-2 text-center border rounded-md"> 
+                        <img src="https://placehold.co/800x400/e2e8f0/475569?text=Interactive+Map+Interface" alt="Map Placeholder" class="w-full rounded-md"> 
+                    </div> 
+                `;
+                break; 
+            case 'finish': 
+                html = ` 
+                    <h3 class="text-2xl font-bold text-secondary mb-4">Finish Project Setup</h3> 
+                    <p class="text-gray-600 mb-6">Your project is almost ready. Review your settings and decide if you want to publish it.</p> 
+                    <div class="p-4 border rounded-lg flex items-center justify-between"> 
+                        <div> 
+                            <h4 class="font-semibold">Project Visibility</h4> 
+                            <p class="text-sm text-gray-500">Publishing your project will make it visible on the public map. Users will be able to see your project details, funding information, and impact metrics.</p> 
+                        </div> 
+                        <label class="relative inline-flex items-center cursor-pointer"> 
+                            <input type="checkbox" value="" class="sr-only peer"> 
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-accent"></div> 
+                        </label> 
+                    </div> 
+                    <div class="mt-8 flex justify-end"> 
+                        <button class="bg-accent text-white py-2 px-6 rounded-md hover:bg-orange-500">Finish</button> 
+                    </div>`;
+                break; 
+            default: 
+                html = `<h3 class="text-2xl font-bold text-secondary">${visTabs.find(t=>t.id===currentVisualisationTab).name}</h3><p>Configuration options for this section will appear here.</p>`; 
+        } 
+        content.innerHTML = html;
+    } 
+    
+    // --- AI REPORTING --- 
+    function addAiChatMessage(content, isUser = false) { 
+        const history = document.getElementById('ai-chat-history'); 
+        const messageDiv = document.createElement('div');
+        messageDiv.className = isUser ? 'p-3 bg-gray-200 rounded-lg text-secondary text-sm' : 'p-3 bg-blue-100 rounded-lg text-blue-800 text-sm'; 
+        messageDiv.innerHTML = `<p>${content}</p>`; 
+        history.appendChild(messageDiv);
+        history.scrollTop = history.scrollHeight; 
+    } 
+    
+    function generateAiReport() { 
+        const reportContent = document.getElementById('ai-report-content'); 
+        const audience = document.getElementById('audience-tone').value;
+        reportContent.innerHTML = `<div class="flex items-center justify-center h-full"><div class="text-center"><div class="loading-spinner mx-auto"></div><p class="mt-4 text-gray-500">Generating report for: <b>${audience}</b>...</p></div></div>`;
+        addAiChatMessage(`Okay, I'm generating a draft report with a tone suitable for a <b>${audience}</b> audience. I'll pull in the desk study, field survey data, and the latest impact calculation results.`);
+        setTimeout(() => { 
+            reportContent.innerHTML = ` 
+                <h2>1.0 Introduction</h2> 
+                <p>This report presents the findings of an Ecological Impact Assessment for the proposed N59 Road Realignment. The assessment identifies key ecological receptors and evaluates the potential effects of the project.</p> 
+                <h2>2.0 Field Survey Summary</h2> 
+                <p>Field surveys were conducted on 23/09/2025. The dominant habitat recorded was <b>WD1 - Oak-birch-holly woodland</b>. Key species identified included Sciurus vulgaris (Red Squirrel).</p> 
+                <h2>3.0 Impact Assessment (Ornithology)</h2> 
+                <p>Based on the Nature Scot Collision Risk Model, the predicted mortality for Hen Harrier is <b>0.03 collisions per year</b>, assuming a 98% avoidance rate. This is considered a low-significance impact.</p> 
+                <h2>4.0 Proposed Mitigation</h2> 
+                <p>Mitigation measures will include...</p> 
+            `; 
+            addAiChatMessage('The draft report is ready for your review. You can edit the text directly or ask me for refinements.'); 
+        }, 2500);
+    } 
+    
+    function addVisualisation() { 
+        addAiChatMessage("Sure. What kind of visualisation would you like to add? For example, 'a map of the survey area' or 'a bar chart of habitat types'.");
+    } 
+    
+    function enrichData() { 
+        addAiChatMessage("Okay. I can enrich this report with third-party datasets. I have access to regional climate models and habitat layers. This will add deeper context for evaluation. Processing...");
+    } 
+    
+    // --- CORE ACTIONS --- 
+    function startSurveyFromTemplate(templateId) { 
+        const template = surveyTemplates.find(t => t.id === templateId); 
+        document.getElementById('new-survey-template-id-input').value = templateId;
+        document.getElementById('new-project-name').value = `${template.name} - ${new Date().toLocaleDateString('en-IE')}`; 
+        document.getElementById('new-client-name').value = "Default Client"; 
+        showNewSurveyProjectModal(); 
+    } 
+    
+    function createNewSurveyFromModal() { 
+        const templateId = document.getElementById('new-survey-template-id-input').value;
+        const projectName = document.getElementById('new-project-name').value; 
+        const clientName = document.getElementById('new-client-name').value; 
+        if (!projectName || !clientName) { 
+            showToast("Please fill out all fields.", "error"); 
+            return;
+        } 
+        const newProjectId = (db.projects[db.projects.length - 1]?.id || 0) + 1;
+        const newProject = { 
+            id: newProjectId, 
+            name: projectName, 
+            client: clientName, 
+            code: `${clientName.substring(0,3).toUpperCase()}-${String(Math.floor(100 + Math.random() * 900))}-25` 
+        }; 
+        db.projects.push(newProject);
+        const newSurveyId = (db.surveys[db.surveys.length - 1]?.id || 0) + 1;
+        db.surveys.push({ 
+            id: newSurveyId, 
+            projectId: newProjectId, 
+            siteName: "Default Site", 
+            template: templateId, 
+            status: "Ready", 
+            data: {} 
+        }); 
+        saveData(); 
+        hideNewSurveyProjectModal();
+        if (templateId === 'EcIA') { 
+            showView('eiar-editor-view', { projectId: newProjectId });
+        } else if (templateId === 'ECoW') { 
+            showView('ecow-editor-view', { projectId: newProjectId }); 
+        } else { 
+            showView('project-detail-view', newProjectId);
+        } 
+    } 
+    
+    function saveEiarSurvey() { 
+        // In a real app, this would save the content of the textareas.
+        showToast("Survey content saved!"); 
+        showView('project-detail-view', currentProjectId); 
+    } 
+    
+    function saveEcowReport() { 
+        showToast("ECoW report saved!"); 
+        showView('project-detail-view', currentProjectId);
+    } 
+    
+    function assignSurvey(surveyId) { 
+        const surveyLink = `${window.location.origin}${window.location.pathname}?survey=${surveyId}`; 
+        document.getElementById('survey-link-input').value = surveyLink; 
+        showAssignSurveyModal(); 
+    } 
+    
+    function copySurveyLink() { 
+        const input = document.getElementById('survey-link-input');
+        input.select(); 
+        input.setSelectionRange(0, 99999); // For mobile devices 
+        document.execCommand('copy'); 
+        showToast('Link copied to clipboard!'); 
+    } 
+    
+    function generateThirdPartyLink() { 
+        const email = document.getElementById('third-party-email').value;
+        const task = document.getElementById('third-party-task').value; 
+        const randomToken = Math.random().toString(36).substring(2, 12); 
+        const link = `${window.location.origin}${window.location.pathname}?task=${task}&token=${randomToken}`; 
+        document.getElementById('third-party-link-input').value = link; 
+        document.getElementById('assign-third-party-form').style.display = 'none';
+        document.getElementById('assign-third-party-link').style.display = 'block'; 
+    } 
+    
+    function copyThirdPartyLink() { 
+        const input = document.getElementById('third-party-link-input'); 
+        input.select(); 
+        input.setSelectionRange(0, 99999); 
+        document.execCommand('copy'); 
+        showToast('Link copied to clipboard!');
+    } 
+    
+    function displayPhotoPreview(event) { 
+        const container = document.getElementById('photo-preview-container'); 
+        const file = event.target.files[0]; 
+        if (file) { 
+            const reader = new FileReader();
+            reader.onload = function(e) { 
+                container.innerHTML = `<img src="${e.target.result}" class="max-h-40 rounded-md mx-auto">`; 
+            } 
+            reader.readAsDataURL(file);
+        } 
+    } 
+    
+    function submitSurvey() { 
+        const surveyId = document.getElementById('survey-id-input').value; 
+        const survey = db.surveys.find(s => s.id == surveyId);
+        if (survey) { 
+            survey.status = "Completed"; 
+            survey.data = { 
+                habitat: document.getElementById('habitat-type').value, 
+                notes: document.getElementById('habitat-notes').value, 
+                species: document.getElementById('species-observed').value, 
+                speciesNotes: document.getElementById('species-notes').value, 
+                photo: document.querySelector('#photo-preview-container img')?.src || 'https://placehold.co/600x400/e2e8f0/475569?text=No+Photo' 
+            }; 
+            saveData(); 
+            document.getElementById('mobile-survey-form').innerHTML = ` 
+                <div class="text-center py-10"> 
+                    <i data-lucide="check-circle" class="w-16 h-16 text-green-500 mx-auto mb-4"></i> 
+                    <h2 class="text-2xl font-bold text-secondary">Survey Submitted</h2> 
+                    <p class="text-gray-600 mt-2">Thank you. Your data has been successfully recorded.</p> 
+                    <button onclick="closeSurveyWindow()" class="mt-6 text-sm bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300">Close Window</button> 
+                </div> 
+            `; 
+            lucide.createIcons();
+        } else { 
+            showToast('Error: Could not find survey to submit.', 'error'); 
+        } 
+    } 
+    
+    function closeSurveyWindow(){ 
+        window.location.href = window.location.pathname;
+    } 
+    
+    // --- REPORT GENERATION (MVP Magic) --- 
+    function generateReport(surveyId) { 
+        // This requires the docx library to be imported in the <head>
+        // <script src="https://unpkg.com/docx@7.3.0/build/docx.js"></script>
+        // <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+        if (typeof docx === 'undefined' || typeof saveAs === 'undefined') {
+            showToast('Report generation library not found.', 'error');
+            console.error('Please include docx and FileSaver.js libraries in your HTML.');
+            return;
+        }
+
+        const survey = db.surveys.find(s => s.id === surveyId);
+        const project = db.projects.find(p => p.id === survey.projectId); 
+        const template = surveyTemplates.find(t => t.id === survey.template);
+        const { Document, Packer, Paragraph, TextRun, HeadingLevel } = docx;
+        
+        const doc = new Document({ 
+            sections: [{ 
+                properties: {}, 
+                children: [ 
+                    new Paragraph({ text: template.name, heading: HeadingLevel.TITLE }), 
+                    new Paragraph({ text: `Project: ${project.name}`, style: "IntenseQuote" }), 
+                    new Paragraph({ text: `Client: ${project.client}`, style: "IntenseQuote" }), 
+                    new Paragraph({ text: `Survey Site: ${survey.siteName}`, style: "IntenseQuote" }), 
+                    new Paragraph({ text: `Date: ${new Date().toLocaleDateString('en-IE')}`, style: "IntenteQuote" }), 
+                    new Paragraph({ text: "1.0 Desk Study", heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), 
+                    new Paragraph("A desk-based study was undertaken to identify ecological features within the study area. (Note: Prototype uses placeholder text)."), 
+                    new Paragraph({ text: "2.0 Field Survey Results", heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), 
+                    new Paragraph({ text: "2.1 Habitats", heading: HeadingLevel.HEADING_2, spacing: { before: 200 } }), 
+                    new Paragraph(new TextRun({ text: "Habitat Type:", bold: true }).addChild(new TextRun(` ${survey.data.habitat}`))), 
+                    new Paragraph(new TextRun({ text: "Condition Notes:", bold: true }).addChild(new TextRun(` ${survey.data.notes}`))), 
+                    new Paragraph({ text: "2.2 Species", heading: HeadingLevel.HEADING_2, spacing: { before: 200 } }), 
+                    new Paragraph(new TextRun({ text: "Species Observed:", bold: true }).addChild(new TextRun(` ${survey.data.species || 'None recorded.'}`))), 
+                    new Paragraph(new TextRun({ text: "Notes:", bold: true }).addChild(new TextRun(` ${survey.data.speciesNotes || 'N/A'}`))), 
+                    new Paragraph({ text: "3.0 Photographic Record", heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), 
+                    new Paragraph("The following photograph was taken on-site:"), 
+                    new Paragraph({ children: [ new TextRun(`[Image placeholder: A photo was captured for ${survey.siteName}]`)] }), 
+                ], 
+            }], 
+        });
+        
+        Packer.toBlob(doc).then(blob => { 
+            saveAs(blob, `${project.code}_${template.id}_Report.docx`); 
+            showToast("Report downloaded successfully!"); 
+        }); 
+    } 
+    
+    // --- INITIALIZATION --- 
+    document.addEventListener('DOMContentLoaded', () => { 
+        loadData(); 
+        // Mocking external libraries for this snippet
+        if (typeof lucide === 'undefined') {
+             window.lucide = { createIcons: () => console.log('Mock lucide.createIcons()') };
+        }
+        if (typeof Chart === 'undefined') {
+             console.warn('Chart.js library not loaded. Charts will not render.');
+        } else {
+             // ChartDataLabels plugin might be needed
+             if (typeof ChartDataLabels === 'undefined') {
+                console.warn('ChartDataLabels plugin not loaded.');
+                // Mock it to prevent errors
+                window.ChartDataLabels = {}; 
+             }
+        }
+        if (typeof docx === 'undefined') {
+            console.warn('docx library not loaded. Report generation will fail.');
+        }
+        if (typeof saveAs === 'undefined') {
+            console.warn('FileSaver.js library not loaded. Report download will fail.');
+        }
+        
+        lucide.createIcons(); 
+        handleRouting(); 
+        
+        // Add a default entry to each dynamic section on load for demo purposes 
+        addHabitatEntry(); 
+        addFaunaSighting(); 
+        addFloraRecord(); 
+    });
+    </script>
+</body>
+</html>
 
