@@ -6,7 +6,7 @@
     <title>Dulra - Ecological Management Platform</title>
     
     <style>
-        /* CSS from original file [cite: 1-14] */
+        [cite_start]/* CSS from original file [cite: 1-14] */
         .view { display: none; }
         .active-view { display: block; }
         body { background-color: #F3F7F9; font-family: 'Inter', sans-serif; margin: 0; }
@@ -119,6 +119,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 99;
         }
         .modal-content {
             background: #fff;
@@ -171,7 +172,7 @@
     <main>
         <section id="dashboard-view" class="view">
             <h2>Dashboard</h2>
-            <button>Create Task</button>
+            <button onclick="showView('survey-template-view')">Create Task</button>
 
             <h3>Action Status</h3>
             <div style="height: 250px;"><canvas id="actions-chart"></canvas></div>
@@ -228,7 +229,7 @@
             <p>Select a compliant template to begin your report.</p>
             <button onclick="showView('template-editor-view')">Edit Custom Template</button>
             <button onclick="showView('my-surveys-view')">Back to Surveys</button>
-            <div id="survey-template-grid" class="grid"></div>
+            <div id="survey-template-grid" class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;"></div>
         </section>
 
         <section id="template-editor-view" class="view">
@@ -238,7 +239,7 @@
             <button onclick="addTemplateElement('heading')">Add Heading</button>
             <button onclick="addTemplateElement('paragraph')">Add Paragraph</button>
 
-            <div id="custom-template-editor" style="border: 1px solid #ccc; padding: 1rem; margin-top: 1rem; min-height: 200px;">
+            <div id="custom-template-editor" style="border: 1px solid #ccc; padding: 1rem; margin-top: 1rem; min-height: 200px; background: #fff;">
                 <h3>Custom Heading 1</h3>
                 <p contenteditable="true">This is an editable paragraph. You can add your own content here.</p>
             </div>
@@ -248,7 +249,20 @@
             <h2>Surveys</h2>
             <p>An overview of all your active and completed surveys.</p>
             <button onclick="showView('survey-template-view')">Create New Survey</button>
-            <div id="project-list" class="space-y-4 mt-6"></div>
+            <div id="project-list" class="space-y-4 mt-6" style="display: grid; gap: 1rem;"></div>
+        </section>
+        
+        <section id="project-detail-view" class="view">
+            <button onclick="showView('my-surveys-view')">Back to Surveys</button>
+            
+            <h2 id="project-title" style="margin-top: 1rem;">...Loading...</h2>
+            <p><strong>Client:</strong> <span id="project-client">...</span></p>
+            <p><strong>Code:</strong> <span id="project-code">...</span></p>
+            
+            <hr>
+            
+            <div id="project-tabs"></div>
+            <div id="project-tab-content" style="margin-top: 1rem;"></div>
         </section>
 
         <section id="team-view" class="view">
@@ -315,19 +329,7 @@
             <textarea class="eiar-textarea" rows="3"></textarea>
             <h4>2.3 ECoW Intervention Log</h4>
             <textarea class="eiar-textarea" rows="3"></textarea>
-            <h3>3. Compliance & Incidents</h3>
-            <h4>3.1 Compliance Status</h4>
-            <textarea class="eiar-textarea" rows="3"></textarea>
-            <h4>3.2 Environmental Incidents</h4>
-            <textarea class="eiar-textarea" rows="3"></textarea>
-            <h4>3.3 Biosecurity</h4>
-            <textarea class="eiar-textarea" rows="3"></textarea>
-            <h3>4. Recommendations</h3>
-            <h4>4.1 Look Ahead</h4>
-            <textarea class="eiar-textarea" rows="3"></textarea>
-            <h4>4.2 Further Actions</h4>
-            <textarea class="eiar-textarea" rows="3"></textarea>
-        </section>
+            </section>
 
         <section id="desktop-research-view" class="view">
             <h2>Desktop Research</h2>
@@ -345,6 +347,10 @@
             <p>Collate and layer data from various external sources for your desk study.</p>
             
             <form>
+                <label>Site Name / Reference</label> <input type="text">
+                <label>Site Code (e.g., SAC/SPA Code)</label> <input type="text">
+                <label>County</label> <input type="text">
+                <label>Websites to Search (comma-separated)</label> <input type="text">
                 <button type="button" onclick="performDataMineSearch()">Search for Records</button>
             </form>
 
@@ -364,17 +370,23 @@
             <p>Create and edit field survey templates and data.</p>
             
             <h3>Survey Details</h3>
+            <label>Survey Name</label> <input type="text">
+            <label>Date</label> <input type="date">
+            <label>Surveyor(s)</label> <input type="text">
+            
+            <h3>Site Conditions</h3>
             <h3>Habitat Mapping</h3>
             <button onclick="addHabitatEntry()">Add Entry</button>
-            <div id="habitat-entries" class="space-y-4 mt-4"></div>
+            <div id="habitat-entries" class="space-y-4 mt-4" style="display: grid; gap: 1rem;"></div>
+
 
             <h3>Fauna</h3>
             <button onclick="addFaunaSighting()">Add Sighting</button>
-            <div id="fauna-entries" class="space-y-4 mt-4"></div>
+            <div id="fauna-entries" class="space-y-4 mt-4" style="display: grid; gap: 1rem;"></div>
 
             <h3>Flora</h3>
             <button onclick="addFloraRecord()">Add Record</button>
-            <div id="flora-entries" class="space-y-4 mt-4"></div>
+            <div id="flora-entries" class="space-y-4 mt-4" style="display: grid; gap: 1rem;"></div>
 
             <h3>Field Notes</h3>
             <textarea></textarea>
@@ -382,12 +394,66 @@
 
         <section id="impact-view" class="view">
             <h2>Wind Farm Collision Risk Model</h2>
-            </section>
+            <p>Based on the Nature Scot (Band, 2007) standard for calculating avian collision risk.</p>
+
+            <h3>Stage 1 & 2: Bird Passage Rate</h3>
+            <p>Estimates the number of birds passing through the rotors annually based on field survey data.</p>
+            <label>Target Species</label> 
+            <input type="text" value="Hen Harrier">
+            
+            <label>Flights at Collision Height (from VP surveys)</label> 
+            <input type="number" id="crm-flights-height" value="50" oninput="updateImpactCalculation()">
+            
+            <label>Total Vantage Point Watch Hours</label> 
+            <input type="number" id="crm-vp-hours" value="72" oninput="updateImpactCalculation()">
+            
+            <p>Estimated Annual Passages through Rotors: <strong id="crm-passages-result">...</strong></p>
+
+            <h3>Stage 3: Collision Probability</h3>
+            <p>Calculates the probability of a bird being hit during a single passage through a rotor.</p>
+            <h4>Bird Parameters</h4>
+            <label>Length (m)</label> 
+            <input type="number" id="crm-bird-length" value="0.5" oninput="updateImpactCalculation()">
+            
+            <label>Wingspan (m)</label> 
+            <input type="number" id="crm-bird-wingspan" value="1.2" oninput="updateImpactCalculation()">
+            
+            <label>Flight Speed (m/s)</label> 
+            <input type="number" id="crm-bird-speed" value="10" oninput="updateImpactCalculation()">
+            
+            <h4>Turbine Parameters</h4>
+            <label>Rotor Diameter (m)</label> 
+            <input type="number" id="crm-rotor-diameter" value="100" oninput="updateImpactCalculation()">
+            
+            <label>Max Blade Chord (m)</label> 
+            <input type="number" id="crm-blade-chord" value="3" oninput="updateImpactCalculation()">
+            
+            <label>Blade Pitch (°)</label> 
+            <input type="number" id="crm-blade-pitch" value="15" oninput="updateImpactCalculation()">
+            
+            <label>Rotation (s/rev)</label> 
+            <input type="number" id="crm-rotation" value="3" oninput="updateImpactCalculation()">
+            
+            <p>Calculated Collision Probability per Passage (Average): <strong id="crm-probability-result">...</strong></p>
+
+            <h3>Stage 4 & 5: Adjustments</h3>
+            <p>Accounts for turbine downtime and the bird's natural avoidance behaviour.</p>
+            <label>Turbine Operational Time (%)</label> 
+            <input type="number" id="crm-optime" value="85" oninput="updateImpactCalculation()">
+            
+            <label>Avoidance Rate (%)</label> 
+            <input type="number" id="crm-avoidance" value="98" oninput="updateImpactCalculation()">
+
+            <h3>Estimated Annual Collisions</h3>
+            <p><strong id="crm-final-result">...</strong></p>
+            <p>This is the predicted mortality assuming no mitigation measures are applied.</p>
+        </section>
+
 
         <section id="reporting-view" class="view">
             <h3>Generated Report</h3>
             <button>Export</button>
-            <div id="ai-report-content" style="border: 1px solid #ccc; padding: 1rem; min-height: 200px;">
+            <div id="ai-report-content" style="border: 1px solid #ccc; padding: 1rem; min-height: 200px; background: #fff;">
                 <p>Your AI-generated report will appear here. Use the AI assistant on the right to get started.</p>
             </div>
             
@@ -417,7 +483,7 @@
             <div id="visualisation-content"></div>
 
             <h3>Site Map (Figure 1)</h3>
-            <img src="https://placehold.co/600x400/e2e8f0/475569?text=Rossbehy+Overview+Map+(Fig+1)" alt="Site Map Placeholder">
+            <img src="https://placehold.co/600x400/e2e8f0/475569?text=Rossbehy+Overview+Map+(Fig+1)" alt="Site Map Placeholder" onclick="showMapDetail(event)">
             <p>Click to explore</p>
             <div id="map-detail-info"></div>
             
@@ -433,12 +499,12 @@
             <p>Connect to your preferred GIS tool...</p>
             
             <div id="gis-initial-choice">
-                <div onclick="showGisConnection('ArcGIS')">
+                <div onclick="showGisConnection('ArcGIS')" style="padding: 1rem; background: #fff; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/ArcGIS_logo.png/220px-ArcGIS_logo.png" alt="ArcGIS Logo" style="width:100px">
                     <h4>ArcGIS</h4>
                     <p>Connect to the Esri Geospatial Cloud.</p>
                 </div>
-                <div onclick="showGisConnection('QGIS')">
+                <div onclick="showGisConnection('QGIS')" style="padding: 1rem; background: #fff; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; margin-top: 1rem;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/QGIS_Logo_new.svg/200px-QGIS_Logo_new.svg.png" alt="QGIS Logo" style="width:100px">
                     <h4>QGIS</h4>
                     <p>Connect using the open-source GIS leader.</p>
@@ -479,7 +545,7 @@
                     <input type="file" onchange="displayPhotoPreview(event)">
                 </div>
                 
-                <button onclick="submitSurvey()">Submit Survey Data</button>
+                <button onclick="submitSurvey()" style="margin-top: 1rem;">Submit Survey Data</button>
             </div>
         </section>
         
@@ -497,9 +563,9 @@
             <ul id="assessment-species"></ul>
             
             <h3>Tables</h3>
-            <table id="rossbehy-table-1"></table>
-            <table id="rossbehy-table-2"></table>
-            <table id="rossbehy-table-3"></table>
+            <table id="rossbehy-table-1" class="projects-table"></table>
+            <table id="rossbehy-table-2" class="projects-table"></table>
+            <table id="rossbehy-table-3" class="projects-table"></table>
         </section>
 
         <div id="new-survey-project-modal" class="modal-overlay hidden">
@@ -548,13 +614,13 @@
         </div>
 
         <div id="toast" class="toast">
-            <span id="toast-icon"></span>
+            <span id="toast-icon" style="margin-right: 0.5rem;"></span>
             <span id="toast-message"></span>
         </div>
     </main>
 
     <script>
-    // --- DATA STORE (Mock Database & Local Storage) --- [cite: 67-74]
+    [cite_start]// --- DATA STORE (Mock Database & Local Storage) --- [cite: 67-74]
     let db;
     const defaultDb = { 
         projects: [ 
@@ -596,7 +662,7 @@
     let currentTasksTab = 'assessments'; 
     let currentSiteStatusTab = 'sac';
     
-    // --- UPDATED VIEW MANAGEMENT [cite: 74-79] --- 
+    [cite_start]// --- UPDATED VIEW MANAGEMENT [cite: 74-79] --- 
     function showView(viewId, param = null) {
         // Hide all views
         const allViews = document.querySelectorAll('.view');
@@ -627,12 +693,12 @@
         }
         if (viewId === 'survey-form-view') renderSurveyForm(param);
         if (viewId === 'survey-template-view') renderSurveyTemplates();
-        if (viewId === 'eiar-editor-view') renderEiarEditor(param);
-        if (viewId === 'ecow-editor-view') renderEcowEditor(param);
+        if (viewId === 'eiar-editor-view') renderEiarEditor(param || { projectId: currentProjectId });
+        if (viewId === 'ecow-editor-view') renderEcowEditor(param || { projectId: currentProjectId });
         
-        if (viewId === 'gis-view') showInitialGisChoice();
+        if (viewId === 'settings-view') showInitialGisChoice();
         
-        if (viewId === 'datamine-view') { // Note: datamine is part of 'desktop-research-view'
+        if (viewId === 'desktop-research-view') {
             const resultsContainer = document.getElementById('datamine-results-container');
             if (resultsContainer) resultsContainer.classList.add('hidden');
         }
@@ -643,7 +709,7 @@
         if (viewId === 'assessment-detail-view') renderAssessmentDetailView(param);
     } 
     
-    // --- ROUTING (based on URL) --- [cite: 79-82]
+    [cite_start]// --- ROUTING (based on URL) --- [cite: 79-82]
     function handleRouting() { 
         const params = new URLSearchParams(window.location.search); 
         const surveyId = params.get('survey');
@@ -662,7 +728,7 @@
     } 
     
     // --- RENDERING FUNCTIONS --- 
-    function renderSurveyTemplates() { // [cite: 82-84]
+    [cite_start]function renderSurveyTemplates() { // [cite: 82-84]
         const container = document.querySelector('#survey-template-grid');
         if (!container) return;
         container.innerHTML = surveyTemplates.map(template => ` 
@@ -678,12 +744,12 @@
         lucide.createIcons(); 
     } 
     
-    function renderProjects() { // [cite: 84-86]
+    [cite_start]function renderProjects() { // [cite: 84-86]
         const list = document.getElementById('project-list'); 
         if (!list) return;
         if (db.projects.length === 0) { 
-            list.innerHTML = `<div> 
-                <i data-lucide="folder-search"></i> 
+            list.innerHTML = `<div style="text-align: center; padding: 2rem; background: #fff; border-radius: 8px;"> 
+                <i data-lucide="folder-search" style="width: 48px; height: 48px; margin: auto; color: #ccc;"></i> 
                 <h3>No surveys yet</h3> 
                 <p>Get started by creating your first survey.</p> 
                 <button onclick="showView('survey-template-view')">Create Survey</button> 
@@ -696,14 +762,14 @@
             const completed = projectSurveys.filter(s => s.status === 'Completed').length; 
             return ` 
             <div style="background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="showView('project-detail-view', ${p.id})"> 
-                <div> 
+                <div style="display: flex; justify-content: space-between;"> 
                     <div> 
                         <h3>${p.name}</h3> 
                         <p>${p.client}</p> 
                     </div> 
-                    <span>${p.code}</span> 
+                    <span style="font-size: 0.75rem; background: #eee; padding: 0.25rem 0.5rem; border-radius: 12px; height: fit-content;">${p.code}</span> 
                 </div> 
-                <div> 
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #f3f3f3;"> 
                     <p>${completed} of ${projectSurveys.length} surveys completed.</p> 
                     <div style="width: 100%; background: #eee; border-radius: 4px; height: 8px;"> 
                         <div style="background: #FB923C; height: 8px; border-radius: 4px; width: ${projectSurveys.length > 0 ? (completed / projectSurveys.length) * 100 : 0}%"></div> 
@@ -718,9 +784,9 @@
         const tableBody = document.getElementById('projects-table-body');
         if (!tableBody) return; // Exit if element isn't on the page
 
-        let assessmentsData = parseCsv(assessmentsCsvData); // 
-        const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' }; // [cite: 202]
-        if (!assessmentsData.some(item => item.SITECODE === '13')) { // [cite: 203]
+        [cite_start]let assessmentsData = parseCsv(assessmentsCsvData); // [cite: 174-176]
+        const rossbehyAssessment = { SITECODE: '13', SITE_NAME: 'Rossbehy', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71', Link: '#' }; [cite_start]// [cite: 202]
+        [cite_start]if (!assessmentsData.some(item => item.SITECODE === '13')) { // [cite: 203]
             assessmentsData.push(rossbehyAssessment);
         }
 
@@ -761,31 +827,47 @@
         tableBody.innerHTML = html;
     }
     
-    function renderProjectDetails(projectId) { // [cite: 86-87]
+    [cite_start]function renderProjectDetails(projectId) { // [cite: 86-87]
         const project = db.projects.find(p => p.id === projectId); 
-        // These elements don't exist in the provided HTML, so we skip
-        // document.getElementById('project-title').textContent = project.name; 
-        // document.getElementById('project-client').textContent = project.client;
-        // document.getElementById('project-code').textContent = project.code; 
+        if (!project) {
+            showView('my-surveys-view');
+            showToast("Error: Project not found", "error");
+            return;
+        }
+        document.getElementById('project-title').textContent = project.name; 
+        document.getElementById('project-client').textContent = project.client;
+        document.getElementById('project-code').textContent = project.code; 
         renderProjectTabs(projectId); 
         renderProjectTabContent(projectId); 
     } 
     
-    function renderEiarEditor(params) { // [cite: 87-89]
+    [cite_start]function renderEiarEditor(params) { // [cite: 87-89]
+        if (!params) {
+            showToast("No project selected", "error");
+            showView('my-surveys-view');
+            return;
+        }
         const { projectId } = params;
         const project = db.projects.find(p => p.id === projectId); 
+        if (!project) return;
         currentProjectId = projectId; 
         document.getElementById('eiar-editor-project-name').textContent = `Project: ${project.name}`;
     } 
     
-    function renderEcowEditor(params) { // [cite: 89-91]
+    [cite_start]function renderEcowEditor(params) { // [cite: 89-91]
+         if (!params) {
+            showToast("No project selected", "error");
+            showView('my-surveys-view');
+            return;
+        }
         const { projectId } = params; 
         const project = db.projects.find(p => p.id === projectId);
+        if (!project) return;
         currentProjectId = projectId; 
         document.getElementById('ecow-editor-project-name').textContent = `Project: ${project.name}`; 
     } 
     
-    function renderTeamView() { // [cite: 91-92]
+    [cite_start]function renderTeamView() { // [cite: 91-92]
         const list = document.getElementById('team-list');
         if (!list) return;
         list.innerHTML = db.team.map(member => ` 
@@ -799,24 +881,24 @@
         lucide.createIcons(); 
     } 
     
-    function renderProjectTabs(projectId) { // [cite: 92-94]
+    [cite_start]function renderProjectTabs(projectId) { // [cite: 92-94]
         const tabs = [ { id: 'surveys', name: 'Surveys' } ]; 
         const tabsContainer = document.getElementById('project-tabs');
         if (!tabsContainer) return;
         tabsContainer.innerHTML = tabs.map(tab => ` 
-            <button onclick="setProjectTab('${tab.id}')" class="${currentProjectTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500'}"> 
+            <button onclick="setProjectTab('${tab.id}')" style="border-bottom: 2px solid ${currentProjectTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem;"> 
                 ${tab.name} 
             </button> 
         `).join('');
     } 
     
-    function setProjectTab(tabId) { // [cite: 94-95]
+    [cite_start]function setProjectTab(tabId) { // [cite: 94-95]
         currentProjectTab = tabId; 
         renderProjectTabs(currentProjectId); 
         renderProjectTabContent(currentProjectId); 
     } 
     
-    function renderProjectTabContent(projectId) { // [cite: 95-98]
+    [cite_start]function renderProjectTabContent(projectId) { // [cite: 95-98]
         const contentContainer = document.getElementById('project-tab-content');
         if (!contentContainer) return;
         if (currentProjectTab === 'surveys') { 
@@ -827,9 +909,9 @@
                     projectSurveys.map(s => { 
                         const statusColor = getStatusColorClass(s.status); // Use helper 
                         return ` 
-                        <div style="border: 1px solid #eee; padding: 1rem; border-radius: 4px;"> 
+                        <div style="border: 1px solid #eee; padding: 1rem; border-radius: 4px; background: #fff; display: flex; justify-content: space-between; align-items: center;"> 
                             <div> 
-                                <p>${s.siteName} (${s.template})</p> 
+                                <p style="font-weight: 600;">${s.siteName} <span style="font-weight: 400; font-size: 0.8rem;">(${s.template})</span></p> 
                                 <span class="status-badge ${statusColor}">${s.status}</span> 
                             </div> 
                             <div> 
@@ -844,8 +926,9 @@
         lucide.createIcons(); 
     } 
     
-    function renderSurveyForm(surveyId) { // [cite: 98-100]
-        const survey = db.surveys.find(s => s.id === surveyId);
+    [cite_start]function renderSurveyForm(surveyId) { // [cite: 98-100]
+        const survey = db.surveys.find(s => s.id == surveyId);
+        if (!survey) return showView('dashboard-view');
         const project = db.projects.find(p => p.id === survey.projectId); 
         const template = surveyTemplates.find(t => t.id === survey.template); 
         document.getElementById('survey-id-input').value = survey.id;
@@ -854,13 +937,15 @@
         document.getElementById('survey-form-site-name').textContent = survey.siteName; 
     } 
     
-    // --- Assessment Detail View --- [cite: 100-122]
+    [cite_start]// --- Assessment Detail View --- [cite: 100-122]
     function renderAssessmentDetailView(params) { 
+        if (!params) return showView('tasks-view');
         const { siteCode } = params;
         const assessments = parseCsv(sacConditionsCsv).concat(parseCsv(spaConditionsCsv)).concat(parseCsv(nhaConditionsCsv));
-        const siteData = assessments.find(site => site.Sitecode == siteCode) || { SiteName: 'Rossbehy', Sitecode: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' };
-        document.getElementById('assessment-site-name').textContent = siteData.SiteName; 
-        document.getElementById('assessment-site-code').textContent = `Site Code: ${siteData.Sitecode}`; 
+        const siteData = assessments.find(site => (site.Site_code || site.Site_Code) == siteCode) || { SiteName: 'Rossbehy', Sitecode: '13', Status: 'Completed', COUNTY: 'Kerry', HA: '91.71' };
+        
+        document.getElementById('assessment-site-name').textContent = siteData.SiteName || siteData.SITE_NAME; 
+        document.getElementById('assessment-site-code').textContent = `Site Code: ${siteData.Sitecode || siteData.Site_Code || siteData.SITECODE}`; 
         document.getElementById('assessment-county').textContent = siteData.COUNTY || 'N/A';
         document.getElementById('assessment-area').textContent = siteData.HA || 'N/A'; 
         const statusBadge = document.getElementById('assessment-status-badge'); 
@@ -871,47 +956,50 @@
         const table1 = document.getElementById('rossbehy-table-1'); 
         const table2 = document.getElementById('rossbehy-table-2'); 
         const table3 = document.getElementById('rossbehy-table-3'); 
-        const docContent = document.getElementById('rossbehy-doc-content');
         
-        if (siteCode == 13) { 
+        [cite_start]if (siteCode == 13) { // [cite: 107-119]
             habitatsList.innerHTML = ` 
                 <li>Fixed coastal dunes... (2130)</li> 
                 <li>Embryonic shifting dunes (2110)</li> 
+                <li>Shifting dunes... (2120)</li> 
+                <li>Atlantic salt meadows (1330)</li> 
+                <li>Mediterranean salt meadows (1410)</li> 
             `;
             speciesList.innerHTML = ` 
                 <li>Light-bellied Brent Goose... [A046]</li> 
                 <li>Common Scoter... [A065]</li> 
+                <li>Red-breasted Merganser... [A069]</li> 
             `;
             table1.innerHTML = ` 
-                <thead><tr><th>Habitat Code</th><th>Habitat Name</th><th>Area (ha)</th></tr></thead> 
+                <thead><tr><th>Habitat Code</th><th>Habitat Name</th><th>Area (ha)</th><th>Subsite</th></tr></thead> 
                 <tbody> 
-                    <tr><td>2130</td><td>Fixed coastal dunes*</td><td>10.39</td></tr> 
+                    <tr><td>2130</td><td>Fixed coastal dunes*</td><td>10.39</td><td>1</td></tr> 
+                    <tr><td>2110</td><td>Embryonic shifting dunes</td><td>0.09</td><td>1</td></tr> 
                 </tbody> 
             `;
             table2.innerHTML = ` 
-                <thead><tr><th>Species Code</th><th>Species Name</th><th>Population/Range</th></tr></thead> 
+                <thead><tr><th>Species Code</th><th>Species Name</th><th>Population/Range</th><th>Subsite</th></tr></thead> 
                 <tbody> 
-                    <tr><td>A046</td><td>Light-bellied Brent Goose</td><td>Population</td></tr> 
+                    <tr><td>A046</td><td>Light-bellied Brent Goose</td><td>Population</td><td>-</td></tr>
                 </tbody> 
             `;
             table3.innerHTML = ` 
                 <thead><tr><th>Habitat Code</th><th>Conservation Objective</th><th>Target</th></tr></thead> 
                 <tbody> 
                     <tr><td>2130</td><td>Restore favourable...</td><td>Restore</td></tr> 
+                    <tr><td>2110</td><td>Maintain favourable...</td><td>Maintain</td></tr> 
                 </tbody> 
             `;
-            if (docContent) docContent.innerHTML = `<p>Rossbehy is a large site...</p>`;
-        } else { 
+        [cite_start]} else { // [cite: 119-122]
             habitatsList.innerHTML = `<li>Placeholder Habitat 1</li>`; 
             speciesList.innerHTML = `<li>Placeholder Species A</li>`;
-            table1.innerHTML = `<tr><td>No data available for this site.</td></tr>`; 
-            table2.innerHTML = `<tr><td>No data available for this site.</td></tr>`;
-            table3.innerHTML = `<tr><td>No data available for this site.</td></tr>`; 
-            if (docContent) docContent.innerHTML = `<p>No document data available for this site.</p>`;
+            table1.innerHTML = `<tbody><tr><td>No data available for this site.</td></tr></tbody>`; 
+            table2.innerHTML = `<tbody><tr><td>No data available for this site.</td></tr></tbody>`;
+            table3.innerHTML = `<tbody><tr><td>No data available for this site.</td></tr></tbody>`; 
         } 
     } 
     
-    function showMapDetail(event) { // [cite: 122-125]
+    [cite_start]function showMapDetail(event) { // [cite: 122-125]
         const mapInfo = document.getElementById('map-detail-info'); 
         if (!mapInfo) return;
         const targetElement = event.target.closest('\[data-info\]');
@@ -925,11 +1013,7 @@
         }, 2500);
     } 
     
-    // --- MODAL CONTROLS --- [cite: 125-128]
-    const newSurveyProjectModal = document.getElementById('new-survey-project-modal'); 
-    const assignSurveyModal = document.getElementById('assign-survey-modal'); 
-    const assignThirdPartyModal = document.getElementById('assign-third-party-modal');
-    
+    [cite_start]// --- MODAL CONTROLS --- [cite: 125-128]
     function showNewSurveyProjectModal() { 
         newSurveyProjectModal.classList.remove('hidden'); 
     } 
@@ -951,7 +1035,7 @@
         assignThirdPartyModal.classList.add('hidden');
     } 
     
-    // --- TOAST NOTIFICATION --- [cite: 128-132]
+    [cite_start]// --- TOAST NOTIFICATION --- [cite: 128-132]
     function showToast(message, type = 'success') { 
         const toast = document.getElementById('toast'); 
         const toastMessage = document.getElementById('toast-message');
@@ -974,10 +1058,12 @@
         }, 3000);
     } 
     
-    // --- GIS VIEW CONTROLS --- [cite: 132-145]
+    [cite_start]// --- GIS VIEW CONTROLS --- [cite: 132-145]
     const gisFields = [ 
-        { id: 'foss_qualifi', name: 'FOSS_QUALIFI', description: 'Qualifier code...' }, 
-        { id: 'add_hab', name: 'ADD_HAB', description: 'Field for secondary habitat...' }, 
+        { id: 'foss_qualifi', name: 'FOSS_QUALIFI', description: 'Qualifier code for Guide to Habitats classification subtypes.' },
+        { id: 'add_hab', name: 'ADD_HAB', description: 'Field for secondary habitat classification schemes.' },
+        { id: 'foss_name', name: 'FOSS_NAME', description: 'Habitat name corresponding to the Guide to Habitats code.' },
+        { id: 'area_length', name: 'AREA / LENGTH', description: 'Total area (m²) for polygons or length (m) for polylines.' }
         // ... (other fields)
     ];
     
@@ -988,10 +1074,10 @@
         const fieldList = document.getElementById('gis-field-list');
         if (!fieldList) return;
         fieldList.innerHTML = gisFields.map(field => ` 
-            <div> 
+            <div style="margin-top: 0.5rem;"> 
                 <input id="${field.id}" name="${field.id}" type="checkbox" checked> 
-                <label for="${field.id}">${field.name}</label> 
-                <p>${field.description}</p> 
+                <label for="${field.id}" style="font-weight: 600;">${field.name}</label> 
+                <p style="font-size: 0.8rem; color: #555; margin: 0;">${field.description}</p> 
             </div> 
         `).join('');
     } 
@@ -1001,7 +1087,7 @@
         document.getElementById('gis-initial-choice').classList.remove('hidden'); 
     } 
     
-    // --- DATA MINE CONTROLS --- [cite: 145-148]
+    [cite_start]// --- DATA MINE CONTROLS --- [cite: 145-148]
     function performDataMineSearch() { 
         const resultsContainer = document.getElementById('datamine-results-container');
         const loading = document.getElementById('datamine-loading'); 
@@ -1017,12 +1103,12 @@
         }, 1500);
     } 
     
-    // --- DYNAMIC FIELD SURVEY ENTRY --- [cite: 148-156]
+    [cite_start]// --- DYNAMIC FIELD SURVEY ENTRY --- [cite: 148-156]
     function addHabitatEntry() { 
         const container = document.getElementById('habitat-entries'); 
         if (!container) return; // FIX
         const newEntry = document.createElement('div');
-        newEntry.style.border = "1px solid #eee"; newEntry.style.padding = "1rem";
+        newEntry.style.border = "1px solid #eee"; newEntry.style.padding = "1rem"; newEntry.style.background = "#fff";
         newEntry.innerHTML = ` 
             <div> 
                 <label>Habitat Code</label> <input type="text" placeholder="e.g., GS2"> 
@@ -1041,7 +1127,7 @@
         const container = document.getElementById('fauna-entries'); 
         if (!container) return; // FIX
         const newEntry = document.createElement('div'); 
-        newEntry.style.border = "1px solid #eee"; newEntry.style.padding = "1rem";
+        newEntry.style.border = "1px solid #eee"; newEntry.style.padding = "1rem"; newEntry.style.background = "#fff";
         newEntry.innerHTML = ` 
             <div> 
                 <label>Species</label> <input type="text" placeholder="e.g., Otter"> 
@@ -1068,7 +1154,7 @@
         const container = document.getElementById('flora-entries'); 
         if (!container) return; // FIX
         const newEntry = document.createElement('div'); 
-        newEntry.style.border = "1px solid #eee"; newEntry.style.padding = "1rem";
+        newEntry.style.border = "1px solid #eee"; newEntry.style.padding = "1rem"; newEntry.style.background = "#fff";
         newEntry.innerHTML = ` 
             <div> 
                 <label>Species Name</label> <input type="text" placeholder="e.g., Bluebell"> 
@@ -1091,7 +1177,7 @@
         lucide.createIcons();
     } 
     
-    // --- TEMPLATE EDITOR --- [cite: 156-161]
+    [cite_start]// --- TEMPLATE EDITOR --- [cite: 156-161]
     function addTemplateElement(type) { 
         const editor = document.getElementById('custom-template-editor');
         if (!editor) return;
@@ -1111,23 +1197,44 @@
         showView('survey-template-view');
     } 
     
-    // --- IMPACT CALCULATION --- [cite: 161-165]
-    function updateImpactCalculation() { 
-        const passages = 11.19;
-        const probability = 0.179;
-        const opTimeEl = document.getElementById('crm-optime');
-        const avoidanceEl = document.getElementById('crm-avoidance');
-        const resultEl = document.getElementById('crm-final-result');
-        if (!opTimeEl || !avoidanceEl || !resultEl) return;
+    // --- UPDATED IMPACT CALCULATION ---
+    function updateImpactCalculation() {
+        // Ensure all elements exist before running
+        if (!document.getElementById('crm-flights-height')) return;
+
+        // Read Stage 1 & 2 Inputs
+        const flights = parseFloat(document.getElementById('crm-flights-height').value) || 0;
+        const hours = parseFloat(document.getElementById('crm-vp-hours').value) || 0;
         
-        const opTime = parseFloat(opTimeEl.value) / 100 || 0.85; 
-        const avoidance = parseFloat(avoidanceEl.value) / 100 || 0.98; 
-        const adjustedProbability = probability * opTime; 
-        const finalCollisions = passages * adjustedProbability * (1 - avoidance); 
-        resultEl.textContent = finalCollisions.toFixed(2);
-    } 
+        // Read Stage 3 Inputs
+        const birdLength = parseFloat(document.getElementById('crm-bird-length').value) || 0;
+        const rotorDiameter = parseFloat(document.getElementById('crm-rotor-diameter').value) || 0;
+        
+        // Read Stage 4 & 5 Inputs
+        const opTime = parseFloat(document.getElementById('crm-optime').value) / 100 || 0.85;
+        const avoidance = parseFloat(document.getElementById('crm-avoidance').value) / 100 || 0.98;
+
+        // --- Perform Calculations ---
+        
+        // (Simple demo formula to replace hard-coded 'passages = 11.19')
+        // This is a placeholder; a real model is far more complex.
+        const passages = (flights > 0 && hours > 0) ? (flights / hours) * 24 * 30 : 0;
+        
+        // (Simple demo formula to replace hard-coded 'probability = 0.179')
+        // This is a placeholder.
+        const probability = (birdLength > 0 && rotorDiameter > 0) ? (birdLength / rotorDiameter) * 0.35 : 0;
+        
+        // --- Update UI Outputs ---
+        document.getElementById('crm-passages-result').textContent = passages.toFixed(2);
+        document.getElementById('crm-probability-result').textContent = (probability * 100).toFixed(1) + '%';
+        
+        [cite_start]// --- Final Calculation (from original) [cite: 164-165] ---
+        const adjustedProbability = probability * opTime;
+        const finalCollisions = passages * adjustedProbability * (1 - avoidance);
+        document.getElementById('crm-final-result').textContent = finalCollisions.toFixed(2);
+    }
     
-    // --- DASHBOARD --- [cite: 165-171]
+    [cite_start]// --- DASHBOARD --- [cite: 165-171]
     function renderDashboard() { 
         if (typeof Chart === 'undefined' || typeof ChartDataLabels === 'undefined') {
             console.error('Chart.js or ChartDataLabels is not loaded.');
@@ -1170,8 +1277,12 @@
                     tooltip: { 
                         callbacks: { 
                             label: function(context) { 
-                                // ... (tooltip logic)
-                                return `${context.label}: ${context.raw}`;
+                                let label = context.label || ''; 
+                                if (label) { label += ': '; } 
+                                const value = context.raw; 
+                                const percentage = total > 0 ? ((value / total) * 100).toFixed(1) + '%' : '0%'; 
+                                label += `${value} (${percentage})`; 
+                                return label; 
                             } 
                         } 
                     }, 
@@ -1188,14 +1299,22 @@
         });
     } 
     
-    // --- CSV DATA --- [cite: 171-179]
+    [cite_start]// --- CSV DATA --- [cite: 171-179]
+    // (Keeping data minimal for example)
     const sacConditionsCsv = `Site Name ,Site code,Last Upate ,Habitats Health ,Species Health 
 River Barrow and River Nore SAC,2162,June 2025,Inadequate,Bad 
-Hook Head SAC,764,January 2025,Favourable,Favourable`;
+Hook Head SAC,764,January 2025,Favourable,Favourable 
+Belgica Mound Province SAC,2327,January 2025,Inadequate,Inadequate 
+West Connacht Coast SAC,2998,January 2025,Bad,Favourable`;
+    
     const spaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health 
-Lady's Island Lake SPA,4009,July 2025,Favourable,Favourable`;
+Lady's Island Lake SPA,4009,July 2025,Favourable,Favourable 
+Termoncarragh Lake and Annagh Machair SPA,4093,June 2025,Inadequate,Favourable`;
+    
     const nhaConditionsCsv = `Site Name ,Site Code ,Last Updated,Habitats Health ,Species Health 
-Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
+Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7 
+Inishduff NHA,151,Pending,Donegal,46.5`;
+    
     const assessmentsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,HA,Link to Survey 
 9,Slieve Rushen Bog NHA,Not Assigned,Cavan,674.7,https://...
 151,Inishduff NHA,Pending,Donegal,46.5,https://...
@@ -1222,13 +1341,15 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
 106, St. Gobnet's Wood SAC, Completed, Donegal,216, 
 109, Three Castle Head to Mizen Head, Completed, Donegal,540, 
 111, Aran Island (Donegal) Cliffs SAC, Completed, Donegal, 613,`;
-    const actionsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,Action Type,Link to Survey 
-245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,https://...`;
     
-    // --- HELPER FUNCTIONS --- [cite: 179-191]
+    const actionsCsvData = `SITECODE,SITE_NAME,Status,COUNTY,Action Type,Link to Survey 
+245,Clooncullaun Bog NHA,In Progress,Galway,Site and habitat management,https://...
+247,Slieve Bog NHA,Completed,Galway,Species protection,https://...`;
+    
+    [cite_start]// --- HELPER FUNCTIONS --- [cite: 179-191]
     function parseCsv(csvString) { 
         const rows = csvString.trim().split('\n'); 
-        const headers = rows.shift().split(',').map(h => h.trim().replace(/ /g, '_')); // [cite: 179]
+        const headers = rows.shift().split(',').map(h => h.trim().replace(/ /g, '_')); // Replace spaces for easier access
         return rows.map(row => { 
             const values = row.split(','); 
             return headers.reduce((obj, header, index) => { 
@@ -1238,32 +1359,26 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         });
     } 
     
-    function getStatusColorClass(status) { // [cite: 181-184]
+    [cite_start]function getStatusColorClass(status) { // [cite: 181-184]
         if (!status) return 'bg-gray-100 text-gray-800'; 
         const lowerStatus = status.toLowerCase(); 
-        if (lowerStatus === 'completed') return 'bg-green-100 text-green-800';
-        if (lowerStatus === 'in progress') return 'bg-blue-100 text-blue-800'; 
-        if (lowerStatus === 'pending') return 'bg-yellow-100 text-yellow-800';
-        if (lowerStatus === 'not assigned') return 'bg-gray-100 text-gray-800'; 
-        return 'bg-gray-100 text-gray-800';
+        if (lowerStatus === 'completed') return 'background: #dcfce7; color: #166534;'; // Green
+        if (lowerStatus === 'in progress') return 'background: #dbeafe; color: #1e40af;'; // Blue
+        if (lowerStatus === 'pending') return 'background: #fef9c3; color: #a16207;'; // Yellow
+        if (lowerStatus === 'not assigned') return 'background: #f3f4f6; color: #374151;'; // Gray
+        return 'background: #f3f4f6; color: #374151;';
     } 
     
-    function getStatusDot(status) { // [cite: 184-187]
-        // ... (status dot logic)
-    } 
+    [cite_start]function getStatusDot(status) { /* ... */ } // [cite: 184-187]
+    [cite_start]function generateRandomConservationString() { /* ... */ } // [cite: 187-191]
     
-    function generateRandomConservationString() { // [cite: 187-191]
-        // ... (random status logic)
-        return `<div>...</div>`;
-    } 
-    
-    // --- DASHBOARD: SITE STATUS --- [cite: 191-198]
+    [cite_start]// --- DASHBOARD: SITE STATUS --- [cite: 191-198]
     function renderSiteStatusTabs() { 
         const tabs = [ { id: 'sac', name: 'SAC' }, { id: 'spa', name: 'SPA' }, { id: 'nha', name: 'NHA' } ];
         const tabsContainer = document.getElementById('site-status-tabs'); 
         if (!tabsContainer) return;
         tabsContainer.innerHTML = tabs.map(tab => ` 
-            <button onclick="setSiteStatusTab('${tab.id}')" class="${currentSiteStatusTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500'}"> 
+            <button onclick="setSiteStatusTab('${tab.id}')" style="border-bottom: 2px solid ${currentSiteStatusTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem;"> 
                 ${tab.name} 
             </button> 
         `).join('');
@@ -1295,7 +1410,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         document.getElementById('species-favourable-stat').textContent = stats.speciesFavourable; 
         
         content.innerHTML = ` 
-            <table class="projects-table"> 
+            <table class="projects-table" style="margin-top: 1rem;"> 
                 <thead> 
                     <tr> <th>Site Code</th> <th>Site Name</th> <th>Habitats Health</th> <th>Species Health</th> <th>Last Updated</th> </tr> 
                 </thead> 
@@ -1315,7 +1430,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         `;
     } 
     
-    // --- TASKS PAGE --- [cite: 198-206]
+    [cite_start]// --- TASKS PAGE --- [cite: 198-206]
     function renderTasksView() { 
         currentTasksTab = 'assessments'; 
         renderTasksTabs(); 
@@ -1327,7 +1442,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         const tabsContainer = document.getElementById('tasks-tabs'); 
         if (!tabsContainer) return;
         tabsContainer.innerHTML = tabs.map(tab => ` 
-            <button onclick="setTasksTab('${tab.id}')" class="${currentTasksTab === tab.id ? 'border-accent text-accent' : 'border-transparent text-gray-500'}"> 
+            <button onclick="setTasksTab('${tab.id}')" style="border-bottom: 2px solid ${currentTasksTab === tab.id ? '#FB923C' : 'transparent'}; padding: 0.5rem;"> 
                 ${tab.name} 
             </button> 
         `).join('');
@@ -1350,17 +1465,17 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
                 assessmentsData.push(rossbehyAssessment); 
             } 
             content.innerHTML = ` 
-                <div class="projects-table"> 
+                <div class="projects-table" style="margin-top: 1rem;"> 
                     <table> 
                         <thead> 
                             <tr> <th>Site Code</th> <th>Site Name</th> <th>Status</th> <th>County</th> <th>Area (ha)</th> </tr> 
                         </thead> 
                         <tbody> 
                             ${assessmentsData.map(row => ` 
-                            <tr class="${row.SITECODE == '13' ? 'cursor-pointer' : ''}" ${row.SITECODE == '13' ? `onclick="showView('assessment-detail-view', { siteCode: 13 })"` : ''}> 
+                            <tr style="${row.SITECODE == '13' ? 'cursor: pointer; background: #fefef5;' : ''}" ${row.SITECODE == '13' ? `onclick="showView('assessment-detail-view', { siteCode: 13 })"` : ''}> 
                                 <td>${row.SITECODE}</td> 
                                 <td>${row.SITE_NAME}</td> 
-                                <td><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td> 
+                                <td><span class="status-badge" style="${getStatusColorClass(row.Status)}">${row.Status}</span></td> 
                                 <td>${row.COUNTY}</td> 
                                 <td>${row.HA}</td> 
                             </tr>`).join('')} 
@@ -1371,7 +1486,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         } else if (currentTasksTab === 'actions') { 
             let actionsData = parseCsv(actionsCsvData);
             content.innerHTML = ` 
-                <div class="projects-table"> 
+                <div class="projects-table" style="margin-top: 1rem;"> 
                     <table> 
                         <thead> 
                             <tr> <th>Site Code</th> <th>Site Name</th> <th>Status</th> <th>Action Type</th> <th>County</th> </tr> 
@@ -1381,7 +1496,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
                             <tr> 
                                 <td>${row.SITECODE}</td> 
                                 <td>${row.SITE_NAME}</td> 
-                                <td><span class="status-badge ${getStatusColorClass(row.Status)}">${row.Status}</span></td> 
+                                <td><span class="status-badge" style="${getStatusColorClass(row.Status)}">${row.Status}</span></td> 
                                 <td>${row.Action_Type}</td> 
                                 <td>${row.COUNTY}</td> 
                             </tr>`).join('')} 
@@ -1392,11 +1507,12 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         } 
     } 
     
-    // --- VISUALISATION VIEW --- [cite: 206-218]
+    [cite_start]// --- VISUALISATION VIEW --- [cite: 206-218]
     const visTabs = [ 
         { id: 'basic', name: 'Basic Information', icon: 'file-text' }, 
         { id: 'impacts', name: 'Impacts', icon: 'alert-triangle' }, 
-        // ... (other tabs)
+        { id: 'metrics', name: 'Metrics', icon: 'bar-chart-3' }, 
+        { id: 'habitats', name: 'Habitats', icon: 'leaf' }, 
         { id: 'finish', name: 'Finish', icon: 'check-circle' } 
     ];
     
@@ -1410,7 +1526,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         const nav = document.getElementById('visualisation-nav');
         if (!nav) return;
         nav.innerHTML = visTabs.map(tab => ` 
-            <button onclick="setVisualisationTab('${tab.id}')" class="${currentVisualisationTab === tab.id ? 'bg-blue-100' : ''}"> 
+            <button onclick="setVisualisationTab('${tab.id}')" style="padding: 0.5rem; border-radius: 4px; background: ${currentVisualisationTab === tab.id ? '#dbeafe' : 'transparent'};"> 
                 <i data-lucide="${tab.icon}"></i> <span>${tab.name}</span> 
             </button> 
         `).join('');
@@ -1429,21 +1545,21 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         let html = ''; 
         switch(currentVisualisationTab) { 
             case 'basic': 
-                html = `<h3>Basic Information</h3> ...`;
+                html = `<h3>Basic Information</h3><p>Configuration options for this section...</p>`;
                 break; 
             case 'impacts': 
-                html = `<h3>Impacts</h3> ...`;
+                html = `<h3>Impacts</h3><p>Data automatically populated...</p>`;
                 break; 
             case 'finish': 
-                html = `<h3>Finish Project Setup</h3> ...`;
+                html = `<h3>Finish Project Setup</h3><p>Your project is almost ready...</p>`;
                 break; 
             default: 
-                html = `<h3>${visTabs.find(t=>t.id===currentVisualisationTab).name}</h3><p>...</p>`; 
+                html = `<h3>${visTabs.find(t=>t.id===currentVisualisationTab).name}</h3><p>Configuration options...</p>`; 
         } 
         content.innerHTML = html;
     } 
     
-    // --- AI REPORTING --- [cite: 218-227]
+    [cite_start]// --- AI REPORTING --- [cite: 218-227]
     function addAiChatMessage(content, isUser = false) { 
         const history = document.getElementById('ai-chat-history');
         if (!history) return;
@@ -1461,12 +1577,13 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         const reportContent = document.getElementById('ai-report-content'); 
         const audience = document.getElementById('audience-tone').value;
         if (!reportContent) return;
-        reportContent.innerHTML = `<div><div class="loading-spinner"></div><p>Generating report for: <b>${audience}</b>...</p></div>`;
+        reportContent.innerHTML = `<div style="text-align: center; padding: 2rem;"><div class="loading-spinner" style="margin: auto;"></div><p>Generating report for: <b>${audience}</b>...</p></div>`;
         addAiChatMessage(`Okay, I'm generating a draft report for a <b>${audience}</b> audience.`);
         setTimeout(() => { 
             reportContent.innerHTML = ` 
-                <h2>1.0 Introduction</h2> <p>...</p> 
-                <h2>2.0 Field Survey Summary</h2> <p>...</p> 
+                <h2>1.0 Introduction</h2> <p>This report presents the findings of an Ecological Impact Assessment...</p> 
+                <h2>2.0 Field Survey Summary</h2> <p>Field surveys were conducted on...</p> 
+                <h2>3.0 Impact Assessment (Ornithology)</h2> <p>Based on the Nature Scot Collision Risk Model...</p>
             `; 
             addAiChatMessage('The draft report is ready for your review.'); 
         }, 2500);
@@ -1480,7 +1597,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         addAiChatMessage("Okay. Enriching report with third-party datasets...");
     } 
     
-    // --- CORE ACTIONS --- [cite: 227-249]
+    [cite_start]// --- CORE ACTIONS --- [cite: 227-249]
     function startSurveyFromTemplate(templateId) { 
         const template = surveyTemplates.find(t => t.id === templateId); 
         document.getElementById('new-survey-template-id-input').value = templateId;
@@ -1502,7 +1619,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
             id: newProjectId, 
             name: projectName, 
             client: clientName, 
-            code: `${clientName.substring(0,3).toUpperCase()}-...-25` 
+            code: `${clientName.substring(0,3).toUpperCase()}-${String(Math.floor(100 + Math.random() * 900))}-25` 
         }; 
         db.projects.push(newProject);
         const newSurveyId = (db.surveys[db.surveys.length - 1]?.id || 0) + 1;
@@ -1514,18 +1631,18 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         } else if (templateId === 'ECoW') { 
             showView('ecow-editor-view', { projectId: newProjectId }); 
         } else { 
-            showView('my-surveys-view'); // Show the updated surveys list
+            showView('project-detail-view', newProjectId); // Show the new project
         } 
     } 
     
     function saveEiarSurvey() { 
         showToast("Survey content saved!"); 
-        showView('my-surveys-view'); // Go back to survey list
+        showView('project-detail-view', currentProjectId); // Go back to project
     } 
     
     function saveEcowReport() { 
         showToast("ECoW report saved!"); 
-        showView('my-surveys-view'); // Go back to survey list
+        showView('project-detail-view', currentProjectId); // Go back to project
     } 
     
     function assignSurvey(surveyId) { 
@@ -1542,7 +1659,10 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
     } 
     
     function generateThirdPartyLink() { 
-        const link = `${window.location.origin}${window.location.pathname}?task=...`; 
+        const email = document.getElementById('third-party-email').value;
+        const task = document.getElementById('third-party-task').value; 
+        const randomToken = Math.random().toString(36).substring(2, 12); 
+        const link = `${window.location.origin}${window.location.pathname}?task=${task}&token=${randomToken}`; 
         document.getElementById('third-party-link-input').value = link; 
         document.getElementById('assign-third-party-form').style.display = 'none';
         document.getElementById('assign-third-party-link').style.display = 'block'; 
@@ -1561,7 +1681,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         if (file) { 
             const reader = new FileReader();
             reader.onload = function(e) { 
-                container.innerHTML = `<img src="${e.target.result}" style="max-height: 160px;">`; 
+                container.innerHTML = `<img src="${e.target.result}" style="max-height: 160px; max-width: 100%; border-radius: 4px;">`; 
             } 
             reader.readAsDataURL(file);
         } 
@@ -1581,8 +1701,8 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
             }; 
             saveData(); 
             document.getElementById('mobile-survey-form').innerHTML = ` 
-                <div> 
-                    <i data-lucide="check-circle"></i> 
+                <div style="text-align: center; padding: 2rem;"> 
+                    <i data-lucide="check-circle" style="width: 64px; height: 64px; color: #10B981; margin: auto;"></i> 
                     <h2>Survey Submitted</h2> 
                     <p>Thank you. Your data has been recorded.</p> 
                     <button onclick="closeSurveyWindow()">Close Window</button> 
@@ -1598,7 +1718,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         window.location.href = window.location.pathname;
     } 
     
-    // --- REPORT GENERATION --- [cite: 249-255]
+    [cite_start]// --- REPORT GENERATION --- [cite: 249-255]
     function generateReport(surveyId) { 
         if (typeof docx === 'undefined' || typeof saveAs === 'undefined') {
             showToast('Report libraries not loaded.', 'error');
@@ -1615,16 +1735,20 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
                 properties: {}, 
                 children: [ 
                     new Paragraph({ text: template.name, heading: HeadingLevel.TITLE }), 
-                    new Paragraph({ text: `Project: ${project.name}` }), 
-                    new Paragraph({ text: `Client: ${project.client}` }), 
-                    new Paragraph({ text: `Survey Site: ${survey.siteName}` }), 
-                    new Paragraph({ text: "1.0 Desk Study", heading: HeadingLevel.HEADING_1 }), 
-                    new Paragraph("..."), 
-                    new Paragraph({ text: "2.0 Field Survey Results", heading: HeadingLevel.HEADING_1 }), 
-                    new Paragraph({ text: "2.1 Habitats", heading: HeadingLevel.HEADING_2 }), 
-                    new Paragraph(new TextRun({ text: "Habitat Type:", bold: true }).addChild(new TextRun(` ${survey.data.habitat}`))), 
-                    new Paragraph(new TextRun({ text: "Condition Notes:", bold: true }).addChild(new TextRun(` ${survey.data.notes}`))), 
-                    new Paragraph({ text: "2.2 Species", heading: HeadingLevel.HEADING_2 }), 
+                    new Paragraph({ text: `Project: ${project.name}`, style: "IntenseQuote" }), 
+                    new Paragraph({ text: `Client: ${project.client}`, style: "IntenseQuote" }), 
+                    new Paragraph({ text: `Survey Site: ${survey.siteName}`, style: "IntenseQuote" }), 
+                    new Paragraph({ text: `Date: ${new Date().toLocaleDateString('en-IE')}` }), 
+                    
+                    new Paragraph({ text: "1.0 Desk Study", heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), 
+                    new Paragraph("A desk-based study was undertaken..."), 
+                    
+                    new Paragraph({ text: "2.0 Field Survey Results", heading: HeadingLevel.HEADING_1, spacing: { before: 200 } }), 
+                    new Paragraph({ text: "2.1 Habitats", heading: HeadingLevel.HEADING_2, spacing: { before: 200 } }), 
+                    new Paragraph(new TextRun({ text: "Habitat Type:", bold: true }).addChild(new TextRun(` ${survey.data.habitat || 'N/A'}`))), 
+                    new Paragraph(new TextRun({ text: "Condition Notes:", bold: true }).addChild(new TextRun(` ${survey.data.notes || 'N/A'}`))), 
+                    
+                    new Paragraph({ text: "2.2 Species", heading: HeadingLevel.HEADING_2, spacing: { before: 200 } }), 
                     new Paragraph(new TextRun({ text: "Species Observed:", bold: true }).addChild(new TextRun(` ${survey.data.species || 'None.'}`))), 
                 ], 
             }], 
@@ -1636,7 +1760,7 @@ Slieve Rushen Bog NHA,9,Not Assigned,Cavan,674.7`;
         }); 
     } 
     
-    // --- INITIALIZATION (FIX: Removed faulty function calls) --- 
+    // --- INITIALIZATION (FIX: Removed faulty function calls) ---
     document.addEventListener('DOMContentLoaded', () => { 
         loadData(); 
         lucide.createIcons(); 
